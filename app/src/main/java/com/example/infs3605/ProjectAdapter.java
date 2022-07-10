@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ProjectAdapter extends RecyclerView.Adapter<ProjectViewHolder> {
-    private final ArrayList<Project> projList;
+public class ProjectAdapter extends RecyclerView.Adapter<ProjectViewHolder>{
+    private static final String TAG = "Tag";
+    private final ArrayList<Project> listProject;
     private final ProjectAdapter.OnItemClickListener listListener;
 
     public interface OnItemClickListener{
@@ -21,7 +22,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectViewHolder> {
     }
 
     public ProjectAdapter(ArrayList<Project> lists, ProjectAdapter.OnItemClickListener clickListener){
-        projList = lists;
+        listProject = lists;
         listListener = clickListener;
     }
 
@@ -34,32 +35,30 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ProjectViewHolder holder, int position){
-        Project project = projList.get(position);
+        Project project = listProject.get(position);
         holder.name.setText(project.getProjectName());
+        // If the topic boolean isCompleted is true, a completed icon ImageView is set Visible
         holder.itemView.setTag(project.getProjectName());
     }
 
     @Override
     public int getItemCount(){
-        return projList.size();
+        return listProject.size();
     }
 }
 
-class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     public TextView name;
     private ProjectAdapter.OnItemClickListener clickListener;
 
-    public ProjectViewHolder(@NonNull View itemView, ProjectAdapter.OnItemClickListener listListener) {
+    public ProjectViewHolder(@NonNull View itemView, ProjectAdapter.OnItemClickListener listListener){
         super(itemView);
         this.clickListener = listListener;
         itemView.setOnClickListener(this);
-        name = itemView.findViewById(R.id.projName);
+        name = itemView.findViewById(R.id.tvName);
     }
 
     @Override
-    public void onClick(View view) {
-        clickListener.onClick(view, (String) view.getTag());
-    }
-
+    public void onClick(View view){
+        clickListener.onClick(view, (String) view.getTag());}
 }
-
