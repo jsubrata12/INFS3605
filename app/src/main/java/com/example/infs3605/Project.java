@@ -10,7 +10,6 @@ public class Project {
     private boolean projectFunded;
 
     public Project(String projectName) {
-
     }
 
     public String getProjectName() {
