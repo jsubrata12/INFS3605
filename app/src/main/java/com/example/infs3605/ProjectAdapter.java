@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectViewHolder> {
     private final ArrayList<Project> projList;
     private final ProjectAdapter.OnItemClickListener listListener;
-    private static final String TAG = "Tag";
 
     public interface OnItemClickListener{
         void onClick(View view, String id);
