@@ -34,7 +34,6 @@ public class ProjectActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         projRV.setLayoutManager(layoutManager);
 
-        // When an Item in the RecyclerView is clicked, a DetailActivity for the specific topic is started
         ProjectAdapter.OnItemClickListener clickListener = new ProjectAdapter.OnItemClickListener() {
             @Override
             public void onClick(View view, String id) {
