@@ -1,60 +1,48 @@
 package com.example.infs3605;
 
-import java.util.ArrayList;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "SDG")
 public class SDG {
-    private String SDGName;
-    private String SDGDescription;
-    private String SDGPoints;
+    @PrimaryKey(autoGenerate = true)
+    public int sdgID;
+    @ColumnInfo(name = "SDG")
+    public String sdg;
+    @ColumnInfo(name = "Points")
+    public int points;
 
-    public SDG(String SDGName, String SDGDescription, String SDGPoints) {
-        this.SDGName = SDGName;
-        this.SDGDescription = SDGDescription;
-        this.SDGPoints = SDGPoints;
+    public SDG(int sdgID, String sdg, int points) {
+        this.sdgID = sdgID;
+        this.sdg = sdg;
+        this.points = points;
     }
 
-    public String getSDGName() {
-        return SDGName;
+    public int getSdgID() {
+        return sdgID;
     }
 
-    public SDG setSDGName(String SDGName) {
-        this.SDGName = SDGName;
+    public SDG setSdgID(int sdgID) {
+        this.sdgID = sdgID;
         return this;
     }
 
-    public String getSDGDescription() {
-        return SDGDescription;
+    public String getSdg() {
+        return sdg;
     }
 
-    public SDG setSDGDescription(String SDGDescription) {
-        this.SDGDescription = SDGDescription;
+    public SDG setSdg(String sdg) {
+        this.sdg = sdg;
         return this;
     }
 
-    public String getSDGPoints() {
-        return SDGPoints;
+    public int getPoints() {
+        return points;
     }
 
-    public SDG setSDGPoints(String SDGPoints) {
-        this.SDGPoints = SDGPoints;
+    public SDG setPoints(int points) {
+        this.points = points;
         return this;
     }
-
-    public static ArrayList<SDG> getSDG(){
-        ArrayList<SDG> sdgs = new ArrayList<>();
-        sdgs.add(new SDG("Test", "Test", "10"));
-
-        return sdgs;
-    }
-
-    public static SDG getSDG(String name){
-        ArrayList<SDG> sdgs = SDG.getSDG();
-        for(SDG sdg: sdgs){
-            if(sdg.getSDGName().equals(name)){
-                return sdg;
-            }
-        }
-        return null;
-    }
-
 }
