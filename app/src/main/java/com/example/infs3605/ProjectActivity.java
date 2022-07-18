@@ -45,5 +45,6 @@ public class ProjectActivity extends AppCompatActivity {
         pAdapter = new ProjectAdapter((ArrayList<Project>) projectList, clickListener);
         projRV.setAdapter(pAdapter);
 
+
     }
 }
