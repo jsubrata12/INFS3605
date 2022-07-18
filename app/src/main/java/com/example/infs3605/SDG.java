@@ -18,7 +18,6 @@ public class SDG {
         this.sdg = sdg;
         this.points = points;
     }
-
     public int getSdgID() {
         return sdgID;
     }
