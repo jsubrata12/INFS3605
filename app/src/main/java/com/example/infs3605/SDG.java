@@ -1,47 +1,59 @@
 package com.example.infs3605;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import java.util.ArrayList;
 
-@Entity(tableName = "SDG")
 public class SDG {
-    @PrimaryKey(autoGenerate = true)
-    public int sdgID;
-    @ColumnInfo(name = "SDG")
-    public String sdg;
-    @ColumnInfo(name = "Points")
-    public int points;
+    private String sdgName;
 
-    public SDG(int sdgID, String sdg, int points) {
-        this.sdgID = sdgID;
-        this.sdg = sdg;
-        this.points = points;
-    }
-    public int getSdgID() {
-        return sdgID;
+    public SDG(String sdgName) {
+        this.sdgName = sdgName;
     }
 
-    public SDG setSdgID(int sdgID) {
-        this.sdgID = sdgID;
+    public SDG() {
+
+    }
+
+    public String getSdgName() {
+        return sdgName;
+    }
+
+    public SDG setSdgName(String sdgName) {
+        this.sdgName = sdgName;
         return this;
     }
 
-    public String getSdg() {
-        return sdg;
+    public static ArrayList<SDG> getSDG(){
+        ArrayList<SDG> sdgs = new ArrayList<>();
+        sdgs.add(new SDG("No Poverty"));
+        sdgs.add(new SDG("Zero Hunger"));
+        sdgs.add(new SDG("Good Health and Well-being"));
+        sdgs.add(new SDG("Quality Education"));
+        sdgs.add(new SDG("Gender Equality"));
+        sdgs.add(new SDG("Clean Water and Sanitation"));
+        sdgs.add(new SDG("Affordable and Clean Energy"));
+        sdgs.add(new SDG("Decent Work and Economic Growth"));
+        sdgs.add(new SDG("Industry, Innovation and Infrastructure"));
+        sdgs.add(new SDG("Reduced Inequalities"));
+        sdgs.add(new SDG("Sustainable Cities and Communities"));
+        sdgs.add(new SDG("Responsible Consumption and Production"));
+        sdgs.add(new SDG("Climate Action"));
+        sdgs.add(new SDG("Life Below Water"));
+        sdgs.add(new SDG("Life on Land"));
+        sdgs.add(new SDG("Peace, Justice and Strong Institutions"));
+        sdgs.add(new SDG("Partnerships for the Goals"));
+
+        return sdgs;
     }
 
-    public SDG setSdg(String sdg) {
-        this.sdg = sdg;
-        return this;
+    public static SDG getSDG(String name){
+        ArrayList<SDG> sdgs = SDG.getSDG();
+        for(SDG sdg: sdgs){
+            if(sdg.getSdgName().equals(name)){
+                return sdg;
+            }
+        }
+        return null;
     }
 
-    public int getPoints() {
-        return points;
-    }
-
-    public SDG setPoints(int points) {
-        this.points = points;
-        return this;
-    }
 }
+

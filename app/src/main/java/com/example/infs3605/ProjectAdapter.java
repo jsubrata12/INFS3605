@@ -38,6 +38,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectViewHolder>{
         Project project = listProject.get(position);
         holder.name.setText(project.getProjectName());
         // If the topic boolean isCompleted is true, a completed icon ImageView is set Visible
+
         holder.itemView.setTag(project.getProjectName());
     }
 
