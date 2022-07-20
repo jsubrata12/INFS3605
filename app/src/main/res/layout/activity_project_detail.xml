@@ -9,21 +9,11 @@
         android:id="@+id/imageView"
         android:layout_width="284dp"
         android:layout_height="152dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/common_google_signin_btn_text_dark" />
-
-    <TextView
-        android:id="@+id/curatorTest"
-        android:layout_width="267dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="616dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/projectNameTv"
@@ -37,11 +27,32 @@
 
     <LinearLayout
         android:id="@+id/linear"
-        android:layout_width="414dp"
-        android:layout_height="260dp"
+        android:layout_width="413dp"
+        android:layout_height="83dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="292dp"
+        android:layout_marginTop="444dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/group"
+        android:layout_width="410dp"
+        android:layout_height="158dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="262dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <Button
+        android:id="@+id/findCurators"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="241dp"
+        android:layout_marginTop="200dp"
+        android:text="Find Curators"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
