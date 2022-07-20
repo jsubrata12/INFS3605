@@ -10,7 +10,6 @@ public class CompletedProjects {
     }
 
     public CompletedProjects(){
-
     }
 
     public String getProjectName() {

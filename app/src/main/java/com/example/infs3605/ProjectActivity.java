@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 public class ProjectActivity extends AppCompatActivity {
+
     private RecyclerView projRV;
     private ProjectAdapter pAdapter;
 
@@ -37,6 +38,7 @@ public class ProjectActivity extends AppCompatActivity {
         ProjectAdapter.OnItemClickListener clickListener = new ProjectAdapter.OnItemClickListener() {
             @Override
             public void onClick(View view, String id) {
+                launchDetailActivity(id);
             }
         };
 
@@ -46,5 +48,11 @@ public class ProjectActivity extends AppCompatActivity {
         projRV.setAdapter(pAdapter);
 
 
+    }
+
+    public void launchDetailActivity(String name) {
+        Intent intent = new Intent(ProjectActivity.this, ProjectDetailActivity.class);
+        intent.putExtra(ProjectDetailActivity.INTENT_MESSAGE, name);
+        startActivity(intent);
     }
 }
