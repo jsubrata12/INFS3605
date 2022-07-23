@@ -1,29 +1,40 @@
 package com.example.infs3605;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.IntStream;
 
 public class CuratorMatchActivity extends AppCompatActivity {
-    public static final String INTENT_MESSAGE = "hello";
-    private RecyclerView curatorRV;
+    public static RecyclerView curatorRV;
     private CuratorMatchAdapter cAdapter;
-    private ArrayList<CuratorProfile> listCurator = new ArrayList<>();
+    private TextView test;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_curator_match);
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra("curator");
+        String name = intent.getStringExtra("name");
+        Project project = Project.getProject(name);
+
+        test = findViewById(R.id.count);
 
         // Link the RecyclerView to its xml item and set LayoutManager
         curatorRV = findViewById(R.id.curatorRV);
@@ -34,37 +45,42 @@ public class CuratorMatchActivity extends AppCompatActivity {
         CuratorMatchAdapter.OnItemClickListener clickListener = new CuratorMatchAdapter.OnItemClickListener() {
             @Override
             public void onClick(View view, String id) {
+                launchDetailActivity(id);
             }
         };
 
-        List<CuratorProfile> curatorProfileList = CuratorProfile.getCuratorProfile();
+        ArrayList<CuratorProfile> curatorProfileList = CuratorProfile.getCuratorProfile();
+        curatorProfileList.clear();
 
-        cAdapter = new CuratorMatchAdapter((ArrayList<CuratorProfile>) curatorProfileList, clickListener);
-        curatorRV.setAdapter(cAdapter);
-
-
-    }
-
-    public void test() {
-        listCurator.clear();
-
-        ArrayList<CuratorProfile> updatedList = new ArrayList<>();
-
-        Project project = new Project();
-        ArrayList<Project> projects = project.getProject();
         CuratorProfile cp = new CuratorProfile();
-        ArrayList<CuratorProfile> cpList = cp.getCuratorProfile();
+        ArrayList<CuratorProfile> filtered = cp.getCuratorProfile();
+        HashSet<CuratorProfile> hs = new HashSet<CuratorProfile>();
 
-        for (Project s : projects) {
-            for (CuratorProfile cc : cpList) {
-                if (s.isSdg12() == true && cc.isSdg12() == true) {
-                    updatedList.add(CuratorProfile.getCuratorProfile(cc.getCuratorName()));
+        if (name != null) {
+            for (CuratorProfile s : filtered) {
+                if (name.equals("Bushfire Regeneration Challenge") && s.isSdg12() &&
+                        project.isSdg12()) {
+                    //  hs.add(new CuratorProfile(s.getCuratorName()));
+                    hs.add(new CuratorProfile(s.getCuratorName()));
+
+                } else if (name.equals("Bushfire Regeneration Challenge") && s.isSdg9() &&
+                        project.isSdg9()) {
+                    //  hs.add(new CuratorProfile(s.getCuratorName()));
+                    hs.add(new CuratorProfile(s.getCuratorName()));
                 }
-                listCurator.addAll(updatedList);
-                cAdapter.notifyDataSetChanged();
+
+                curatorProfileList.clear();
+                curatorProfileList.addAll(hs);
+
+                cAdapter = new CuratorMatchAdapter((ArrayList<CuratorProfile>) curatorProfileList, clickListener);
+                curatorRV.setAdapter(cAdapter);
             }
         }
-
     }
 
+    public void launchDetailActivity(String name) {
+        Intent intent = new Intent(CuratorMatchActivity.this, CuratorInviteActivity.class);
+        intent.putExtra(CuratorInviteActivity.INTENT_MESSAGE, name);
+        startActivity(intent);
+    }
 }

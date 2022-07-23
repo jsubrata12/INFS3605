@@ -219,7 +219,7 @@ public class Project {
     //    projects.add(new Project("Cities of Tomorrow"));
           projects.add(new Project("Bushfire Regeneration Challenge", false, false,
                   true, false, false, false, false, false,
-                  true, true, true, true, true, false, true, false, true));
+                  true, true, true, true, true, true, true, false, true));
           projects.add(new Project("Sustainability Advantage Impact Challenge", true, true,
                   true, true, true, true, true, true, true,
                   true, true, true, true, true, true, true, true));

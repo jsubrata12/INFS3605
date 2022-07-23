@@ -12,6 +12,7 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectDetailActivity extends AppCompatActivity {
     public static final String INTENT_MESSAGE = "hello";
@@ -20,9 +21,6 @@ public class ProjectDetailActivity extends AppCompatActivity {
     Button btn;
     CuratorProfile curatorProfile = new CuratorProfile();
     SDG sdg = new SDG();
-    private CuratorMatchAdapter cAdapter;
-    private ArrayList<CuratorProfile> listCurator = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +57,6 @@ public class ProjectDetailActivity extends AppCompatActivity {
         ArrayList<CuratorProfile> cp = curatorProfile.getCuratorProfile();
         ArrayList<SDG> sdgs = sdg.getSDG();
 
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProjectDetailActivity.this, CuratorMatchActivity.class);
-                startActivity(intent);
-            }
-        });
 
         if (project != null) {
             name.setText(project.getProjectName());
@@ -176,14 +166,27 @@ public class ProjectDetailActivity extends AppCompatActivity {
             group.addView(chip15);
             group.addView(chip16);
 
+            //Delete later
             for (CuratorProfile curatorProfile : cp) {
                 TextView[] textView = new TextView[cp.size()];
                 if (project.isSdg12() == true && curatorProfile.isSdg12() == true) {
                     final TextView rowTextView = new TextView(ProjectDetailActivity.this);
                     rowTextView.setText(curatorProfile.getCuratorName());
                     rl.addView(rowTextView);
+                    intent.putExtra("curator", curatorProfile.getCuratorName());
                 }
             }
         }
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProjectDetailActivity.this, CuratorMatchActivity.class);
+
+                intent.putExtra("name", project.getProjectName());
+                startActivity(intent);
+
+            }
+        });
     }
 }

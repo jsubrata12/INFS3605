@@ -1,10 +1,11 @@
 package com.example.infs3605;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,16 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHolder> {
-    private final ArrayList<CuratorProfile> listCurator;
+    private ArrayList<CuratorProfile> listCurator;
+    private ArrayList<CuratorProfile> filteredCuratorList;
+    private ArrayList<String> test;
     private final CuratorMatchAdapter.OnItemClickListener listListener;
+    Context context;
 
 
     public interface OnItemClickListener {
         void onClick(View view, String id);
     }
 
-    public CuratorMatchAdapter(ArrayList<CuratorProfile> lists, CuratorMatchAdapter.OnItemClickListener clickListener) {
+    public CuratorMatchAdapter(ArrayList<CuratorProfile> lists,  OnItemClickListener clickListener) {
         listCurator = lists;
+        filteredCuratorList = lists;
         listListener = clickListener;
     }
 
@@ -31,39 +36,33 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
     public CuratorMatchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.curator_list_row, parent, false);
         return new CuratorMatchViewHolder(view, listListener);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull CuratorMatchViewHolder holder, int position) {
-        CuratorProfile curatorProfile = listCurator.get(position);
-
-        Project project = new Project();
-        ArrayList<Project> projects = project.getProject();
-        CuratorProfile cp = new CuratorProfile();
-        ArrayList<CuratorProfile> cpList = cp.getCuratorProfile();
-
-
-        for (Project s : projects) {
-            if (s.isSdg12() == true && curatorProfile.isSdg12() == true) {
-                holder.name.setText(curatorProfile.getCuratorName());
-            }
-        }
+        CuratorProfile curatorProfile = filteredCuratorList.get(position);
+        holder.name.setText(curatorProfile.getCuratorName());
         holder.itemView.setTag(curatorProfile.getCuratorName());
+        holder.count.setText(Integer.toString(curatorProfile.getCount()));
+
     }
 
-    public void removeItem(int position) {
-        listCurator.remove(position);
-        notifyItemRemoved(position);
-    }
+
 
     @Override
     public int getItemCount() {
-        return listCurator.size();
+        return filteredCuratorList.size();
     }
+
+    public void updateCount(int count){
+
+    }
+
 }
 
 class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-    public TextView name;
+    public TextView name, count;
     private CuratorMatchAdapter.OnItemClickListener clickListener;
 
 
@@ -72,6 +71,7 @@ class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnC
         this.clickListener = listListener;
         itemView.setOnClickListener(this);
         name = itemView.findViewById(R.id.curatorName);
+        count = itemView.findViewById(R.id.count);
     }
 
     @Override

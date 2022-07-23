@@ -56,8 +56,13 @@ public class CuratorProfile {
     private boolean sdg16;
     @ColumnInfo(name = "SDG17")
     private boolean sdg17;
+    @ColumnInfo(name = "Count")
+    private int count;
+    @ColumnInfo(name = "CountCurators")
+    private String cc;
 
-    public CuratorProfile(String curatorName, String email, String location, String description, String organisation, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4, boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10, boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16, boolean sdg17) {
+
+    public CuratorProfile(String curatorName, String email, String location, String description, String organisation, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4, boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10, boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16, boolean sdg17, int count) {
         this.curatorName = curatorName;
         this.email = email;
         this.location = location;
@@ -80,11 +85,26 @@ public class CuratorProfile {
         this.sdg15 = sdg15;
         this.sdg16 = sdg16;
         this.sdg17 = sdg17;
+        this.count = count;
     }
+
 
     public CuratorProfile(){
-
     }
+
+    public CuratorProfile(String curatorName){
+        this.curatorName = curatorName;
+    }
+
+    public CuratorProfile(String curatorName, int count){
+        this.curatorName = curatorName;
+        this.count = count;
+    }
+
+    public CuratorProfile(int count){
+        this.count = count;
+    }
+
     public int getCuratorId() {
         return curatorId;
     }
@@ -269,16 +289,40 @@ public class CuratorProfile {
         this.sdg17 = sdg17;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public String getCc() {
+        return cc;
+    }
+
+    public void setCc(String cc) {
+        this.cc = cc;
+    }
+
     public static ArrayList<CuratorProfile> getCuratorProfile() {
         ArrayList<CuratorProfile> curatorProfiles = new ArrayList<>();
         curatorProfiles.add(new CuratorProfile("Anorah Test", "sample@sample.com",
                 "Sydney", "Not Available", "Not Available", false, false,
                 false, false, false, false, false, false, true,
-                false, true, false, true, true, true, true, false));
+                true, true, false, true, true, true, true, false, 0));
         curatorProfiles.add(new CuratorProfile("Josephine Sample", "sample2@sample.com", "Sydney", "Josephine Sample opens the line of " +
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, true, false, false, true,
-                false, true, true, true, true, true, true, false));
+                false, true, true, true, true, true, true, false, 0));
+       /* curatorProfiles.add(new CuratorProfile("Emma test", "sample2@sample.com", "Sydney", "Josephine Sample opens the line of " +
+                "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
+                false, false, false, false, false, true, false, false, true,
+                false, true, false, true, true, true, true, false, 0));*/
+        curatorProfiles.add(new CuratorProfile("Phone Sample", "sample2@sample.com", "Sydney", "Josephine Sample opens the line of " +
+                "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
+                false, false, true, false, false, true, false, false, true,
+                false, true, false, true, true, false, true, false, 0));
         return curatorProfiles;
     }
 

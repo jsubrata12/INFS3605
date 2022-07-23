@@ -28,6 +28,9 @@
             android:name=".CuratorMatchActivity"
             android:exported="false" />
         <activity
+            android:name=".CuratorInviteActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
