@@ -24,4 +24,14 @@
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/curatorResult"
+        android:layout_width="310dp"
+        android:layout_height="185dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="358dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

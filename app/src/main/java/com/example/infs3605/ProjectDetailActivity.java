@@ -182,8 +182,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProjectDetailActivity.this, CuratorMatchActivity.class);
-
-                intent.putExtra("name", project.getProjectName());
+                intent.putExtra(CuratorMatchActivity.PROJ_NAME, project.getProjectName());
                 startActivity(intent);
 
             }
