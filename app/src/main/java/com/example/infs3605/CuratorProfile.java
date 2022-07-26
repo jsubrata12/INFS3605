@@ -60,6 +60,8 @@ public class CuratorProfile {
     private int count;
     @ColumnInfo(name = "CountCurators")
     private String cc;
+    @ColumnInfo(name = "NewCount")
+    private int newCount;
 
 
     public CuratorProfile(String curatorName, String email, String location, String description, String organisation, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4, boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10, boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16, boolean sdg17, int count) {
@@ -305,6 +307,14 @@ public class CuratorProfile {
         this.cc = cc;
     }
 
+    public int getNewCount() {
+        return newCount;
+    }
+
+    public void setNewCount(int newCount) {
+        this.newCount = newCount;
+    }
+
     public static ArrayList<CuratorProfile> getCuratorProfile() {
         ArrayList<CuratorProfile> curatorProfiles = new ArrayList<>();
         curatorProfiles.add(new CuratorProfile("Anorah Test", "sample@sample.com",
@@ -315,10 +325,10 @@ public class CuratorProfile {
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, true, false, false, true,
                 false, true, true, true, true, true, true, false, 0));
-       /* curatorProfiles.add(new CuratorProfile("Emma test", "sample2@sample.com", "Sydney", "Josephine Sample opens the line of " +
+        curatorProfiles.add(new CuratorProfile("Emma test", "sample2@sample.com", "Sydney", "Josephine Sample opens the line of " +
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, true, false, false, true,
-                false, true, false, true, true, true, true, false, 0));*/
+                false, true, false, true, true, true, true, false, 0));
         curatorProfiles.add(new CuratorProfile("Phone Sample", "sample2@sample.com", "Sydney", "Josephine Sample opens the line of " +
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, true, false, false, true, false, false, true,

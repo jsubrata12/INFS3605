@@ -3,6 +3,7 @@ package com.example.infs3605;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
 
 public class CuratorMatchActivity extends AppCompatActivity {
@@ -24,10 +26,12 @@ public class CuratorMatchActivity extends AppCompatActivity {
     private CuratorMatchAdapter cAdapter;
     private TextView test;
     private String projName;
-    private String curatorName;
+    private String curName;
     public static final String PROJ_NAME = "test";
+    public static final String CURATOR_NAME = "hello";
+    private static final String TAG = "tag";
+    CuratorCountDatabase curatorCountDatabase;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,8 @@ public class CuratorMatchActivity extends AppCompatActivity {
         Intent intent = getIntent();
         projName = intent.getStringExtra(PROJ_NAME);
         Project project = Project.getProject(projName);
+        curName = intent.getStringExtra(CURATOR_NAME);
+        CuratorProfile curator = CuratorProfile.getCuratorProfile(curName);
 
         test = findViewById(R.id.count);
 
@@ -59,26 +65,37 @@ public class CuratorMatchActivity extends AppCompatActivity {
         ArrayList<CuratorProfile> filtered = cp.getCuratorProfile();
         HashSet<CuratorProfile> hs = new HashSet<CuratorProfile>();
 
-        if (projName!= null) {
-            for (CuratorProfile s : filtered) {
-                if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg12() &&
-                        project.isSdg12()) {
-                    //  hs.add(new CuratorProfile(s.getCuratorName()));
-                    hs.add(new CuratorProfile(s.getCuratorName()));
+        int count = 0;
+        int[] arr = new int[17];
 
-                } else if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg9() &&
-                        project.isSdg9()) {
-                    //  hs.add(new CuratorProfile(s.getCuratorName()));
-                    hs.add(new CuratorProfile(s.getCuratorName()));
-                }
+        for (CuratorProfile s : filtered) {
+            if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg12() && project.isSdg12()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+                System.out.println("Added" + s.getCuratorName());
+                //System.out.println(String.valueOf(count));
 
-                curatorProfileList.clear();
-                curatorProfileList.addAll(hs);
+            } else if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg9() && project.isSdg9()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+                System.out.println("Added 2" + s.getCuratorName());
+                System.out.println(String.valueOf(count));
+            } else if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg15() && project.isSdg15()) {
 
-                cAdapter = new CuratorMatchAdapter((ArrayList<CuratorProfile>) curatorProfileList, clickListener);
-                curatorRV.setAdapter(cAdapter);
+                hs.add(new CuratorProfile(s.getCuratorName()));
+                System.out.println("Added 2" + s.getCuratorName());
+                System.out.println(String.valueOf(count));
             }
+
+
+            curatorProfileList.clear();
+            curatorProfileList.addAll(hs);
+
+            cAdapter = new CuratorMatchAdapter((ArrayList<CuratorProfile>) curatorProfileList, clickListener);
+            curatorRV.setAdapter(cAdapter);
         }
+
+        SDG sdg = new SDG();
+        ArrayList<SDG> sdgArrayList = sdg.getSDG();
+
     }
 
     public void launchDetailActivity(String name) {
@@ -87,8 +104,5 @@ public class CuratorMatchActivity extends AppCompatActivity {
         intent.putExtra(CuratorInviteActivity.PROJ_NAME, projName);
         startActivity(intent);
     }
-
-    public void put(){
-
-    }
 }
+

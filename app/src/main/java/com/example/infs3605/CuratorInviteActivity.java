@@ -12,6 +12,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firestore.v1.CursorOrBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -22,6 +24,9 @@ public class CuratorInviteActivity extends AppCompatActivity {
     private static final String TAG = "tag";
     TextView tv, result;
     Button inviteBtn;
+    String curatorID;
+    String projectID;
+    CuratorCountDatabase curatorCountDatabase;
     CuratorProjectStatusDatabase cpsDB;
 
     @Override
@@ -34,12 +39,12 @@ public class CuratorInviteActivity extends AppCompatActivity {
         result = findViewById(R.id.curatorResult);
 
         Intent intent = getIntent();
-        String curatorID = intent.getStringExtra(INTENT_MESSAGE);
-        String projectID = intent.getStringExtra(PROJ_NAME);
+        curatorID = intent.getStringExtra(INTENT_MESSAGE);
+        projectID = intent.getStringExtra(PROJ_NAME);
         CuratorProfile cp = CuratorProfile.getCuratorProfile(curatorID);
         Project proj = Project.getProject(projectID);
 
-        if (cp != null && proj !=null) {
+        if (cp != null && proj != null) {
             tv.setText(cp.getCuratorName());
         }
 
@@ -48,7 +53,7 @@ public class CuratorInviteActivity extends AppCompatActivity {
             public void run() {
 
             }
-            });
+        });
 
         new Thread() {
             @Override
@@ -60,7 +65,13 @@ public class CuratorInviteActivity extends AppCompatActivity {
             }
         }.start();
 
+        new Thread() {
+            @Override
+            public void run() {
+                curatorInviteStatus();
 
+            }
+        }.start();
 
         inviteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,4 +109,21 @@ public class CuratorInviteActivity extends AppCompatActivity {
             }
         });
     }
+    private void curatorCount() {
+        CuratorCountDatabase curatorCountDatabase = CuratorCountDatabase.getInstance(CuratorInviteActivity.this);
+        List<CuratorCount> curatorCountList = curatorCountDatabase.curatorCountDao().getUserCount(curatorID, projectID);
+        for (CuratorCount curatorCount : curatorCountList) {
+            result.setText(String.valueOf(curatorCount.getCount()));
+        }
+    }
+    private void curatorInviteStatus() {
+        CuratorProjectStatusDatabase cpsDatabase = CuratorProjectStatusDatabase.getInstance(CuratorInviteActivity.this);
+        List<CuratorProjectStatus> curatorProjectStatusList = cpsDatabase.curatorProjectStatusDao().getUser(curatorID);
+        for (CuratorProjectStatus cps : curatorProjectStatusList) {
+            result.setText(String.valueOf(cps.getProjectStatus()));
+        }
+    }
+
+
+
 }

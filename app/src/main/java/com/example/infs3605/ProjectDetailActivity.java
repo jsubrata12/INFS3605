@@ -183,6 +183,9 @@ public class ProjectDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ProjectDetailActivity.this, CuratorMatchActivity.class);
                 intent.putExtra(CuratorMatchActivity.PROJ_NAME, project.getProjectName());
+                for(CuratorProfile curatorProfile : cp) {
+                    intent.putExtra(CuratorMatchActivity.CURATOR_NAME, curatorProfile.getCuratorName());
+                }
                 startActivity(intent);
 
             }

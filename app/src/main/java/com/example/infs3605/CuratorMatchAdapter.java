@@ -44,7 +44,7 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
         CuratorProfile curatorProfile = filteredCuratorList.get(position);
         holder.name.setText(curatorProfile.getCuratorName());
         holder.itemView.setTag(curatorProfile.getCuratorName());
-        holder.count.setText(Integer.toString(curatorProfile.getCount()));
+        holder.count.setText(curatorProfile.getCc());
 
     }
 
