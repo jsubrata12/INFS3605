@@ -11,13 +11,16 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.interfaces.BarDataProvider;
 import com.github.mikephil.charting.utils.ValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.material.chip.Chip;
 
@@ -101,6 +104,7 @@ public class SDGActivity extends AppCompatActivity {
         xaxis.setXOffset(5);
         xaxis.setDrawAxisLine(false);
 
+
         mChart.setData(barData);
         mChart.invalidate();
 
@@ -141,21 +145,37 @@ public class SDGActivity extends AppCompatActivity {
         yAxis.add("Zero Hunger");
         yAxis.add("No Poverty");*/
         yAxis.add("17");
+        yAxis.add("");
         yAxis.add("16");
+        yAxis.add("");
         yAxis.add("15");
+        yAxis.add("");
         yAxis.add("14");
+        yAxis.add("");
         yAxis.add("13");
+        yAxis.add("");
         yAxis.add("12");
+        yAxis.add("");
         yAxis.add("11");
+        yAxis.add("");
         yAxis.add("10");
+        yAxis.add("");
         yAxis.add("9");
+        yAxis.add("");
         yAxis.add("8");
+        yAxis.add("");
         yAxis.add("7");
+        yAxis.add("");
         yAxis.add("6");
+        yAxis.add("");
         yAxis.add("5");
+        yAxis.add("");
         yAxis.add("4");
+        yAxis.add("");
         yAxis.add("3");
+        yAxis.add("");
         yAxis.add("2");
+        yAxis.add("");
         yAxis.add("1");
 
 
@@ -191,83 +211,83 @@ public class SDGActivity extends AppCompatActivity {
             for (Project s : projects) {
                 if (sdg.getSdgName().equals("No Poverty") && s.isSdg1() == true) {
                     count1++;
-                    BarEntry value1 = new BarEntry(count1, 31);
+                    BarEntry value1 = new BarEntry(count1, 47);
                     valueSet.add(value1);
                     System.out.println("SDG1 Count is: " + count1);
                 } else if (sdg.getSdgName().equals("Zero Hunger") && s.isSdg2() == true) {
                     count2++;
-                    BarEntry value2 = new BarEntry(count2, 30);
+                    BarEntry value2 = new BarEntry(count2, 45);
                     valueSet.add(value2);
                     System.out.println("SDG2 Count is: " + count2);
                 }
                 if (sdg.getSdgName().equals("Good Health and Well-being") && s.isSdg3() == true) {
                     count3++;
-                    BarEntry value3 = new BarEntry(count3, 29);
+                    BarEntry value3 = new BarEntry(count3, 43);
                     valueSet.add(value3);
                 }
                 if (sdg.getSdgName().equals("Quality Education") && s.isSdg4() == true) {
                     count4++;
-                    BarEntry value4 = new BarEntry(count4, 28);
+                    BarEntry value4 = new BarEntry(count4, 41);
                     valueSet.add(value4);
                 }
                 if (sdg.getSdgName().equals("Gender Equality") && s.isSdg5() == true) {
                     count5++;
-                    BarEntry value5 = new BarEntry(count5, 27);
+                    BarEntry value5 = new BarEntry(count5, 39);
                     valueSet.add(value5);
                 }
                 if (sdg.getSdgName().equals(" Clean Water and Sanitation") && s.isSdg6() == true) {
                     count6++;
-                    BarEntry value6 = new BarEntry(count6, 26);
+                    BarEntry value6 = new BarEntry(count6, 37);
                     valueSet.add(value6);
                 }
                 if (sdg.getSdgName().equals("Affordable and Clean Energy") && s.isSdg7() == true) {
                     count7++;
-                    BarEntry value7 = new BarEntry(count7, 25);
+                    BarEntry value7 = new BarEntry(count7, 35);
                     valueSet.add(value7);
                 }
                 if (sdg.getSdgName().equals("Decent Work and Economic Growth") && s.isSdg8() == true) {
                     count8++;
-                    BarEntry value8 = new BarEntry(count8, 24);
+                    BarEntry value8 = new BarEntry(count8, 33);
                     valueSet.add(value8);
                 }
                 if (sdg.getSdgName().equals("Industry, Innovation and Infrastructure") && s.isSdg9() == true) {
                     count9++;
-                    BarEntry value9 = new BarEntry(count9, 23);
+                    BarEntry value9 = new BarEntry(count9, 31);
                     valueSet.add(value9);
                 }
                 if (sdg.getSdgName().equals("Reduced Inequalities") && s.isSdg10() == true) {
                     count10++;
-                    BarEntry value10 = new BarEntry(count10, 22);
+                    BarEntry value10 = new BarEntry(count10, 29);
                     valueSet.add(value10);
                 }
                 if (sdg.getSdgName().equals("Sustainable Cities and Communities") && s.isSdg11() == true) {
                     count11++;
-                    BarEntry value1 = new BarEntry(count11, 21);
+                    BarEntry value1 = new BarEntry(count11, 27);
                     valueSet.add(value1);
                 }
                 if (sdg.getSdgName().equals("Responsible Consumption and Production") && s.isSdg12() == true) {
                     count12++;
-                    BarEntry value12 = new BarEntry(count12, 20);
+                    BarEntry value12 = new BarEntry(count12, 25);
                     valueSet.add(value12);
                 }
                 if (sdg.getSdgName().equals("Climate Action") && s.isSdg13() == true) {
                     count13++;
-                    BarEntry value13 = new BarEntry(count13, 19);
+                    BarEntry value13 = new BarEntry(count13, 23);
                     valueSet.add(value13);
                 }
                 if (sdg.getSdgName().equals("Life Below Water") && s.isSdg14() == true) {
                     count14++;
-                    BarEntry value14 = new BarEntry(count14, 18);
+                    BarEntry value14 = new BarEntry(count14, 21);
                     valueSet.add(value14);
                 }
                 if (sdg.getSdgName().equals("Life on Land") && s.isSdg15() == true) {
                     count15++;
-                    BarEntry value15 = new BarEntry(count15, 17);
+                    BarEntry value15 = new BarEntry(count15, 19);
                     valueSet.add(value15);
                 }
                 if (sdg.getSdgName().equals("Peace, Justice and Strong Institutions") && s.isSdg16() == true) {
                     count16++;
-                    BarEntry value16 = new BarEntry(count16, 16);
+                    BarEntry value16 = new BarEntry(count16, 17);
                     valueSet.add(value16);
                 }
                 if (sdg.getSdgName().equals("Partnerships for the Goals") && s.isSdg17() == true) {
