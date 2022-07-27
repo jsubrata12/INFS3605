@@ -9,9 +9,9 @@
         android:id="@+id/sdgChart"
         android:layout_width="376dp"
         android:layout_height="536dp"
+        android:layout_marginTop="96dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        ></com.github.mikephil.charting.charts.HorizontalBarChart>
+        app:layout_constraintTop_toTopOf="parent"></com.github.mikephil.charting.charts.HorizontalBarChart>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sdgRV"

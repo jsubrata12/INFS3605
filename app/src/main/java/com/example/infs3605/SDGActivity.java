@@ -1,11 +1,13 @@
 package com.example.infs3605;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,10 +17,12 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ValueFormatter;
 import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.material.chip.Chip;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -64,7 +68,7 @@ public class SDGActivity extends AppCompatActivity {
 
         ArrayList<Project> projectArrayList = project.getProject();
 
-       /* mChart.setTouchEnabled(true);
+        mChart.setTouchEnabled(true);
         mChart.setClickable(false);
         mChart.setDoubleTapToZoomEnabled(false);
         mChart.setDoubleTapToZoomEnabled(false);
@@ -86,18 +90,15 @@ public class SDGActivity extends AppCompatActivity {
 
         mChart.getAxisRight().setDrawGridLines(false);
         mChart.getAxisRight().setDrawLabels(false);
-        mChart.getAxisRight().setDrawAxisLine(false);*/
-
+        mChart.getAxisRight().setDrawAxisLine(false);
 
         BarData barData = new BarData(getYAxisValues(), getDataSet());
-
-        System.out.println(getYAxisValues());
 
         XAxis xaxis = mChart.getXAxis();
         xaxis.setDrawGridLines(false);
         xaxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xaxis.setDrawLabels(true);
-        xaxis.setXOffset(10);
+        xaxis.setXOffset(5);
         xaxis.setDrawAxisLine(false);
 
         mChart.setData(barData);
@@ -192,13 +193,12 @@ public class SDGActivity extends AppCompatActivity {
                     count1++;
                     BarEntry value1 = new BarEntry(count1, 31);
                     valueSet.add(value1);
-                    System.out.println("SDG1 Count is: "+ count1);
-                }
-                else if (sdg.getSdgName().equals("Zero Hunger") && s.isSdg2() == true) {
+                    System.out.println("SDG1 Count is: " + count1);
+                } else if (sdg.getSdgName().equals("Zero Hunger") && s.isSdg2() == true) {
                     count2++;
                     BarEntry value2 = new BarEntry(count2, 30);
                     valueSet.add(value2);
-                    System.out.println("SDG2 Count is: "+ count2);
+                    System.out.println("SDG2 Count is: " + count2);
                 }
                 if (sdg.getSdgName().equals("Good Health and Well-being") && s.isSdg3() == true) {
                     count3++;
@@ -271,17 +271,42 @@ public class SDGActivity extends AppCompatActivity {
                     valueSet.add(value16);
                 }
                 if (sdg.getSdgName().equals("Partnerships for the Goals") && s.isSdg17() == true) {
-                    count1++;
-                    BarEntry value17 = new BarEntry(count1, 15);
+                    count17++;
+                    BarEntry value17 = new BarEntry(count17, 15);
+
                     valueSet.add(value17);
                 }
             }
         }
 
+        BarDataSet barDataSet = new BarDataSet(valueSet, "Test");
 
-            BarDataSet barDataSet = new BarDataSet(valueSet, "Test");
-            dataSets = new ArrayList<>();
-            dataSets.add(barDataSet);
-            return dataSets;
-        }
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+
+        colors.add(getResources().getColor(R.color.sdg11)); // Leave
+        colors.add(getResources().getColor(R.color.sdg1)); // Leave
+        colors.add(getResources().getColor(R.color.sdg12)); // Leave
+        colors.add(getResources().getColor(R.color.sdg2)); // Leave
+        colors.add(getResources().getColor(R.color.sdg13)); // Leave
+        colors.add(getResources().getColor(R.color.sdg3)); // Leave
+        colors.add(getResources().getColor(R.color.sdg4)); // Leave
+        colors.add(getResources().getColor(R.color.sdg14)); // Leave
+        colors.add(getResources().getColor(R.color.sdg5)); // Leave
+        colors.add(getResources().getColor(R.color.sdg7)); // Leave
+        colors.add(getResources().getColor(R.color.sdg15)); // Leave
+        colors.add(getResources().getColor(R.color.sdg16)); // Leave
+        colors.add(getResources().getColor(R.color.sdg9)); // Leave
+        colors.add(getResources().getColor(R.color.sdg8));
+        colors.add(getResources().getColor(R.color.sdg17)); // Leave
+        colors.add(getResources().getColor(R.color.sdg10)); // Leave
+        colors.add(getResources().getColor(R.color.sdg6));
+
+
+        barDataSet.setColors(colors);
+
+        dataSets = new ArrayList<>();
+        barDataSet.setDrawValues(false);
+        dataSets.add(barDataSet);
+        return dataSets;
     }
+}
