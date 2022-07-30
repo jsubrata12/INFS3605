@@ -3,7 +3,6 @@ package com.example.infs3605;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,13 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.Executors;
-import java.util.stream.IntStream;
 
 public class CuratorMatchActivity extends AppCompatActivity {
     public static RecyclerView curatorRV;
@@ -32,6 +25,7 @@ public class CuratorMatchActivity extends AppCompatActivity {
     private static final String TAG = "tag";
     CuratorCountDatabase curatorCountDatabase;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +37,6 @@ public class CuratorMatchActivity extends AppCompatActivity {
         curName = intent.getStringExtra(CURATOR_NAME);
         CuratorProfile curator = CuratorProfile.getCuratorProfile(curName);
 
-        test = findViewById(R.id.count);
 
         // Link the RecyclerView to its xml item and set LayoutManager
         curatorRV = findViewById(R.id.curatorRV);
@@ -69,17 +62,18 @@ public class CuratorMatchActivity extends AppCompatActivity {
         int[] arr = new int[17];
 
         for (CuratorProfile s : filtered) {
-            if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg12() && project.isSdg12()) {
-                hs.add(new CuratorProfile(s.getCuratorName()));
-                System.out.println("Added" + s.getCuratorName());
-                //System.out.println(String.valueOf(count));
+                if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg12() && project.isSdg12()) {
+                    hs.add(new CuratorProfile(s.getCuratorName()));
+                    System.out.println("Added" + s.getCuratorName());
+                    //System.out.println(String.valueOf(count));
+                }
+                else if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg9() && project.isSdg9()) {
+                        hs.add(new CuratorProfile(s.getCuratorName()));
+                        System.out.println("Added 2" + s.getCuratorName());
+                        System.out.println(String.valueOf(count));
 
-            } else if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg9() && project.isSdg9()) {
-                hs.add(new CuratorProfile(s.getCuratorName()));
-                System.out.println("Added 2" + s.getCuratorName());
-                System.out.println(String.valueOf(count));
+
             } else if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg15() && project.isSdg15()) {
-
                 hs.add(new CuratorProfile(s.getCuratorName()));
                 System.out.println("Added 2" + s.getCuratorName());
                 System.out.println(String.valueOf(count));

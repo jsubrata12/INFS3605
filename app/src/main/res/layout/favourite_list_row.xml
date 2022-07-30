@@ -5,12 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/favouriteImage"
+        android:layout_width="256dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/common_google_signin_btn_text_dark" />
+
     <TextView
-        android:id="@+id/curatorName"
+        android:id="@+id/favouriteProjectTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="153dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

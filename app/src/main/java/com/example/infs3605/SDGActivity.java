@@ -26,6 +26,7 @@ import com.google.android.material.chip.Chip;
 
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -95,7 +96,12 @@ public class SDGActivity extends AppCompatActivity {
         mChart.getAxisRight().setDrawLabels(false);
         mChart.getAxisRight().setDrawAxisLine(false);
 
-        BarData barData = new BarData(getYAxisValues(), getDataSet());
+        BarData barData = null;
+        try {
+            barData = new BarData(getYAxisValues(), getDataSet());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         XAxis xaxis = mChart.getXAxis();
         xaxis.setDrawGridLines(false);
@@ -182,7 +188,7 @@ public class SDGActivity extends AppCompatActivity {
         return yAxis;
     }
 
-    private ArrayList<BarDataSet> getDataSet() {
+    private ArrayList<BarDataSet> getDataSet() throws ParseException {
         ArrayList<BarDataSet> dataSets = null;
         ArrayList<BarEntry> valueSet = new ArrayList<>();
         ArrayList<SDG> sdgList = sd.getSDG();
