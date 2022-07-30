@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 
 public class CuratorMatchActivity extends AppCompatActivity {
@@ -58,11 +60,60 @@ public class CuratorMatchActivity extends AppCompatActivity {
         ArrayList<CuratorProfile> filtered = cp.getCuratorProfile();
         HashSet<CuratorProfile> hs = new HashSet<CuratorProfile>();
 
-        int count = 0;
-        int[] arr = new int[17];
+        int counter = 0;
 
         for (CuratorProfile s : filtered) {
-                if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg12() && project.isSdg12()) {
+            if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg1() && project.isSdg1()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+                ;
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg2() && project.isSdg2()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg3() && project.isSdg3()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg4() && project.isSdg4()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg5() && project.isSdg5()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+                ;
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg6() && project.isSdg6()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg7() && project.isSdg7()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg8() && project.isSdg8()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg9() && project.isSdg9()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg10() && project.isSdg10()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg11() && project.isSdg11()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg12() && project.isSdg12()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg13() && project.isSdg13()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg14() && project.isSdg14()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg15() && project.isSdg15()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg16() && project.isSdg16()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+                System.out.println(counter);
+            } else if (projName.equals("The Great Fashion Decarbonisation Opportunity") && s.isSdg17() && project.isSdg17()) {
+                hs.add(new CuratorProfile(s.getCuratorName()));
+            }
+
+            curatorProfileList.clear();
+            curatorProfileList.addAll(hs);
+
+            cAdapter = new CuratorMatchAdapter((ArrayList<CuratorProfile>) curatorProfileList, clickListener);
+            curatorRV.setAdapter(cAdapter);
+
+        }
+
+
+
+        for (CuratorProfile s : filtered) {
+            if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg12() && project.isSdg12()) {
                     hs.add(new CuratorProfile(s.getCuratorName()));
                     System.out.println("Added" + s.getCuratorName());
                     //System.out.println(String.valueOf(count));
@@ -70,15 +121,11 @@ public class CuratorMatchActivity extends AppCompatActivity {
                 else if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg9() && project.isSdg9()) {
                         hs.add(new CuratorProfile(s.getCuratorName()));
                         System.out.println("Added 2" + s.getCuratorName());
-                        System.out.println(String.valueOf(count));
 
-
-            } else if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg15() && project.isSdg15()) {
-                hs.add(new CuratorProfile(s.getCuratorName()));
-                System.out.println("Added 2" + s.getCuratorName());
-                System.out.println(String.valueOf(count));
-            }
-
+                } else if (projName.equals("Bushfire Regeneration Challenge") && s.isSdg15() && project.isSdg15()) {
+                    hs.add(new CuratorProfile(s.getCuratorName()));
+                    System.out.println("Added 2" + s.getCuratorName());
+                }
 
             curatorProfileList.clear();
             curatorProfileList.addAll(hs);
@@ -87,9 +134,14 @@ public class CuratorMatchActivity extends AppCompatActivity {
             curatorRV.setAdapter(cAdapter);
         }
 
-        SDG sdg = new SDG();
-        ArrayList<SDG> sdgArrayList = sdg.getSDG();
+        Collections.sort(curatorProfileList, new Comparator<CuratorProfile>() {
+            @Override
+            public int compare(CuratorProfile curatorProfile, CuratorProfile t1) {
+                return curatorProfile.getCuratorName().compareToIgnoreCase(t1.getCuratorName());
 
+            }
+        });
+        cAdapter.notifyDataSetChanged();
     }
 
     public void launchDetailActivity(String name) {

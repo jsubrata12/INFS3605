@@ -17,6 +17,7 @@ import com.google.android.material.chip.ChipGroup;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ProjectDetailActivity extends AppCompatActivity {
@@ -176,7 +177,6 @@ public class ProjectDetailActivity extends AppCompatActivity {
             group.addView(chip15);
             group.addView(chip16);
 
-
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -200,24 +200,30 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
             if (compareValue >= 0) {
                 progressBar.incrementProgressBy((int) 16.67);
+               // percent.setText("17%");
             }
             if (compareValue1 >= 0) {
                 progressBar.incrementProgressBy((int) 16.67);
+               // percent.setText("34%");
 
             }
             if (compareValue2 >= 0) {
                 progressBar.incrementProgressBy((int) 16.67);
+               // percent.setText("51%");
 
             }
             if (compareValue3 >= 0) {
                 progressBar.incrementProgressBy((int) 16.67);
+               // percent.setText("68%");
 
             }
             if (compareValue4 == 0) {
                 progressBar.incrementProgressBy((int) 16.67);
+                //percent.setText("85%");
             }
             if (compareValue4 > 0) {
                 progressBar.incrementProgressBy((int) 16.67);
+               // percent.setText("100%");
             }
         }
     }

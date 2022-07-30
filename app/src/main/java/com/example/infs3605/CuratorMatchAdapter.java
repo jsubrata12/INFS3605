@@ -43,6 +43,7 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
         CuratorProfile curatorProfile = filteredCuratorList.get(position);
         holder.name.setText(curatorProfile.getCuratorName());
         holder.itemView.setTag(curatorProfile.getCuratorName());
+        holder.countInvite.setText(Integer.toString(curatorProfile.getCount()));
         //holder.status.setText(Integer.toString(curatorProfile.getCount()));
 
     }
@@ -59,7 +60,7 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
 }
 
 class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-    public TextView name, status;
+    public TextView name, countInvite;
     private CuratorMatchAdapter.OnItemClickListener clickListener;
 
 
@@ -68,6 +69,7 @@ class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnC
         this.clickListener = listListener;
         itemView.setOnClickListener(this);
         name = itemView.findViewById(R.id.curatorName);
+        countInvite = itemView.findViewById(R.id.countInvite);
     }
 
     @Override

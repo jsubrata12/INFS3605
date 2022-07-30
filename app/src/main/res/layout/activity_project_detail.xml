@@ -25,9 +25,10 @@
                     android:id="@+id/group"
                     android:layout_width="396dp"
                     android:layout_height="211dp"
-                    android:layout_marginTop="667dp"
+                    android:layout_marginTop="16dp"
+                    app:chipMinTouchTargetSize="0dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/descTv">
 
                 </com.google.android.material.chip.ChipGroup>
 
@@ -37,7 +38,7 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="260dp"
-                    android:text="Find Curators"
+                    android:text="Match With A Curator"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

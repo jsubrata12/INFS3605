@@ -63,33 +63,39 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectViewHolder>{
         int compareValue2 = localDate.compareTo(project.getReviewStart());
         int compareValue3 = localDate.compareTo(project.getFinalists());
         int compareValue4 = localDate.compareTo(project.getVenturePitch());
+        int compareValue5 = localDate.compareTo(project.getFinished());
 
         if(compareValue >= 0){
             holder.chipStatus.setText("EOI");
-            holder.bar.incrementProgressBy((int) 16.67);
+            holder.percent.setText("0%");
         }
         if(compareValue1 >= 0){
             holder.chipStatus.setText("Application");
-            holder.bar.incrementProgressBy((int) 16.67);
+            holder.bar.incrementProgressBy((int) 20);
+            holder.percent.setText("20%");
 
         }
         if(compareValue2 >= 0){
             holder.chipStatus.setText("Review & Curation");
-            holder.bar.incrementProgressBy((int) 16.67);
+            holder.bar.incrementProgressBy((int) 20);
+            holder.percent.setText("40%");
 
         }
         if(compareValue3 >= 0){
             holder.chipStatus.setText("Finalists");
-            holder.bar.incrementProgressBy((int) 16.67);
+            holder.bar.incrementProgressBy((int) 20);
+            holder.percent.setText("60%");
 
         }
-        if(compareValue4 == 0){
-            holder.chipStatus.setText("Venture Pitch");
-            holder.bar.incrementProgressBy((int) 16.67);
-        }
         if(compareValue4 > 0){
+            holder.chipStatus.setText("Event");
+            holder.bar.incrementProgressBy((int) 20);
+            holder.percent.setText("80%");
+        }
+        if(compareValue5 > 0){
             holder.chipStatus.setText("Finished");
-            holder.bar.incrementProgressBy((int) 16.67);
+            holder.bar.incrementProgressBy((int) 20);
+            holder.percent.setText("100%");
         }
     }
 
@@ -100,7 +106,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectViewHolder>{
 }
 
 class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-    public TextView name;
+    public TextView name, percent;
     public Chip chipStatus;
     public ProgressBar bar;
     private ProjectAdapter.OnItemClickListener clickListener;
@@ -112,6 +118,7 @@ class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         name = itemView.findViewById(R.id.tvName);
         chipStatus = itemView.findViewById(R.id.projStatusChip);
         bar = itemView.findViewById(R.id.rvProgressBar);
+        percent = itemView.findViewById(R.id.percentageTv);
     }
 
     @Override
