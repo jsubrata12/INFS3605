@@ -62,9 +62,30 @@ public class CuratorProfile {
     private String cc;
     @ColumnInfo(name = "NewCount")
     private int newCount;
+    @ColumnInfo(name = "DesignThinking")
+    private boolean designThinking;
+    @ColumnInfo(name = "Technology")
+    private boolean technology;
+    @ColumnInfo(name = "UserExperience")
+    private boolean userExperience;
+    @ColumnInfo(name = "ProjectManagement")
+    private boolean projectManagement;
+    @ColumnInfo(name = "Design")
+    private boolean design;
+    @ColumnInfo(name = "Research")
+    private boolean research;
+    @ColumnInfo(name = "RiskAssessment")
+    private boolean riskAssessment;
+    @ColumnInfo(name = "Strategy")
+    private boolean strategy;
+    @ColumnInfo(name = "Analysis")
+    private boolean analysis;
+    @ColumnInfo(name = "KnowledgeManagement")
+    private boolean knowledgeManagement;
+    @ColumnInfo(name = "Innovation")
+    private boolean innovation;
 
-
-    public CuratorProfile(String curatorName, String email, String location, String description, String organisation, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4, boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10, boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16, boolean sdg17, int count) {
+    public CuratorProfile(String curatorName, String email, String location, String description, String organisation, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4, boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10, boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16, boolean sdg17, boolean designThinking, boolean technology, boolean userExperience, boolean projectManagement, boolean design, boolean research, boolean riskAssessment, boolean strategy, boolean analysis, boolean knowledgeManagement, boolean innovation) {
         this.curatorName = curatorName;
         this.email = email;
         this.location = location;
@@ -87,9 +108,18 @@ public class CuratorProfile {
         this.sdg15 = sdg15;
         this.sdg16 = sdg16;
         this.sdg17 = sdg17;
-        this.count = count;
+        this.designThinking = designThinking;
+        this.technology = technology;
+        this.userExperience = userExperience;
+        this.projectManagement = projectManagement;
+        this.design = design;
+        this.research = research;
+        this.riskAssessment = riskAssessment;
+        this.strategy = strategy;
+        this.analysis = analysis;
+        this.knowledgeManagement = knowledgeManagement;
+        this.innovation = innovation;
     }
-
 
     public CuratorProfile(){
     }
@@ -314,40 +344,139 @@ public class CuratorProfile {
         this.newCount = newCount;
     }
 
+    public boolean isDesignThinking() {
+        return designThinking;
+    }
+
+    public void setDesignThinking(boolean designThinking) {
+        this.designThinking = designThinking;
+    }
+
+    public boolean isTechnology() {
+        return technology;
+    }
+
+    public void setTechnology(boolean technology) {
+        this.technology = technology;
+    }
+
+    public boolean isUserExperience() {
+        return userExperience;
+    }
+
+    public void setUserExperience(boolean userExperience) {
+        this.userExperience = userExperience;
+    }
+
+    public boolean isProjectManagement() {
+        return projectManagement;
+    }
+
+    public void setProjectManagement(boolean projectManagement) {
+        this.projectManagement = projectManagement;
+    }
+
+    public boolean isDesign() {
+        return design;
+    }
+
+    public void setDesign(boolean design) {
+        this.design = design;
+    }
+
+    public boolean isResearch() {
+        return research;
+    }
+
+    public void setResearch(boolean research) {
+        this.research = research;
+    }
+
+    public boolean isRiskAssessment() {
+        return riskAssessment;
+    }
+
+    public void setRiskAssessment(boolean riskAssessment) {
+        this.riskAssessment = riskAssessment;
+    }
+
+    public boolean isStrategy() {
+        return strategy;
+    }
+
+    public void setStrategy(boolean strategy) {
+        this.strategy = strategy;
+
+    }
+
+    public boolean isAnalysis() {
+        return analysis;
+    }
+
+    public void setAnalysis(boolean analysis) {
+        this.analysis = analysis;
+    }
+
+    public boolean isKnowledgeManagement() {
+        return knowledgeManagement;
+    }
+
+    public void setKnowledgeManagement(boolean knowledgeManagement) {
+        this.knowledgeManagement = knowledgeManagement;
+    }
+
+    public boolean isInnovation() {
+        return innovation;
+    }
+
+    public void setInnovation(boolean innovation) {
+        this.innovation = innovation;
+    }
+
     public static ArrayList<CuratorProfile> getCuratorProfile() {
         ArrayList<CuratorProfile> curatorProfiles = new ArrayList<>();
+
         curatorProfiles.add(new CuratorProfile("Anorah Test", "sample@sample.com",
                 "Sydney", "Not Available", "Not Available", false, false,
                 false, false, false, false, false, false, true,
-                true, true, false, true, true, true, true, false, 0));
+                true, true, false, true, true, true, true, false, true, true, true, true, true,
+                false, false, false, false, false, false));
         curatorProfiles.add(new CuratorProfile("Josephine Sample", "sample2@sample.com", "Sydney", "Josephine Sample opens the line of " +
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, true, false, false, true,
-                false, true, true, true, true, true, true, false, 0));
+                false, true, true, true, true, true, true, false, true, false, true, true, true, true, true,
+                true, true, true, true));
         curatorProfiles.add(new CuratorProfile("Zara Wild", "zara@sample.com", "Sydney", "Josephine Sample opens the line of " +
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, true, false, false, false,
-                false, true, false, false, false, false, false, false, 0));
+                false, true, false, false, false, false, false, false, false, false, true, true, true, false,
+                false, false, false, false, false));
         curatorProfiles.add(new CuratorProfile("Phone Sample", "phone@sample.com", "Sydney", "Josephine Sample opens the line of " +
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, false, false, false, true,
-                false, false, false, true, true, false, true, false, 0));
+                false, false, false, true, true, false, true, false, true, false, false, false, false, true, true,
+                false, false, false, false));
         curatorProfiles.add(new CuratorProfile("Viann Landry", "sample3@sample.com", "Perth", " ", " ",  false, false, false, false, false, true,
-                false, false, false, false, false, false, true, false, false, false, true, 0));
+                false, false, false, false, false, false, true, false, false, false, true, true, false, false, false, false, true, true,
+                false, false, false, false));
         curatorProfiles.add(new CuratorProfile("Danniella Compton", "sample4@sample.com", "Wollongong", " ", " ", false, false, false,
-                false, false, false, false, false, false, false, false, false, true, true, true, false, true, 0));
+                false, false, false, false, false, false, false, false, false, true, true, true, false, true, true, false, false, false, false, true, true,
+                false, false, false, false));
         curatorProfiles.add(new CuratorProfile("Elize Traynor", "sample5@sample.com", "Melbourne", " ", " ", false, true, false, true, true, false,
-                false, false, false, false, false, false, false, false, false, false, false, 0));
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
+        false, false, true, true, true, true, true));
         curatorProfiles.add(new CuratorProfile("Lilianna Steadman", "sample6@sample.com", "Brisbane", " ", " ", false,
                 false, false, false, false, false, false, true, true, true, false, false, false, false,
-                false, false, false, 0));
+                false, false, false, true, false, false, false, false, true, false, false, false, false, true));
         curatorProfiles.add(new CuratorProfile("Karson Vaughn", "sample7@sample.com", "Adelaide", " ", " ", false, false, false, false, true, false,
-                false, false, false, false, false, true, true, false, false, false, false, 0));
+                false, false, false, false, false, true, true, false, false, false, false, false, false, false, false, true,
+        true, false, true, true, true, false));
         curatorProfiles.add(new CuratorProfile("Marcus Dowling", "sample8@sample.com", "Canberra", " ", " ", false, false, false,
-                false, false, false, false, false, false, false, false, false, true, true, true, false, false, 0));
+                false, false, false, false, false, false, false, false, false, true, true, true, false, false, true, false,
+        true, false, true, true, false, false, false, true, true));
         curatorProfiles.add(new CuratorProfile("Gail Gallagher", "sample9@sample.com", "Darwin", " ", " ", false, false,
                 false, false, false, false, false, false, false, false, false, true, false, false, false, true,
-                true, 0));
+                true, false, true, false, true, false, true, true, false, true, false, false));
         return curatorProfiles;
     }
 

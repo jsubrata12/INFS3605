@@ -20,31 +20,31 @@ import java.util.concurrent.Executors;
 
 public class CuratorInviteActivity extends AppCompatActivity {
     public static final String INTENT_MESSAGE = "hello";
-    public static final String PROJ_NAME = "test";
+    public static final String SOLUTION_NAME = "test";
     private static final String TAG = "tag";
     TextView tv, result;
     Button inviteBtn;
     String curatorID;
-    String projectID;
+    String solutionsID;
     CuratorCountDatabase curatorCountDatabase;
     CuratorProjectStatusDatabase cpsDB;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_curator);
 
-        tv = findViewById(R.id.curatorInviteName);
-        inviteBtn = findViewById(R.id.inviteBtn);
-        result = findViewById(R.id.curatorResult);
-
         Intent intent = getIntent();
-        curatorID = intent.getStringExtra(INTENT_MESSAGE);
-        projectID = intent.getStringExtra(PROJ_NAME);
+        String curatorID = intent.getStringExtra(INTENT_MESSAGE);
+        String solutionID = intent.getStringExtra(SOLUTION_NAME);
         CuratorProfile cp = CuratorProfile.getCuratorProfile(curatorID);
-        Project proj = Project.getProject(projectID);
+        Solutions sol = Solutions.getSolution(solutionID);
 
-        if (cp != null && proj != null) {
+        inviteBtn = findViewById(R.id.inviteBtn);
+        tv = findViewById(R.id.curatorInviteName);
+
+        if (cp != null && sol != null) {
             tv.setText(cp.getCuratorName());
         }
 
@@ -93,29 +93,34 @@ public class CuratorInviteActivity extends AppCompatActivity {
                                 for (CuratorProjectStatus cc : getAll) {
                                     Log.d("Testing.. User", String.valueOf(+index + ": " + "User: " + cc.getCuratorName() + " " + cc.getProjectName()
                                             + " " + cc.getProjectStatus()));
+
                                 }
-                                cpsDB.curatorProjectStatusDao().insertOrUpdate(new CuratorProjectStatus(cp.getCuratorName(), proj.getProjectName(), "Invited"));
+                                cpsDB.curatorProjectStatusDao().insertOrUpdate(new CuratorProjectStatus(cp.getCuratorName(), sol.getSolutionName(), "Invited"));
                                 for (CuratorProjectStatus c : cpsList) {
-                                    cpsDB.curatorProjectStatusDao().setStatus(cp.getCuratorName(), proj.getProjectName(), "Invited");
+                                    cpsDB.curatorProjectStatusDao().setStatus(cp.getCuratorName(), sol.getSolutionName(), "Invited");
+                                    //inviteBtn.setText("Test");
                                     Log.d(TAG, "Completed in Status Database");
-                                }
 
                                 }
-                            });
+                            }
 
-                        }
+                        });
+
+                    }
                 });
 
             }
         });
     }
+
     private void curatorCount() {
         CuratorCountDatabase curatorCountDatabase = CuratorCountDatabase.getInstance(CuratorInviteActivity.this);
-        List<CuratorCount> curatorCountList = curatorCountDatabase.curatorCountDao().getUserCount(curatorID, projectID);
+        List<CuratorCount> curatorCountList = curatorCountDatabase.curatorCountDao().getUserCount(curatorID, solutionsID);
         for (CuratorCount curatorCount : curatorCountList) {
             result.setText(String.valueOf(curatorCount.getCount()));
         }
     }
+
     private void curatorInviteStatus() {
         CuratorProjectStatusDatabase cpsDatabase = CuratorProjectStatusDatabase.getInstance(CuratorInviteActivity.this);
         List<CuratorProjectStatus> curatorProjectStatusList = cpsDatabase.curatorProjectStatusDao().getUser(curatorID);
@@ -123,7 +128,9 @@ public class CuratorInviteActivity extends AppCompatActivity {
             result.setText(String.valueOf(cps.getProjectStatus()));
         }
     }
-
-
-
 }
+
+
+
+
+

@@ -1,17 +1,17 @@
 package com.example.infs3605;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Executors;
 
 public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHolder> {
     private ArrayList<CuratorProfile> listCurator;
@@ -30,6 +30,10 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
         filteredCuratorList = lists;
         listListener = clickListener;
     }
+    public CuratorMatchAdapter(OnItemClickListener listListener, Context context){
+        this.listListener = listListener;
+        this.context = context;
+    }
 
     @NonNull
     @Override
@@ -43,7 +47,7 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
         CuratorProfile curatorProfile = filteredCuratorList.get(position);
         holder.name.setText(curatorProfile.getCuratorName());
         holder.itemView.setTag(curatorProfile.getCuratorName());
-        holder.countInvite.setText(Integer.toString(curatorProfile.getCount()));
+
         //holder.status.setText(Integer.toString(curatorProfile.getCount()));
 
     }
@@ -61,6 +65,7 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
 
 class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     public TextView name, countInvite;
+    public Button inviteBtn;
     private CuratorMatchAdapter.OnItemClickListener clickListener;
 
 
@@ -69,7 +74,7 @@ class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnC
         this.clickListener = listListener;
         itemView.setOnClickListener(this);
         name = itemView.findViewById(R.id.curatorName);
-        countInvite = itemView.findViewById(R.id.countInvite);
+        inviteBtn = itemView.findViewById(R.id.inviteButton);
     }
 
     @Override

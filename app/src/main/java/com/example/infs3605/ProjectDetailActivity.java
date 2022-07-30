@@ -177,19 +177,6 @@ public class ProjectDetailActivity extends AppCompatActivity {
             group.addView(chip15);
             group.addView(chip16);
 
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ProjectDetailActivity.this, CuratorMatchActivity.class);
-                    intent.putExtra(CuratorMatchActivity.PROJ_NAME, project.getProjectName());
-                    for (CuratorProfile curatorProfile : cp) {
-                        intent.putExtra(CuratorMatchActivity.CURATOR_NAME, curatorProfile.getCuratorName());
-                    }
-                    startActivity(intent);
-
-                }
-            });
-
             LocalDate localDate = LocalDate.now();
 
             int compareValue = localDate.compareTo(project.getEoiStart());
@@ -225,6 +212,18 @@ public class ProjectDetailActivity extends AppCompatActivity {
                 progressBar.incrementProgressBy((int) 16.67);
                // percent.setText("100%");
             }
+
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(ProjectDetailActivity.this, SolutionsActivity.class);
+                    intent.putExtra(SolutionsActivity.PROJ_NAME, project.getProjectName());
+                    for (CuratorProfile curatorProfile : cp) {
+                        intent.putExtra(SolutionsActivity.CURATOR_NAME, curatorProfile.getCuratorName());
+                    }
+                    startActivity(intent);
+                }
+            });
         }
     }
 }
