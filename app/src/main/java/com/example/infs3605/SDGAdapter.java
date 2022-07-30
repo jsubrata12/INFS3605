@@ -1,5 +1,6 @@
 package com.example.infs3605;
 
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,9 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +37,7 @@ public class SDGAdapter extends RecyclerView.Adapter<SDGViewHolder>{
         return new SDGViewHolder(view, listListener);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull SDGViewHolder holder, int position){
         SDG sdg = listSDG.get(position);

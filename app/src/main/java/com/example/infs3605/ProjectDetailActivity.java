@@ -1,27 +1,35 @@
 package com.example.infs3605;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ProjectDetailActivity extends AppCompatActivity {
     public static final String INTENT_MESSAGE = "hello";
-    TextView name;
+    TextView name, desc, completeDate;
     ChipGroup group;
     Button btn;
+    ProgressBar progressBar;
     CuratorProfile curatorProfile = new CuratorProfile();
     SDG sdg = new SDG();
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +38,9 @@ public class ProjectDetailActivity extends AppCompatActivity {
         group = findViewById(R.id.group);
         name = findViewById(R.id.projectNameTv);
         btn = findViewById(R.id.findCurators);
-        LinearLayout rl = (LinearLayout) findViewById(R.id.linear);
+        desc = findViewById(R.id.descTv);
+        completeDate = findViewById(R.id.completeDate);
+        progressBar = findViewById(R.id.projectStatus);
 
         Chip chip = new Chip(ProjectDetailActivity.this);
         Chip chip1 = new Chip(ProjectDetailActivity.this);
@@ -57,9 +67,10 @@ public class ProjectDetailActivity extends AppCompatActivity {
         ArrayList<CuratorProfile> cp = curatorProfile.getCuratorProfile();
         ArrayList<SDG> sdgs = sdg.getSDG();
 
-
         if (project != null) {
             name.setText(project.getProjectName());
+            desc.setText(project.getDesc());
+            completeDate.setText(String.valueOf(project.getVenturePitch()));
 
             for (SDG sd : sdgs) {
                 if (project.isSdg1() == true) {
@@ -166,29 +177,54 @@ public class ProjectDetailActivity extends AppCompatActivity {
             group.addView(chip15);
             group.addView(chip16);
 
-            //Delete later
-            for (CuratorProfile curatorProfile : cp) {
-                TextView[] textView = new TextView[cp.size()];
-                if (project.isSdg12() == true && curatorProfile.isSdg12() == true) {
-                    final TextView rowTextView = new TextView(ProjectDetailActivity.this);
-                    rowTextView.setText(curatorProfile.getCuratorName());
-                    rl.addView(rowTextView);
-                    intent.putExtra("curator", curatorProfile.getCuratorName());
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(ProjectDetailActivity.this, CuratorMatchActivity.class);
+                    intent.putExtra(CuratorMatchActivity.PROJ_NAME, project.getProjectName());
+                    for (CuratorProfile curatorProfile : cp) {
+                        intent.putExtra(CuratorMatchActivity.CURATOR_NAME, curatorProfile.getCuratorName());
+                    }
+                    startActivity(intent);
+
                 }
+            });
+
+            LocalDate localDate = LocalDate.now();
+
+            int compareValue = localDate.compareTo(project.getEoiStart());
+            int compareValue1 = localDate.compareTo(project.getFullAppStart());
+            int compareValue2 = localDate.compareTo(project.getReviewStart());
+            int compareValue3 = localDate.compareTo(project.getFinalists());
+            int compareValue4 = localDate.compareTo(project.getVenturePitch());
+
+            if (compareValue >= 0) {
+                progressBar.incrementProgressBy((int) 16.67);
+               // percent.setText("17%");
+            }
+            if (compareValue1 >= 0) {
+                progressBar.incrementProgressBy((int) 16.67);
+               // percent.setText("34%");
+
+            }
+            if (compareValue2 >= 0) {
+                progressBar.incrementProgressBy((int) 16.67);
+               // percent.setText("51%");
+
+            }
+            if (compareValue3 >= 0) {
+                progressBar.incrementProgressBy((int) 16.67);
+               // percent.setText("68%");
+
+            }
+            if (compareValue4 == 0) {
+                progressBar.incrementProgressBy((int) 16.67);
+                //percent.setText("85%");
+            }
+            if (compareValue4 > 0) {
+                progressBar.incrementProgressBy((int) 16.67);
+               // percent.setText("100%");
             }
         }
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProjectDetailActivity.this, CuratorMatchActivity.class);
-                intent.putExtra(CuratorMatchActivity.PROJ_NAME, project.getProjectName());
-                for(CuratorProfile curatorProfile : cp) {
-                    intent.putExtra(CuratorMatchActivity.CURATOR_NAME, curatorProfile.getCuratorName());
-                }
-                startActivity(intent);
-
-            }
-        });
     }
 }

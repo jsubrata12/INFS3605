@@ -1,17 +1,17 @@
 package com.example.infs3605;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
 
 public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHolder> {
     private ArrayList<CuratorProfile> listCurator;
@@ -36,7 +36,6 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
     public CuratorMatchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.curator_list_row, parent, false);
         return new CuratorMatchViewHolder(view, listListener);
-
     }
 
     @Override
@@ -44,11 +43,10 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
         CuratorProfile curatorProfile = filteredCuratorList.get(position);
         holder.name.setText(curatorProfile.getCuratorName());
         holder.itemView.setTag(curatorProfile.getCuratorName());
-        holder.count.setText(curatorProfile.getCc());
+        holder.countInvite.setText(Integer.toString(curatorProfile.getCount()));
+        //holder.status.setText(Integer.toString(curatorProfile.getCount()));
 
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -62,7 +60,7 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
 }
 
 class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-    public TextView name, count;
+    public TextView name, countInvite;
     private CuratorMatchAdapter.OnItemClickListener clickListener;
 
 
@@ -71,7 +69,7 @@ class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnC
         this.clickListener = listListener;
         itemView.setOnClickListener(this);
         name = itemView.findViewById(R.id.curatorName);
-        count = itemView.findViewById(R.id.count);
+        countInvite = itemView.findViewById(R.id.countInvite);
     }
 
     @Override

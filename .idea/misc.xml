@@ -3,6 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg10_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg11_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg12_colou.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg13_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg14_colour.xml" value="0.2165" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg15_colour.xml" value="0.2165" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg16_colour.xml" value="0.2165" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg17_colour.xml" value="0.2165" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg2_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg3_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg4_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg5_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg6_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg7_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg8_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg9_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/circle_sdg_colour.xml" value="0.115" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/drawable/gradient_background.xml" value="0.115" />
         <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/activity_curator_match.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/activity_invite_curator.xml" value="0.10866261398176291" />
         <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/activity_login.xml" value="0.25052083333333336" />
@@ -10,10 +28,10 @@
         <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/activity_project.xml" value="0.36" />
         <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/activity_project_detail.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/activity_register.xml" value="0.25052083333333336" />
-        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/activity_sdgs.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/activity_sdgs.xml" value="0.1" />
         <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/curator_list_row.xml" value="0.4" />
         <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/project_list_row.xml" value="0.268" />
-        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/sdg_list_row.xml" value="0.18432971014492755" />
+        <entry key="..\:/Users/emmanadeak/StudioProjects/INFS3605/app/src/main/res/layout/sdg_list_row.xml" value="1.5720164609053497" />
         <entry key="..\:/Users/summe/AndroidStudioProjects/INFS36052/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/summe/AndroidStudioProjects/INFS36052/app/src/main/res/layout/activity_register.xml" value="0.1" />
       </map>
