@@ -30,24 +30,13 @@ public class Project {
     private boolean sdg15;
     private boolean sdg16;
     private boolean sdg17;
-    private LocalDate websiteLive;
     private LocalDate eoiStart;
-    private LocalDate eoiEnd;
     private LocalDate fullAppStart;
-    private LocalDate fullAppEnd;
     private LocalDate reviewStart;
-    private LocalDate reviewEnd;
-    private LocalDate curationStart;
-    private LocalDate curationEnd;
-    private LocalDate projectListStart;
-    private LocalDate fundingStart;
+    private LocalDate finalists;
+    private LocalDate venturePitch;
 
-    public Project(String projectName, String desc, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4,
-                   boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10,
-                   boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16,
-                   boolean sdg17, LocalDate websiteLive, LocalDate eoiStart, LocalDate eoiEnd, LocalDate fullAppStart,
-                   LocalDate fullAppEnd, LocalDate reviewStart, LocalDate reviewEnd, LocalDate curationStart,
-                   LocalDate curationEnd, LocalDate projectListStart, LocalDate fundingStart) {
+    public Project(String projectName, String desc, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4, boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10, boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16, boolean sdg17, LocalDate eoiStart, LocalDate fullAppStart, LocalDate reviewStart, LocalDate finalists, LocalDate venturePitch) {
         this.projectName = projectName;
         this.desc = desc;
         this.sdg1 = sdg1;
@@ -67,17 +56,11 @@ public class Project {
         this.sdg15 = sdg15;
         this.sdg16 = sdg16;
         this.sdg17 = sdg17;
-        this.websiteLive = websiteLive;
         this.eoiStart = eoiStart;
-        this.eoiEnd = eoiEnd;
         this.fullAppStart = fullAppStart;
-        this.fullAppEnd = fullAppEnd;
         this.reviewStart = reviewStart;
-        this.reviewEnd = reviewEnd;
-        this.curationStart = curationStart;
-        this.curationEnd = curationEnd;
-        this.projectListStart = projectListStart;
-        this.fundingStart = fundingStart;
+        this.finalists = finalists;
+        this.venturePitch = venturePitch;
     }
 
     public Project() {
@@ -255,30 +238,12 @@ public class Project {
         return this;
     }
 
-    public LocalDate getWebsiteLive() {
-        return websiteLive;
-    }
-
-    public Project setWebsiteLive(LocalDate websiteLive) {
-        this.websiteLive = websiteLive;
-        return this;
-    }
-
     public LocalDate getEoiStart() {
         return eoiStart;
     }
 
     public Project setEoiStart(LocalDate eoiStart) {
         this.eoiStart = eoiStart;
-        return this;
-    }
-
-    public LocalDate getEoiEnd() {
-        return eoiEnd;
-    }
-
-    public Project setEoiEnd(LocalDate eoiEnd) {
-        this.eoiEnd = eoiEnd;
         return this;
     }
 
@@ -291,15 +256,6 @@ public class Project {
         return this;
     }
 
-    public LocalDate getFullAppEnd() {
-        return fullAppEnd;
-    }
-
-    public Project setFullAppEnd(LocalDate fullAppEnd) {
-        this.fullAppEnd = fullAppEnd;
-        return this;
-    }
-
     public LocalDate getReviewStart() {
         return reviewStart;
     }
@@ -309,48 +265,21 @@ public class Project {
         return this;
     }
 
-    public LocalDate getReviewEnd() {
-        return reviewEnd;
+    public LocalDate getFinalists() {
+        return finalists;
     }
 
-    public Project setReviewEnd(LocalDate reviewEnd) {
-        this.reviewEnd = reviewEnd;
+    public Project setFinalists(LocalDate finalists) {
+        this.finalists = finalists;
         return this;
     }
 
-    public LocalDate getCurationStart() {
-        return curationStart;
+    public LocalDate getVenturePitch() {
+        return venturePitch;
     }
 
-    public Project setCurationStart(LocalDate curationStart) {
-        this.curationStart = curationStart;
-        return this;
-    }
-
-    public LocalDate getCurationEnd() {
-        return curationEnd;
-    }
-
-    public Project setCurationEnd(LocalDate curationEnd) {
-        this.curationEnd = curationEnd;
-        return this;
-    }
-
-    public LocalDate getProjectListStart() {
-        return projectListStart;
-    }
-
-    public Project setProjectListStart(LocalDate projectListStart) {
-        this.projectListStart = projectListStart;
-        return this;
-    }
-
-    public LocalDate getFundingStart() {
-        return fundingStart;
-    }
-
-    public Project setFundingStart(LocalDate fundingStart) {
-        this.fundingStart = fundingStart;
+    public Project setVenturePitch(LocalDate venturePitch) {
+        this.venturePitch = venturePitch;
         return this;
     }
 
@@ -359,10 +288,17 @@ public class Project {
         ArrayList<Project> projects = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-        // projects.add(new Project("The Great Fashion Decarbonisation Opportunity", true));
+         projects.add(new Project("The Great Fashion Decarbonisation Opportunity", "Accelerating sustainable " +
+                 "and low carbon fashion solutions is essential to help combat climate change and encourage sustainable" +
+                 " behaviour. The global fashion industry is a multi-trillion dollar industry, producing over 100 billion " +
+                 "garments annually. Given its size and nature, the industry faces a number of social and environmental " +
+                 "challenges. Join us as we work with the fashion and textiles sectors to reduce carbon emissions.",
+                 false, false, false, false, false, false, true, false, false, false, true, true, true, false, false,
+                 false, false, LocalDate.parse("2022-06-15"), LocalDate.parse("2022-06-29"), LocalDate.parse("2022-06-30"),
+                 LocalDate.parse("2022-08-11"), LocalDate.parse("2022-12-08")));
      //   projects.add(new Project("Innovate to Regenerate", true));
     //    projects.add(new Project("Cities of Tomorrow"));
-        projects.add(new Project("Bushfire Regeneration Challenge", "In 2019-20 " +
+        /*projects.add(new Project("Bushfire Regeneration Challenge", "In 2019-20 " +
                 "Australia experienced the most catastrophic bushfire season in the country’s history, " +
                 "and the impacts will be felt for years to come. " +
                 "Up to 19 million hectares were burnt, with 12.6 million hectares primarily forest " +
@@ -378,7 +314,7 @@ public class Project {
                 true, true, true, true, true, true, true, false, true, LocalDate.parse("2020-10-12"),
                 LocalDate.parse("2020-10-26"), LocalDate.parse("2020-11-08"), LocalDate.parse("2020-10-26"),
                 LocalDate.parse("2020-11-22"), LocalDate.parse("2020-11-23"), LocalDate.parse("2020-12-06"),
-                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2020-12-21"), LocalDate.parse("2021-02-21")));
+                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2020-12-21"), LocalDate.parse("2021-02-21")));*/
           //projects.add(new Project("Sustainability Advantage Impact Challenge", "Placeholder", true, true,
              //    true, true, true, true, true, true, true,
              //    true, true, true, true, true, true, true, true));

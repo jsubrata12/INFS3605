@@ -69,7 +69,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
         if (project != null) {
             name.setText(project.getProjectName());
             desc.setText(project.getDesc());
-            completeDate.setText(String.valueOf(project.getFundingStart()));
+            completeDate.setText(String.valueOf(project.getVenturePitch()));
 
             for (SDG sd : sdgs) {
                 if (project.isSdg1() == true) {
@@ -192,31 +192,33 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
             LocalDate localDate = LocalDate.now();
 
-            int compareValue = localDate.compareTo(project.getWebsiteLive());
+            int compareValue = localDate.compareTo(project.getEoiStart());
             int compareValue1 = localDate.compareTo(project.getFullAppStart());
             int compareValue2 = localDate.compareTo(project.getReviewStart());
-            int compareValue3 = localDate.compareTo(project.getCurationStart());
-            int compareValue4 = localDate.compareTo(project.getProjectListStart());
-            int compareValue5 = localDate.compareTo(project.getFundingStart());
+            int compareValue3 = localDate.compareTo(project.getFinalists());
+            int compareValue4 = localDate.compareTo(project.getVenturePitch());
 
-            if(compareValue >= 0){
-                progressBar.incrementProgressBy(20);
+            if (compareValue >= 0) {
+                progressBar.incrementProgressBy((int) 16.67);
             }
-            if(compareValue1 >= 0){
-                progressBar.incrementProgressBy(20);
-            }
-            if(compareValue2 >= 0){
-                progressBar.incrementProgressBy(20);
-            }
-            if(compareValue3 >= 0){
-                progressBar.incrementProgressBy(20);
-            }
-            if(compareValue4 >= 0){
-                progressBar.incrementProgressBy(20);
-            }
+            if (compareValue1 >= 0) {
+                progressBar.incrementProgressBy((int) 16.67);
 
+            }
+            if (compareValue2 >= 0) {
+                progressBar.incrementProgressBy((int) 16.67);
 
+            }
+            if (compareValue3 >= 0) {
+                progressBar.incrementProgressBy((int) 16.67);
+
+            }
+            if (compareValue4 == 0) {
+                progressBar.incrementProgressBy((int) 16.67);
+            }
+            if (compareValue4 > 0) {
+                progressBar.incrementProgressBy((int) 16.67);
+            }
         }
     }
 }
-

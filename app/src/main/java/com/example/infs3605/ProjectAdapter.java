@@ -58,41 +58,38 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectViewHolder>{
         holder.itemView.setTag(project.getProjectName());
         LocalDate localDate = LocalDate.now();
 
-        int compareValue = localDate.compareTo(project.getWebsiteLive());
+        int compareValue = localDate.compareTo(project.getEoiStart());
         int compareValue1 = localDate.compareTo(project.getFullAppStart());
         int compareValue2 = localDate.compareTo(project.getReviewStart());
-        int compareValue3 = localDate.compareTo(project.getCurationStart());
-        int compareValue4 = localDate.compareTo(project.getProjectListStart());
-        int compareValue5 = localDate.compareTo(project.getFundingStart());
+        int compareValue3 = localDate.compareTo(project.getFinalists());
+        int compareValue4 = localDate.compareTo(project.getVenturePitch());
 
         if(compareValue >= 0){
-            holder.chipStatus.setText("Website Live");
-            holder.bar.incrementProgressBy(20);
+            holder.chipStatus.setText("EOI");
+            holder.bar.incrementProgressBy((int) 16.67);
         }
         if(compareValue1 >= 0){
             holder.chipStatus.setText("Application");
-            holder.bar.incrementProgressBy(20);
+            holder.bar.incrementProgressBy((int) 16.67);
 
         }
         if(compareValue2 >= 0){
-            holder.chipStatus.setText("Review");
-            holder.bar.incrementProgressBy(20);
+            holder.chipStatus.setText("Review & Curation");
+            holder.bar.incrementProgressBy((int) 16.67);
 
         }
         if(compareValue3 >= 0){
-            holder.chipStatus.setText("Curation");
-            holder.bar.incrementProgressBy(20);
+            holder.chipStatus.setText("Finalists");
+            holder.bar.incrementProgressBy((int) 16.67);
 
         }
-        if(compareValue4 >= 0){
-            holder.chipStatus.setText("List Published");
-            holder.bar.incrementProgressBy(20);
-
+        if(compareValue4 == 0){
+            holder.chipStatus.setText("Venture Pitch");
+            holder.bar.incrementProgressBy((int) 16.67);
         }
-        if(compareValue5 >= 0){
-            holder.chipStatus.setText("Funding");
-            holder.bar.incrementProgressBy(20);
-
+        if(compareValue4 > 0){
+            holder.chipStatus.setText("Finished");
+            holder.bar.incrementProgressBy((int) 16.67);
         }
     }
 
