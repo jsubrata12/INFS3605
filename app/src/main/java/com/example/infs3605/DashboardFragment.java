@@ -39,6 +39,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -103,6 +104,7 @@ public class DashboardFragment extends Fragment {
         final ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_item, filterArray);
         final Spinner sp = new Spinner(getActivity());
+
         sp.setAdapter(adp);
         pieChart = v.findViewById(R.id.dashboard_piechart);
         barChart = v.findViewById(R.id.dashboard_barchart);
@@ -156,13 +158,29 @@ public class DashboardFragment extends Fragment {
                 builder.setTitle("Filter List");
                 builder.setMessage("Specify quarter");
                 builder.setCancelable(false);
+                sp.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                sp.setPadding(60,0,0,0);
                 builder.setView(sp);
 
 
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        try {
+                            CSVReader reader = new CSVReader(new InputStreamReader(getResources().openRawResource(R.raw.qualitative)));
+                            String[] nL;
+                            int dummy = (int) sp.getSelectedItemId();
+                            String dummyConv = String.valueOf(dummy+1);
+                            while ((nL = reader.readNext()) !=  null ) {
+                                if(nL[0] == dummyConv){
+                                    tv1.setText(nL[1]);
+                                    tv2.setText(nL[2]);
+                                    tv3.setText(nL[3]);
+                                }
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
                         }
                 });
@@ -172,8 +190,7 @@ public class DashboardFragment extends Fragment {
                     dialogInterface.dismiss();
                     }
                 });
-                builder.create().show();
-            }
+                builder.create().show();            }
         });
         // Inflate the layout for this fragment
         return v;
