@@ -314,7 +314,7 @@ public class SDGActivity extends AppCompatActivity {
 
         ArrayList<Integer> colors = new ArrayList<Integer>();
 
-        colors.add(getResources().getColor(R.color.sdg1)); // Test
+        colors.add(getResources().getColor(R.color.sdg1)); // Tes
         colors.add(getResources().getColor(R.color.sdg1)); // Test
         colors.add(getResources().getColor(R.color.sdg2)); // Test
         colors.add(getResources().getColor(R.color.sdg2)); // Test
