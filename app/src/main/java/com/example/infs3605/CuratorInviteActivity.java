@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -22,10 +23,11 @@ public class CuratorInviteActivity extends AppCompatActivity {
     public static final String INTENT_MESSAGE = "hello";
     public static final String SOLUTION_NAME = "test";
     private static final String TAG = "tag";
-    TextView tv, result;
+    TextView tv, result, org, desc;
     Button inviteBtn, invitedBtn;
     String curatorID;
     String solutionsID;
+    ImageView profileImage;
     CuratorCountDatabase curatorCountDatabase;
     CuratorProjectStatusDatabase cpsDB;
 
@@ -43,11 +45,17 @@ public class CuratorInviteActivity extends AppCompatActivity {
 
         inviteBtn = findViewById(R.id.inviteBtn);
         tv = findViewById(R.id.curatorInviteName);
-        result = findViewById(R.id.curatorResult);
         invitedBtn = findViewById(R.id.invitedBtn);
+        org = findViewById(R.id.curatorOrg);
+        desc = findViewById(R.id.curatorDesc);
+        profileImage = findViewById(R.id.curatorProfileImage);
+
 
         if (cp != null && sol != null) {
             tv.setText(cp.getCuratorName());
+            org.setText(cp.getOrganisation());
+            desc.setText(cp.getDescription());
+            profileImage.setImageResource(getResources().getIdentifier(cp.getImage(), "drawable", "com.example.infs3605"));
         }
 
         Executors.newSingleThreadExecutor().execute(new Runnable() {

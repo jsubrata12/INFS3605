@@ -1,16 +1,20 @@
 package com.example.infs3605;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -25,6 +29,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
     TextView name, desc, completeDate;
     ChipGroup group;
     Button btn;
+    ImageView image;
     ProgressBar progressBar;
     CuratorProfile curatorProfile = new CuratorProfile();
     SDG sdg = new SDG();
@@ -184,33 +189,32 @@ public class ProjectDetailActivity extends AppCompatActivity {
             int compareValue2 = localDate.compareTo(project.getReviewStart());
             int compareValue3 = localDate.compareTo(project.getFinalists());
             int compareValue4 = localDate.compareTo(project.getVenturePitch());
+            int compareValue5 = localDate.compareTo(project.getFinished());
 
-            if (compareValue >= 0) {
-                progressBar.incrementProgressBy((int) 16.67);
-               // percent.setText("17%");
-            }
-            if (compareValue1 >= 0) {
-                progressBar.incrementProgressBy((int) 16.67);
-               // percent.setText("34%");
+            if(compareValue >= 0){
 
             }
-            if (compareValue2 >= 0) {
-                progressBar.incrementProgressBy((int) 16.67);
-               // percent.setText("51%");
+            if(compareValue1 >= 0){
+                progressBar.incrementProgressBy(20);
+
 
             }
-            if (compareValue3 >= 0) {
-                progressBar.incrementProgressBy((int) 16.67);
-               // percent.setText("68%");
+            if(compareValue2 >= 0){
+                progressBar.incrementProgressBy(20);
 
             }
-            if (compareValue4 == 0) {
-                progressBar.incrementProgressBy((int) 16.67);
-                //percent.setText("85%");
+            if(compareValue3 >= 0){
+                progressBar.incrementProgressBy(20);
+
+
             }
-            if (compareValue4 > 0) {
-                progressBar.incrementProgressBy((int) 16.67);
-               // percent.setText("100%");
+            if(compareValue4 > 0){
+                progressBar.incrementProgressBy(20);
+
+            }
+            if(compareValue5 > 0){
+                progressBar.incrementProgressBy(20);
+
             }
 
             btn.setOnClickListener(new View.OnClickListener() {

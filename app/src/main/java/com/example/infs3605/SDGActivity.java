@@ -1,13 +1,16 @@
 package com.example.infs3605;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -311,22 +314,47 @@ public class SDGActivity extends AppCompatActivity {
 
         ArrayList<Integer> colors = new ArrayList<Integer>();
 
-        colors.add(getResources().getColor(R.color.sdg11)); // Leave
-        colors.add(getResources().getColor(R.color.sdg1)); // Leave
-        colors.add(getResources().getColor(R.color.sdg12)); // Leave
-        colors.add(getResources().getColor(R.color.sdg2)); // Leave
-        colors.add(getResources().getColor(R.color.sdg13)); // Leave
-        colors.add(getResources().getColor(R.color.sdg3)); // Leave
+        colors.add(getResources().getColor(R.color.sdg1)); // Test
+        colors.add(getResources().getColor(R.color.sdg1)); // Test
+        colors.add(getResources().getColor(R.color.sdg2)); // Test
+        colors.add(getResources().getColor(R.color.sdg2)); // Test
+        colors.add(getResources().getColor(R.color.sdg3)); // Test
+        colors.add(getResources().getColor(R.color.sdg3)); // Test
         colors.add(getResources().getColor(R.color.sdg4)); // Leave
-        colors.add(getResources().getColor(R.color.sdg14)); // Leave
+        colors.add(getResources().getColor(R.color.sdg4)); // Leave
+        colors.add(getResources().getColor(R.color.sdg5)); // Leave
         colors.add(getResources().getColor(R.color.sdg5)); // Leave
         colors.add(getResources().getColor(R.color.sdg7)); // Leave
-        colors.add(getResources().getColor(R.color.sdg15)); // Leave
-        colors.add(getResources().getColor(R.color.sdg16)); // Leave
-        colors.add(getResources().getColor(R.color.sdg9)); // Leave
+        colors.add(getResources().getColor(R.color.sdg7)); // Leave
         colors.add(getResources().getColor(R.color.sdg8));
-        colors.add(getResources().getColor(R.color.sdg17)); // Leave
+        colors.add(getResources().getColor(R.color.sdg8));
+        colors.add(getResources().getColor(R.color.sdg9)); // Leave
+        colors.add(getResources().getColor(R.color.sdg9)); // Leave
         colors.add(getResources().getColor(R.color.sdg10)); // Leave
+        colors.add(getResources().getColor(R.color.sdg10)); // Leave
+        colors.add(getResources().getColor(R.color.sdg11)); // Leave
+        colors.add(getResources().getColor(R.color.sdg11)); // Leave
+        colors.add(getResources().getColor(R.color.sdg11)); // Leave
+        colors.add(getResources().getColor(R.color.sdg11)); // Leave
+        colors.add(getResources().getColor(R.color.sdg12)); // Leave
+        colors.add(getResources().getColor(R.color.sdg12)); // Leave
+        colors.add(getResources().getColor(R.color.sdg13)); // Lea
+        colors.add(getResources().getColor(R.color.sdg13)); // Lea
+        colors.add(getResources().getColor(R.color.sdg13)); // Lea
+        colors.add(getResources().getColor(R.color.sdg13)); // Lea
+        colors.add(getResources().getColor(R.color.sdg14)); // Leave
+        colors.add(getResources().getColor(R.color.sdg14)); // Leave
+        colors.add(getResources().getColor(R.color.sdg14)); // Leave
+        colors.add(getResources().getColor(R.color.sdg14)); // Leave
+        colors.add(getResources().getColor(R.color.sdg15)); // Leave
+        colors.add(getResources().getColor(R.color.sdg15)); // Leave
+        colors.add(getResources().getColor(R.color.sdg15)); // Leave
+        colors.add(getResources().getColor(R.color.sdg16)); // Leave*/
+        colors.add(getResources().getColor(R.color.sdg16)); // Leave*/
+        colors.add(getResources().getColor(R.color.sdg16)); // Leave*/
+        colors.add(getResources().getColor(R.color.sdg17)); // Leave*/
+        colors.add(getResources().getColor(R.color.sdg17)); // Leave*/
+        colors.add(getResources().getColor(R.color.sdg6));
         colors.add(getResources().getColor(R.color.sdg6));
 
 

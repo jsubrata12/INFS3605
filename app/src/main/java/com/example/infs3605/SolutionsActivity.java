@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -68,6 +70,14 @@ public class SolutionsActivity extends AppCompatActivity {
             sAdapter = new SolutionsAdapter((ArrayList<Solutions>) solutionsArrayList, SolutionsActivity.this, clickListener);
             solutionsRV.setAdapter(sAdapter);
             }
+
+        Collections.sort(solutionsArrayList, new Comparator<Solutions>() {
+            @Override
+            public int compare(Solutions solutions, Solutions t1) {
+                return solutions.getSolutionName().compareToIgnoreCase(t1.getSolutionName());
+            }
+        });
+        sAdapter.notifyDataSetChanged();
         }
 
         public void launchDetailActivity (String name){

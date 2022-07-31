@@ -84,8 +84,10 @@ public class CuratorProfile {
     private boolean knowledgeManagement;
     @ColumnInfo(name = "Innovation")
     private boolean innovation;
+    @ColumnInfo(name = "Image")
+    private String image;
 
-    public CuratorProfile(String curatorName, String email, String location, String description, String organisation, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4, boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10, boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16, boolean sdg17, boolean designThinking, boolean technology, boolean userExperience, boolean projectManagement, boolean design, boolean research, boolean riskAssessment, boolean strategy, boolean analysis, boolean knowledgeManagement, boolean innovation) {
+    public CuratorProfile(String curatorName, String email, String location, String description, String organisation, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4, boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10, boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16, boolean sdg17, boolean designThinking, boolean technology, boolean userExperience, boolean projectManagement, boolean design, boolean research, boolean riskAssessment, boolean strategy, boolean analysis, boolean knowledgeManagement, boolean innovation, String image) {
         this.curatorName = curatorName;
         this.email = email;
         this.location = location;
@@ -119,6 +121,7 @@ public class CuratorProfile {
         this.analysis = analysis;
         this.knowledgeManagement = knowledgeManagement;
         this.innovation = innovation;
+        this.image = image;
     }
 
     public CuratorProfile(){
@@ -433,6 +436,14 @@ public class CuratorProfile {
         this.innovation = innovation;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public static ArrayList<CuratorProfile> getCuratorProfile() {
         ArrayList<CuratorProfile> curatorProfiles = new ArrayList<>();
 
@@ -440,43 +451,44 @@ public class CuratorProfile {
                 "Sydney", "Not Available", "Not Available", false, false,
                 false, false, false, false, false, false, true,
                 true, true, false, true, true, true, true, false, true, true, true, true, true,
-                false, false, false, false, false, false));
+                false, false, false, false, false, false, "drawable/curator1"));
         curatorProfiles.add(new CuratorProfile("Josephine Sample", "sample2@sample.com", "Sydney", "Josephine Sample opens the line of " +
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, true, false, false, true,
                 false, true, true, true, true, true, true, false, true, false, true, true, true, true, true,
-                true, true, true, true));
+                true, true, true, true, "drawable/curator1"));
         curatorProfiles.add(new CuratorProfile("Zara Wild", "zara@sample.com", "Sydney", "Josephine Sample opens the line of " +
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, true, false, false, false,
                 false, true, false, false, false, false, false, false, false, false, true, true, true, false,
-                false, false, false, false, false));
+                false, false, false, false, false, "drawable/curator1"));
         curatorProfiles.add(new CuratorProfile("Phone Sample", "phone@sample.com", "Sydney", "Josephine Sample opens the line of " +
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, false, false, false, true,
                 false, false, false, true, true, false, true, false, true, false, false, false, false, true, true,
-                false, false, false, false));
+                false, false, false, false, "drawable/curator1"));
         curatorProfiles.add(new CuratorProfile("Viann Landry", "sample3@sample.com", "Perth", " ", " ",  false, false, false, false, false, true,
                 false, false, false, false, false, false, true, false, false, false, true, true, false, false, false, false, true, true,
-                false, false, false, false));
-        curatorProfiles.add(new CuratorProfile("Danniella Compton", "sample4@sample.com", "Wollongong", " ", " ", false, false, false,
+                false, false, false, false, "drawable/curator1"));
+        curatorProfiles.add(new CuratorProfile("Danniella Compton", "sample4@sample.com", "Wollongong", "Danniella Compton opens the line of" +
+                " communication between clients, customers, and businesses to get projects done.", "HSBC", false, false, false,
                 false, false, false, false, false, false, false, false, false, true, true, true, false, true, true, false, false, false, false, true, true,
-                false, false, false, false));
+                false, false, false, false, "drawable/curator1"));
         curatorProfiles.add(new CuratorProfile("Elize Traynor", "sample5@sample.com", "Melbourne", " ", " ", false, true, false, true, true, false,
                 false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
-        false, false, true, true, true, true, true));
+        false, false, true, true, true, true, true, "drawable/curator1"));
         curatorProfiles.add(new CuratorProfile("Lilianna Steadman", "sample6@sample.com", "Brisbane", " ", " ", false,
                 false, false, false, false, false, false, true, true, true, false, false, false, false,
-                false, false, false, true, false, false, false, false, true, false, false, false, false, true));
+                false, false, false, true, false, false, false, false, true, false, false, false, false, true, "drawable/curator1"));
         curatorProfiles.add(new CuratorProfile("Karson Vaughn", "sample7@sample.com", "Adelaide", " ", " ", false, false, false, false, true, false,
                 false, false, false, false, false, true, true, false, false, false, false, false, false, false, false, true,
-        true, false, true, true, true, false));
+        true, false, true, true, true, false, "drawable/curator1"));
         curatorProfiles.add(new CuratorProfile("Marcus Dowling", "sample8@sample.com", "Canberra", " ", " ", false, false, false,
                 false, false, false, false, false, false, false, false, false, true, true, true, false, false, true, false,
-        true, false, true, true, false, false, false, true, true));
+        true, false, true, true, false, false, false, true, true, "drawable/curator1"));
         curatorProfiles.add(new CuratorProfile("Gail Gallagher", "sample9@sample.com", "Darwin", " ", " ", false, false,
                 false, false, false, false, false, false, false, false, false, true, false, false, false, true,
-                true, false, true, false, true, false, true, true, false, true, false, false));
+                true, false, true, false, true, false, true, true, false, true, false, false, "drawable/curator1"));
         return curatorProfiles;
     }
 

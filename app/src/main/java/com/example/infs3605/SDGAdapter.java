@@ -106,6 +106,10 @@ public class SDGAdapter extends RecyclerView.Adapter<SDGViewHolder>{
                 total++;
             }
 
+            if(sdg.getSdgName().equals("")){
+                holder.count.setText("%");
+                holder.colour.setVisibility(View.GONE);
+            }
             if (sdg.getSdgName().equals("No Poverty") && s.isSdg1() == true) {
                 count++;
                 holder.count.setText(df.format((count / total) * 100));

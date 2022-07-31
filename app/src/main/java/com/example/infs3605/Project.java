@@ -1,5 +1,6 @@
 package com.example.infs3605;
 
+import android.media.Image;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -36,8 +37,9 @@ public class Project {
     private LocalDate finalists;
     private LocalDate venturePitch;
     private LocalDate finished;
+    private String image;
 
-    public Project(String projectName, String desc, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4, boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10, boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16, boolean sdg17, LocalDate eoiStart, LocalDate fullAppStart, LocalDate reviewStart, LocalDate finalists, LocalDate venturePitch, LocalDate finished) {
+    public Project(String projectName, String desc, boolean sdg1, boolean sdg2, boolean sdg3, boolean sdg4, boolean sdg5, boolean sdg6, boolean sdg7, boolean sdg8, boolean sdg9, boolean sdg10, boolean sdg11, boolean sdg12, boolean sdg13, boolean sdg14, boolean sdg15, boolean sdg16, boolean sdg17, LocalDate eoiStart, LocalDate fullAppStart, LocalDate reviewStart, LocalDate finalists, LocalDate venturePitch, LocalDate finished, String image) {
         this.projectName = projectName;
         this.desc = desc;
         this.sdg1 = sdg1;
@@ -63,6 +65,7 @@ public class Project {
         this.finalists = finalists;
         this.venturePitch = venturePitch;
         this.finished = finished;
+        this.image = image;
     }
 
     public Project() {
@@ -294,6 +297,15 @@ public class Project {
         return this;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public Project setImage(String image) {
+        this.image = image;
+        return this;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static ArrayList<Project> getProject()  {
         ArrayList<Project> projects = new ArrayList<>();
@@ -306,7 +318,7 @@ public class Project {
                  "challenges. Join us as we work with the fashion and textiles sectors to reduce carbon emissions.",
                  false, false, false, false, false, false, true, false, false, false, true, true, true, false, false,
                  false, false, LocalDate.parse("2022-06-15"), LocalDate.parse("2022-06-29"), LocalDate.parse("2022-06-30"),
-                 LocalDate.parse("2022-08-11"), LocalDate.parse("2022-12-08"), LocalDate.parse("2022-12-09")));
+                 LocalDate.parse("2022-08-11"), LocalDate.parse("2022-12-08"), LocalDate.parse("2022-12-09"), "@drawable/impactio1"));
          projects.add(new Project("Innovate to Regenerate", "Innovate to Regenerate seeks to support " +
                  "and amplify community-led regeneration. We’re working together to make sure communities" +
                  " are supported and have the capability and agency to lead their own local regeneration. " +
@@ -314,9 +326,9 @@ public class Project {
                  "and create a healthy future for people and nature, get involved!", false, false,
                  false, false, false, false, true, false, false, false, false, false, true, false, true,
                  false, false, LocalDate.parse("2022-03-31"), LocalDate.parse("2022-04-28"), LocalDate.parse("2022-04-29"),
-                 LocalDate.parse("2022-06-07"), LocalDate.parse("2022-05-22"), LocalDate.parse("2022-06-08")));
+                 LocalDate.parse("2022-06-07"), LocalDate.parse("2022-05-22"), LocalDate.parse("2022-06-08"), "drawable/impactio2"));
     //    projects.add(new Project("Cities of Tomorrow"));
-        /*projects.add(new Project("Bushfire Regeneration Challenge", "In 2019-20 " +
+        projects.add(new Project("Bushfire Regeneration Challenge", "In 2019-20 " +
                 "Australia experienced the most catastrophic bushfire season in the country’s history, " +
                 "and the impacts will be felt for years to come. " +
                 "Up to 19 million hectares were burnt, with 12.6 million hectares primarily forest " +
@@ -329,15 +341,18 @@ public class Project {
                 "fire risk management, regenerative land use, species recovery and building ecological, " +
                 "economic and social resilience to climate change.", false, false,
                 true, false, false, false, false, false,
-                true, true, true, true, true, true, true, false, true, LocalDate.parse("2020-10-12"),
-                LocalDate.parse("2020-10-26"), LocalDate.parse("2020-11-08"), LocalDate.parse("2020-10-26"),
-                LocalDate.parse("2020-11-22"), LocalDate.parse("2020-11-23"), LocalDate.parse("2020-12-06"),
-                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2020-12-21"), LocalDate.parse("2021-02-21")));*/
-          //projects.add(new Project("Sustainability Advantage Impact Challenge", "Placeholder", true, true,
-             //    true, true, true, true, true, true, true,
-             //    true, true, true, true, true, true, true, true));
-          //projects.add(new Project("Innovate for Wildlife & People Challenge", "Placeholder", true, true, false,false, true,
-                  //false, false, false, false, true, false, false, false, true, true, false, true));
+                true, true, true, true, true, true, true, false, true,
+                LocalDate.parse("2020-10-26"),
+                LocalDate.parse("2020-11-22"),  LocalDate.parse("2020-12-06"),
+                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2021-02-21"), "drawable/impactio2"));
+        projects.add(new Project("Sustainability Advantage Impact Challenge", "Placeholder", true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true,
+                LocalDate.parse("2020-10-26"),
+                LocalDate.parse("2020-11-22"),  LocalDate.parse("2020-12-06"),
+                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2021-02-21"), "drawable/impactio2"));
+        projects.add(new Project("Innovate for Wildlife & People Challenge", "Placeholder", true, true, false,false, true,
+                  false, false, false, false, true, false, false, false, true, true, false, true, LocalDate.parse("2020-10-26"),
+                LocalDate.parse("2020-11-22"),  LocalDate.parse("2020-12-06"),
+                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2021-02-21"), "drawable/impactio2"));
 
         return projects;
     }

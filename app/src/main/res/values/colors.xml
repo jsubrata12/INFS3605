@@ -24,4 +24,8 @@
     <color name="sdg15">#57bf29</color>
     <color name="sdg16">#00689d</color>
     <color name="sdg17">#194769</color>
+    <color name="button">#009d9b</color>
+    <color name="progressBar">#5b1d68</color>
+    <color name="headings">#22252A</color>
+
 </resources>

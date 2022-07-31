@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,10 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
     public void onBindViewHolder(@NonNull CuratorMatchViewHolder holder, int position) {
         CuratorProfile curatorProfile = filteredCuratorList.get(position);
         holder.name.setText(curatorProfile.getCuratorName());
+        holder.count.setText(Integer.toString(position + 1));
         holder.itemView.setTag(curatorProfile.getCuratorName());
+
+
 
         //holder.status.setText(Integer.toString(curatorProfile.getCount()));
 
@@ -64,7 +68,7 @@ public class CuratorMatchAdapter extends RecyclerView.Adapter<CuratorMatchViewHo
 }
 
 class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-    public TextView name, countInvite;
+    public TextView name, count;
     public Button inviteBtn;
     private CuratorMatchAdapter.OnItemClickListener clickListener;
 
@@ -74,6 +78,7 @@ class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnC
         this.clickListener = listListener;
         itemView.setOnClickListener(this);
         name = itemView.findViewById(R.id.curatorName);
+        count = itemView.findViewById(R.id.curatorListCount);
     }
 
     @Override

@@ -55,6 +55,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectViewHolder>{
     public void onBindViewHolder(@NonNull ProjectViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Project project = listProject.get(position);
         holder.name.setText(project.getProjectName());
+        holder.image.setImageResource(holder.itemView.getResources().getIdentifier(project.getImage(), "drawable", "com.example.infs3605"));
         holder.itemView.setTag(project.getProjectName());
         LocalDate localDate = LocalDate.now();
 
@@ -109,6 +110,7 @@ class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     public TextView name, percent;
     public Chip chipStatus;
     public ProgressBar bar;
+    public ImageView image;
     private ProjectAdapter.OnItemClickListener clickListener;
 
     public ProjectViewHolder(@NonNull View itemView, ProjectAdapter.OnItemClickListener listListener){
@@ -119,6 +121,7 @@ class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         chipStatus = itemView.findViewById(R.id.projStatusChip);
         bar = itemView.findViewById(R.id.rvProgressBar);
         percent = itemView.findViewById(R.id.percentageTv);
+        image = itemView.findViewById(R.id.listImage);
     }
 
     @Override

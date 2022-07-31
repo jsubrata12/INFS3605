@@ -7,12 +7,36 @@
 
     <TextView
         android:id="@+id/curatorInviteName"
-        android:layout_width="358dp"
+        android:layout_width="239dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="32dp"
         android:text="Anorah Test"
+        android:textColor="@color/headings"
         android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/curatorOrg"
+        android:layout_width="295dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="164dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="136dp"
+        android:text="Organisation"
+        android:textColor="@color/headings"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,29 +45,11 @@
         android:id="@+id/inviteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="380dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/curatorResult"
-        android:layout_width="310dp"
-        android:layout_height="185dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="528dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/curatorOrg"
-        android:layout_width="355dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="99dp"
-        android:text="TextView"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="432dp"
+        android:backgroundTint="@color/button"
+        android:text="Invite"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,10 +57,47 @@
         android:id="@+id/invitedBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="432dp"
+        android:backgroundTint="#DAD8D8"
         android:text="Invited"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/curatorDesc"
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="79dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Description"
+        android:textColor="@color/headings"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/curatorOrg" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/curatorProfileImage"
+        android:layout_width="90dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundImageView"
+        app:srcCompat="@drawable/curator1" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
