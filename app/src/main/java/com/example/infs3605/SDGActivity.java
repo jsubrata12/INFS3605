@@ -1,11 +1,13 @@
 package com.example.infs3605;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,7 +20,6 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.material.chip.Chip;
@@ -45,6 +46,7 @@ public class SDGActivity extends AppCompatActivity {
     SDG sd = new SDG();
     HorizontalBarChart mChart;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +82,7 @@ public class SDGActivity extends AppCompatActivity {
         mChart.setDrawGridBackground(false);
 
         // mChart.getDescription().setEnabled(false);
-        mChart.getDescription().setText("");
+        mChart.setDescription("");
         mChart.getLegend().setEnabled(false);
 
         mChart.getAxisLeft().setDrawGridLines(false);
@@ -96,13 +98,11 @@ public class SDGActivity extends AppCompatActivity {
         mChart.getAxisRight().setDrawAxisLine(false);
 
         BarData barData = null;
-
         try {
-            barData = new BarData(getDataSet());
+            barData = new BarData(getYAxisValues(), getDataSet());
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
 
         XAxis xaxis = mChart.getXAxis();
         xaxis.setDrawGridLines(false);
@@ -189,8 +189,9 @@ public class SDGActivity extends AppCompatActivity {
         return yAxis;
     }
 
-    private ArrayList<IBarDataSet> getDataSet() throws ParseException {
-        ArrayList<IBarDataSet> dataSets = null;
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private ArrayList<BarDataSet> getDataSet() throws ParseException {
+        ArrayList<BarDataSet> dataSets = null;
         ArrayList<BarEntry> valueSet = new ArrayList<>();
         ArrayList<SDG> sdgList = sd.getSDG();
 
@@ -333,7 +334,7 @@ public class SDGActivity extends AppCompatActivity {
 
         dataSets = new ArrayList<>();
         barDataSet.setDrawValues(false);
-        dataSets.add((IBarDataSet)barDataSet);
+        dataSets.add(barDataSet);
         return dataSets;
     }
 }

@@ -30,17 +30,17 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.opencsv.CSVReader;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,7 +51,7 @@ public class DashboardFragment extends Fragment {
     private PieChart pieChart;
     ArrayList barArrayList;
     private BarChart barChart;
-    private ImageView iv1,iv2;
+    private ImageView iv1, iv2;
     private TextView tv1, tv2, tv3;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -106,7 +106,6 @@ public class DashboardFragment extends Fragment {
         final Spinner sp = new Spinner(getActivity());
 
         sp.setAdapter(adp);
-        pieChart = v.findViewById(R.id.dashboard_piechart);
         barChart = v.findViewById(R.id.dashboard_barchart);
         tv1 = v.findViewById(R.id.tvEOI);
         tv2 = v.findViewById(R.id.tvSP);
@@ -114,14 +113,21 @@ public class DashboardFragment extends Fragment {
         iv1 = v.findViewById(R.id.shareButton);
         iv2 = v.findViewById(R.id.filterMenu);
         selectedFilter = new boolean[filterArray.length];
-        getData();
-        BarDataSet barDataSet = new BarDataSet(barArrayList,"Test");
-        BarData barData = new BarData(barDataSet);
+        //BarDataSet barDataSet = new BarDataSet(barArrayList, "Test");
+
+        BarData barData = null;
+        try {
+            barData = new BarData(getXAxisValues(), getData());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        // BarData barData = new BarData((List<String>) barDataSet);
         barChart.setData(barData);
-        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(16f);
-        barChart.getDescription().setEnabled(true);
+        //barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        //barDataSet.setValueTextColor(Color.BLACK);
+       // barDataSet.setValueTextSize(16f);
+        // barChart.getDescription().setEnabled(true);
         try {
             CSVReader reader = new CSVReader(new InputStreamReader(getResources().openRawResource(R.raw.qualitative)));
             String[] nextLine;
@@ -133,8 +139,7 @@ public class DashboardFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setupPieChart();
-        loadPieChartData();
+
 
         iv1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +164,7 @@ public class DashboardFragment extends Fragment {
                 builder.setMessage("Specify quarter");
                 builder.setCancelable(false);
                 sp.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                sp.setPadding(60,0,0,0);
+                sp.setPadding(60, 0, 0, 0);
                 builder.setView(sp);
 
 
@@ -170,9 +175,9 @@ public class DashboardFragment extends Fragment {
                             CSVReader reader = new CSVReader(new InputStreamReader(getResources().openRawResource(R.raw.qualitative)));
                             String[] nL;
                             int dummy = (int) sp.getSelectedItemId();
-                            String dummyConv = String.valueOf(dummy+1);
-                            while ((nL = reader.readNext()) !=  null ) {
-                                if(nL[0] == dummyConv){
+                            String dummyConv = String.valueOf(dummy + 1);
+                            while ((nL = reader.readNext()) != null) {
+                                if (nL[0] == dummyConv) {
                                     tv1.setText(nL[1]);
                                     tv2.setText(nL[2]);
                                     tv3.setText(nL[3]);
@@ -182,68 +187,49 @@ public class DashboardFragment extends Fragment {
                             e.printStackTrace();
                         }
 
-                        }
+                    }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
+                        dialogInterface.dismiss();
                     }
                 });
-                builder.create().show();            }
+                builder.create().show();
+            }
         });
         // Inflate the layout for this fragment
         return v;
     }
 
-    private void getData(){
-        barArrayList = new ArrayList();
-        barArrayList.add(new BarEntry(2f,10));
-        barArrayList.add(new BarEntry(3f,10));
-        barArrayList.add(new BarEntry(4f,10));
-        barArrayList.add(new BarEntry(5f,10));
-        barArrayList.add(new BarEntry(6f,10));
+    private ArrayList<String> getXAxisValues() {
+        ArrayList<String> xAxis = new ArrayList<>();
+        xAxis.add("0");
+        xAxis.add("100");
+        xAxis.add("200");
+        xAxis.add("300");
+        xAxis.add("400");
+        xAxis.add("500");
+        xAxis.add("600");
+
+        return xAxis;
     }
 
-    private void setupPieChart() {
-        pieChart.setDrawHoleEnabled(true);
-        pieChart.setUsePercentValues(true);
-        pieChart.setEntryLabelTextSize(12);
-        pieChart.setEntryLabelColor(android.R.color.black);
-        pieChart.setCenterText("Test");
-        pieChart.setCenterTextSize(24);
-        pieChart.getDescription().setEnabled(false);
+    private ArrayList<BarDataSet> getData() throws ParseException {
+        ArrayList<BarDataSet> dataSets = null;
+        ArrayList<BarEntry> barArrayList = new ArrayList<>();
 
-    }
+        barArrayList.add(new BarEntry(100, 0));
+        barArrayList.add(new BarEntry(200, 1));
+        barArrayList.add(new BarEntry(300, 2));
+        barArrayList.add(new BarEntry(400, 3));
+        barArrayList.add(new BarEntry(500, 4));
 
-    private void loadPieChartData(){
-        ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(0.2f,"Test"));
-        entries.add(new PieEntry(0.15f,"Test 2"));
-        entries.add(new PieEntry(0.10f,"Test 3"));
-        entries.add(new PieEntry(0.25f,"Test 4"));
-        entries.add(new PieEntry(0.3f,"Test 5"));
+        BarDataSet barDataSet = new BarDataSet(barArrayList, "Test");
 
-        ArrayList<Integer> colors = new ArrayList<>();
-        for(int color: ColorTemplate.MATERIAL_COLORS) {
-            colors.add(color);
-        }
-
-        for(int color: ColorTemplate.VORDIPLOM_COLORS){
-            colors.add(color);
-        }
-
-        PieDataSet dataSet = new PieDataSet(entries, "Test Cat");
-        dataSet.setColors(colors);
-
-        PieData data = new PieData(dataSet);
-        data.setDrawValues(true);
-        data.setValueFormatter(new PercentFormatter(pieChart));
-        data.setValueTextSize(12f);
-        data.setValueTextColor(Color.BLACK);
-
-        pieChart.setData(data);
-        pieChart.invalidate();
-
+        dataSets = new ArrayList<>();
+        barDataSet.setDrawValues(false);
+        dataSets.add(barDataSet);
+        return dataSets;
     }
 }
