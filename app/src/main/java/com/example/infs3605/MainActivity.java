@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menuAccount:
                     replaceFragment(new AccountFragment());
                     break;
-                case R.id.menuFavorite:
+                case R.id.menuPM:
                     replaceFragment(new FavoriteFragment());
                     break;
                 case R.id.menuDashboard:

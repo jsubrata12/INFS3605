@@ -42,6 +42,7 @@ public class ProjectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_project);
 
         // Link the RecyclerView to its xml item and set LayoutManager
@@ -74,4 +75,6 @@ public class ProjectActivity extends AppCompatActivity {
     private void getData(){
 
     }
+
+
 }

@@ -20,21 +20,27 @@
             android:exported="false" />
         <activity
             android:name=".ProjectActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".SDGActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".ProjectDetailActivity"
+            android:parentActivityName=".ProjectActivity"
             android:exported="false" />
         <activity
             android:name=".CuratorMatchActivity"
+            android:parentActivityName=".SolutionsActivity"
             android:exported="false" />
         <activity
             android:name=".CuratorInviteActivity"
+            android:parentActivityName=".CuratorMatchActivity"
             android:exported="false" />
         <activity
             android:name=".SolutionsActivity"
+            android:parentActivityName=".ProjectDetailActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

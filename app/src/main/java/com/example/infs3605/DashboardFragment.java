@@ -1,18 +1,12 @@
 package com.example.infs3605;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.constraintlayout.widget.Constraints;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,23 +18,15 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.opencsv.CSVReader;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,7 +38,7 @@ public class DashboardFragment extends Fragment {
     ArrayList barArrayList;
     private BarChart barChart;
     private ImageView iv1, iv2;
-    private TextView tv1, tv2, tv3;
+    private TextView tv1, tv2, tv3, tv4;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -110,6 +96,7 @@ public class DashboardFragment extends Fragment {
         tv1 = v.findViewById(R.id.tvEOI);
         tv2 = v.findViewById(R.id.tvSP);
         tv3 = v.findViewById(R.id.tvIP);
+        tv4 = v.findViewById(R.id.tvFunding);
         iv1 = v.findViewById(R.id.shareButton);
         iv2 = v.findViewById(R.id.filterMenu);
         selectedFilter = new boolean[filterArray.length];
@@ -171,22 +158,60 @@ public class DashboardFragment extends Fragment {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        try {
-                            CSVReader reader = new CSVReader(new InputStreamReader(getResources().openRawResource(R.raw.qualitative)));
-                            String[] nL;
-                            int dummy = (int) sp.getSelectedItemId();
-                            String dummyConv = String.valueOf(dummy + 1);
-                            while ((nL = reader.readNext()) != null) {
-                                if (nL[0] == dummyConv) {
-                                    tv1.setText(nL[1]);
-                                    tv2.setText(nL[2]);
-                                    tv3.setText(nL[3]);
-                                }
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
 
+                            int dummy = (int) sp.getSelectedItemId();
+                            if(dummy == 0){
+                                tv1.setText("1536");
+                                tv2.setText("1049");
+                                tv3.setText("2551");
+                                tv4.setText("$3,632");
+                                BarData barData = null;
+                                try {
+                                    barData = new BarData(getXAxisValues(), getData2());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                barChart.setData(barData);
+                            }
+                            if(dummy == 1){
+                            tv1.setText("2985");
+                            tv2.setText("1428");
+                            tv3.setText("2882");
+                            tv4.setText("$3,333");
+                                BarData barData = null;
+                                try {
+                                    barData = new BarData(getXAxisValues(), getData3());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                barChart.setData(barData);
+                            }
+                            if(dummy == 2){
+                            tv1.setText("1185");
+                            tv2.setText("1692");
+                            tv3.setText("1968");
+                            tv4.setText("$2,764");
+                                BarData barData = null;
+                                try {
+                                    barData = new BarData(getXAxisValues(), getData4());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                barChart.setData(barData);
+                        }
+                            if(dummy == 3){
+                            tv1.setText("1047");
+                            tv2.setText("1283");
+                            tv3.setText("1507");
+                            tv4.setText("$5,636");
+                                BarData barData = null;
+                                try {
+                                    barData = new BarData(getXAxisValues(), getData());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                barChart.setData(barData);
+                        }
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -232,4 +257,59 @@ public class DashboardFragment extends Fragment {
         dataSets.add(barDataSet);
         return dataSets;
     }
+
+    private ArrayList<BarDataSet> getData2() throws ParseException {
+        ArrayList<BarDataSet> dataSets = null;
+        ArrayList<BarEntry> barArrayList = new ArrayList<>();
+
+        barArrayList.add(new BarEntry(150, 0));
+        barArrayList.add(new BarEntry(230, 1));
+        barArrayList.add(new BarEntry(370, 2));
+        barArrayList.add(new BarEntry(420, 3));
+        barArrayList.add(new BarEntry(600, 4));
+
+        BarDataSet barDataSet = new BarDataSet(barArrayList, "Test");
+
+        dataSets = new ArrayList<>();
+        barDataSet.setDrawValues(false);
+        dataSets.add(barDataSet);
+        return dataSets;
+    }
+
+    private ArrayList<BarDataSet> getData3() throws ParseException {
+        ArrayList<BarDataSet> dataSets = null;
+        ArrayList<BarEntry> barArrayList = new ArrayList<>();
+
+        barArrayList.add(new BarEntry(130, 0));
+        barArrayList.add(new BarEntry(320, 1));
+        barArrayList.add(new BarEntry(430, 2));
+        barArrayList.add(new BarEntry(620, 3));
+        barArrayList.add(new BarEntry(700, 4));
+
+        BarDataSet barDataSet = new BarDataSet(barArrayList, "Test");
+
+        dataSets = new ArrayList<>();
+        barDataSet.setDrawValues(false);
+        dataSets.add(barDataSet);
+        return dataSets;
+    }
+
+    private ArrayList<BarDataSet> getData4() throws ParseException {
+        ArrayList<BarDataSet> dataSets = null;
+        ArrayList<BarEntry> barArrayList = new ArrayList<>();
+
+        barArrayList.add(new BarEntry(200, 0));
+        barArrayList.add(new BarEntry(350, 1));
+        barArrayList.add(new BarEntry(420, 2));
+        barArrayList.add(new BarEntry(510, 3));
+        barArrayList.add(new BarEntry(610, 4));
+
+        BarDataSet barDataSet = new BarDataSet(barArrayList, "Test");
+
+        dataSets = new ArrayList<>();
+        barDataSet.setDrawValues(false);
+        dataSets.add(barDataSet);
+        return dataSets;
+    }
+
 }
