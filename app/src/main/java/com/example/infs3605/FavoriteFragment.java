@@ -1,9 +1,17 @@
 package com.example.infs3605;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +22,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class FavoriteFragment extends Fragment {
+    private RecyclerView mRecyclerView;
+    private FavoriteAdapter mFavoriteAdapter;
+    public static final String EXTRA_MESSAGE = "favorite fragment";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,10 +66,32 @@ public class FavoriteFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false);
+        super.onCreate(savedInstanceState);
+        View v = inflater.inflate(R.layout.fragment_favorite, container, false);
+
+        mRecyclerView = v.findViewById(R.id.toActionRv);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(v.getContext());
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        FavoriteAdapter.RecyclerViewClickListener listener = new FavoriteAdapter.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int taskId) {
+                launchDetailActivity(taskId);
+            }
+        };
+
+        mFavoriteAdapter = new FavoriteAdapter(Task.getTasks(), listener);
+        mRecyclerView.setAdapter(mFavoriteAdapter);
+        return v;
+    }
+
+    public void launchDetailActivity(int taskId) {
+        Intent intent = new Intent(getActivity(), TaskDetailActivity.class);
+        intent.putExtra(EXTRA_MESSAGE, taskId+"");
+        startActivity(intent);
     }
 }
