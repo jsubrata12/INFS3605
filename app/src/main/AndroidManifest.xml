@@ -36,7 +36,6 @@
             android:exported="false" />
         <activity
             android:name=".CuratorInviteActivity"
-            android:parentActivityName=".CuratorMatchActivity"
             android:exported="false" />
         <activity
             android:name=".SolutionsActivity"

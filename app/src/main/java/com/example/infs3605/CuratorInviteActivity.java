@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -148,6 +149,16 @@ public class CuratorInviteActivity extends AppCompatActivity {
         for (CuratorProjectStatus cps : curatorProjectStatusList) {
             result.setText(String.valueOf(cps.getProjectStatus()));
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(CuratorInviteActivity.this, CuratorMatchActivity.class);
+            intent.putExtra(CuratorMatchActivity.SOLUTION_NAME, solutionsID);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 
