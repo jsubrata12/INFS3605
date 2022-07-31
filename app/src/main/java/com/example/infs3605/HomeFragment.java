@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,8 +71,7 @@ public class HomeFragment extends Fragment  {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProjectActivity.class);
-                startActivity(intent);
+                replaceFragment();
             }
         });
 
@@ -83,5 +84,14 @@ public class HomeFragment extends Fragment  {
         });
 
         return v;
+    }
+    private void replaceFragment(){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        AccountFragment fragment2 = new AccountFragment();
+        fragmentTransaction.addToBackStack("xyz");
+        fragmentTransaction.hide(HomeFragment.this);
+        fragmentTransaction.add(android.R.id.content, fragment2);
+        fragmentTransaction.commit();
     }
 }

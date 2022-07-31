@@ -18,8 +18,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.BarDataProvider;
-import com.github.mikephil.charting.utils.ValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.material.chip.Chip;
@@ -81,7 +80,7 @@ public class SDGActivity extends AppCompatActivity {
         mChart.setDrawGridBackground(false);
 
         // mChart.getDescription().setEnabled(false);
-        mChart.setDescription("");
+        mChart.getDescription().setText("");
         mChart.getLegend().setEnabled(false);
 
         mChart.getAxisLeft().setDrawGridLines(false);
@@ -97,11 +96,13 @@ public class SDGActivity extends AppCompatActivity {
         mChart.getAxisRight().setDrawAxisLine(false);
 
         BarData barData = null;
+
         try {
-            barData = new BarData(getYAxisValues(), getDataSet());
+            barData = new BarData(getDataSet());
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
 
         XAxis xaxis = mChart.getXAxis();
         xaxis.setDrawGridLines(false);
@@ -188,8 +189,8 @@ public class SDGActivity extends AppCompatActivity {
         return yAxis;
     }
 
-    private ArrayList<BarDataSet> getDataSet() throws ParseException {
-        ArrayList<BarDataSet> dataSets = null;
+    private ArrayList<IBarDataSet> getDataSet() throws ParseException {
+        ArrayList<IBarDataSet> dataSets = null;
         ArrayList<BarEntry> valueSet = new ArrayList<>();
         ArrayList<SDG> sdgList = sd.getSDG();
 
@@ -332,7 +333,7 @@ public class SDGActivity extends AppCompatActivity {
 
         dataSets = new ArrayList<>();
         barDataSet.setDrawValues(false);
-        dataSets.add(barDataSet);
+        dataSets.add((IBarDataSet)barDataSet);
         return dataSets;
     }
 }

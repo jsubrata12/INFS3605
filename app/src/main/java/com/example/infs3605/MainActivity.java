@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menuFavorite:
                     replaceFragment(new FavoriteFragment());
                     break;
+                case R.id.menuDashboard:
+                    replaceFragment(new DashboardFragment());
+                    break;
                 case R.id.menuSettings:
                     replaceFragment(new SettingsFragment());
                     break;
