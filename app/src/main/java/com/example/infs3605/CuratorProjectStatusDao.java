@@ -22,6 +22,10 @@ public interface CuratorProjectStatusDao {
     @Query("UPDATE CuratorProjectStatus SET ProjectStatus = :status WHERE CuratorName = :name AND ProjectName = :projName")
     void setStatus(String status, String name, String projName);
 
+    @Query("SELECT EXISTS(SELECT * FROM CuratorProjectStatus WHERE ProjectStatus = :status AND CuratorName = :name AND ProjectName = :projName)")
+    Boolean isRowIsExist(String name, String projName, String status);
+
+
     @Insert
     void insertStatus(CuratorProjectStatus cps);
 

@@ -41,8 +41,6 @@ public class CuratorMatchActivity extends AppCompatActivity {
         solName = intent.getStringExtra(SOLUTION_NAME);
         Solutions solutions = Solutions.getSolution(solName);
 
-        inviteBtn = findViewById(R.id.inviteButton);
-
         // Link the RecyclerView to its xml item and set LayoutManager
         curatorRV = findViewById(R.id.curatorRV);
         curatorRV.setHasFixedSize(true);

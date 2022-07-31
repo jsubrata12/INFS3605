@@ -8,10 +8,12 @@
     <TextView
         android:id="@+id/curatorInviteName"
         android:layout_width="358dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
         android:layout_marginTop="46dp"
-        android:text="TextView"
+        android:text="Anorah Test"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,8 +21,8 @@
         android:id="@+id/inviteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="239dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="380dp"
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,9 +31,30 @@
         android:id="@+id/curatorResult"
         android:layout_width="310dp"
         android:layout_height="185dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="358dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="528dp"
         android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/curatorOrg"
+        android:layout_width="355dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="99dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/invitedBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="380dp"
+        android:text="Invited"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

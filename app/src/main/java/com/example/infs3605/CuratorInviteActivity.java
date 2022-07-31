@@ -23,7 +23,7 @@ public class CuratorInviteActivity extends AppCompatActivity {
     public static final String SOLUTION_NAME = "test";
     private static final String TAG = "tag";
     TextView tv, result;
-    Button inviteBtn;
+    Button inviteBtn, invitedBtn;
     String curatorID;
     String solutionsID;
     CuratorCountDatabase curatorCountDatabase;
@@ -43,6 +43,8 @@ public class CuratorInviteActivity extends AppCompatActivity {
 
         inviteBtn = findViewById(R.id.inviteBtn);
         tv = findViewById(R.id.curatorInviteName);
+        result = findViewById(R.id.curatorResult);
+        invitedBtn = findViewById(R.id.invitedBtn);
 
         if (cp != null && sol != null) {
             tv.setText(cp.getCuratorName());
@@ -93,14 +95,13 @@ public class CuratorInviteActivity extends AppCompatActivity {
                                 for (CuratorProjectStatus cc : getAll) {
                                     Log.d("Testing.. User", String.valueOf(+index + ": " + "User: " + cc.getCuratorName() + " " + cc.getProjectName()
                                             + " " + cc.getProjectStatus()));
-
                                 }
                                 cpsDB.curatorProjectStatusDao().insertOrUpdate(new CuratorProjectStatus(cp.getCuratorName(), sol.getSolutionName(), "Invited"));
                                 for (CuratorProjectStatus c : cpsList) {
                                     cpsDB.curatorProjectStatusDao().setStatus(cp.getCuratorName(), sol.getSolutionName(), "Invited");
                                     //inviteBtn.setText("Test");
                                     Log.d(TAG, "Completed in Status Database");
-
+                                    result.setText("Invited");
                                 }
                             }
 
@@ -108,19 +109,30 @@ public class CuratorInviteActivity extends AppCompatActivity {
 
                     }
                 });
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
 
             }
         });
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                cpsDB = CuratorProjectStatusDatabase.getInstance(CuratorInviteActivity.this);
+                    if (cpsDB.curatorProjectStatusDao().isRowIsExist(cp.getCuratorName(), sol.getSolutionName(), "Invited")) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                invitedBtn.setVisibility(View.VISIBLE);
+                                invitedBtn.setClickable(false);
+                                inviteBtn.setVisibility(View.GONE);
+                            }
+                    });
+                }
+            }
+        });
     }
-
-    private void curatorCount() {
-        CuratorCountDatabase curatorCountDatabase = CuratorCountDatabase.getInstance(CuratorInviteActivity.this);
-        List<CuratorCount> curatorCountList = curatorCountDatabase.curatorCountDao().getUserCount(curatorID, solutionsID);
-        for (CuratorCount curatorCount : curatorCountList) {
-            result.setText(String.valueOf(curatorCount.getCount()));
-        }
-    }
-
     private void curatorInviteStatus() {
         CuratorProjectStatusDatabase cpsDatabase = CuratorProjectStatusDatabase.getInstance(CuratorInviteActivity.this);
         List<CuratorProjectStatus> curatorProjectStatusList = cpsDatabase.curatorProjectStatusDao().getUser(curatorID);

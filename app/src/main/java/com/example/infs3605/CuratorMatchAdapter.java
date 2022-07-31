@@ -74,7 +74,6 @@ class CuratorMatchViewHolder extends RecyclerView.ViewHolder implements View.OnC
         this.clickListener = listListener;
         itemView.setOnClickListener(this);
         name = itemView.findViewById(R.id.curatorName);
-        inviteBtn = itemView.findViewById(R.id.inviteButton);
     }
 
     @Override
