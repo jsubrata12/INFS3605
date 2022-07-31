@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,6 +85,14 @@ public class FavoriteFragment extends Fragment {
             }
         };
 
+        Button mAddBtn = v.findViewById(R.id.addButton);
+        mAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchAddActivity();
+            }
+        });
+
         mFavoriteAdapter = new FavoriteAdapter(Task.getTasks(), listener);
         mRecyclerView.setAdapter(mFavoriteAdapter);
         return v;
@@ -92,6 +101,11 @@ public class FavoriteFragment extends Fragment {
     public void launchDetailActivity(int taskId) {
         Intent intent = new Intent(getActivity(), TaskDetailActivity.class);
         intent.putExtra(EXTRA_MESSAGE, taskId+"");
+        startActivity(intent);
+    }
+
+    public void launchAddActivity() {
+        Intent intent = new Intent(getActivity(), AddTaskActivity.class);
         startActivity(intent);
     }
 }

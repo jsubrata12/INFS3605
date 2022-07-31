@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.INFS3605">
         <activity
+            android:name=".AddTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".TaskDetailActivity"
             android:exported="false" />
         <activity
