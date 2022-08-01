@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.83">
+        app:layout_constraintVertical_bias="0.25">
 
         <TextView
             android:id="@+id/tvFunding"
@@ -94,12 +94,13 @@
         android:layout_marginEnd="5dp"
         android:background="@drawable/gray_rectangle_background"
         android:orientation="vertical"
+        android:paddingBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.18">
+        app:layout_constraintVertical_bias="0.42000002">
 
         <TextView
             android:id="@+id/tvSP"
@@ -170,43 +171,6 @@
         app:layout_constraintVertical_bias="0.94" />
 
     <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="359dp"
-        android:layout_height="47dp"
-        android:background="@drawable/gray_rectangle_background"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.362">
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="97dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Challenge engagement " />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="this month"
-            android:textColor="#009688" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_baseline_arrow_forward_24" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -217,7 +181,7 @@
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.83">
+        app:layout_constraintVertical_bias="0.26999998">
 
         <TextView
             android:id="@+id/tvIP"
@@ -246,8 +210,8 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/dashboard_barchart"
-        android:layout_width="355dp"
-        android:layout_height="135dp"
+        android:layout_width="363dp"
+        android:layout_height="155dp"
         android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -255,5 +219,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:layout_constraintVertical_bias="0.92" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Challenge Progress"
+        app:layout_constraintBottom_toTopOf="@+id/dashboard_barchart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.47000003" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
