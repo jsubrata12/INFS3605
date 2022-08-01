@@ -57,7 +57,7 @@ public class TaskDetailAdapter extends RecyclerView.Adapter<TaskDetailAdapter.Ta
         }
         @Override
         public void onClick(View view) {
-            mListener.onClick(view, (int) view.getTag());
+//            mListener.onClick(view, Integer.parseInt((String) view.getTag()));
         }
     }
 }

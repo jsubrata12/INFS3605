@@ -4,27 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#009C9B"
     tools:context=".TaskDetailActivity">
 
-    <TextView
+    <EditText
         android:id="@+id/taskNameTv"
-        android:layout_width="268dp"
-        android:layout_height="38dp"
+        android:layout_width="266dp"
+        android:layout_height="96dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="37dp"
         android:layout_marginEnd="23dp"
         android:text="TextView"
+        android:textColor="#5B1C68"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/editButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/completedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#009C9B"
         android:text="Mark as Completed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,16 +38,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="19dp"
         android:text="Date Created:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskNameTv" />
 
-    <TextView
+    <EditText
         android:id="@+id/dateCreatedTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
+        android:minHeight="48dp"
         android:text="TextView"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,12 +59,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="11dp"
         android:text="Due Date:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateCreatedTv" />
 
-    <TextView
+    <EditText
         android:id="@+id/dateDueTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/editButton"
         android:layout_width="39dp"
         android:layout_height="36dp"
         android:layout_marginTop="36dp"
@@ -86,34 +90,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="13dp"
         android:text="Description"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateDueTv" />
 
-    <TextView
+    <EditText
         android:id="@+id/descriptionTv"
-        android:layout_width="307dp"
-        android:layout_height="36dp"
+        android:layout_width="304dp"
+        android:layout_height="102dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="56dp"
         android:text="TextView"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subTasksRv"
-        android:layout_width="298dp"
-        android:layout_height="281dp"
+        android:layout_width="294dp"
+        android:layout_height="134dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="65dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 

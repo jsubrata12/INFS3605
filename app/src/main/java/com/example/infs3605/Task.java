@@ -8,14 +8,13 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 
 @Entity(tableName = "Tasks")
 public class Task {
+    private static ArrayList<Task> tasks;
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int taskId;
@@ -38,8 +37,10 @@ public class Task {
     @ColumnInfo(name = "SubTasks")
     private ArrayList<String> subtasks;
 
-    public Task(int taskId, String name, LocalDate dueDate, LocalDate dateCreated, String description) {
-        this.taskId = taskId;
+    private int idCount = 0;
+
+    public Task(String name, LocalDate dueDate, LocalDate dateCreated, String description) {
+        this.taskId = idCount++;
         this.name = name;
         this.dueDate = dueDate;
         this.dateCreated = dateCreated;
@@ -112,42 +113,42 @@ public class Task {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static ArrayList<Task> getTasks() {
-        ArrayList<Task> tasks = new ArrayList<>();
-        Task task1 = new Task(0,"Follow up with Jenny on project", LocalDate.parse("2022-08-22"),
+//        ArrayList<Task> tasks = new ArrayList<>();
+        tasks = new ArrayList<>();
+        Task task1 = new Task("Follow up with Jenny on project", LocalDate.parse("2022-08-22"),
                 LocalDate.parse("2022-07-01"),"Follow up and discuss details of the project");
         task1.getSubtasks().add("Email Jenny");
         task1.getSubtasks().add("Book meeting with Jenny");
         tasks.add(task1);
 
-        Task task2 = new Task(1,"Complete xyz", LocalDate.parse("2022-08-30"),
+        Task task2 = new Task("Complete xyz", LocalDate.parse("2022-08-30"),
                 LocalDate.parse("2022-06-21"),"Complete tasks from project and discuss with manager");
         task2.getSubtasks().add("Complete Task xyz");
         task2.getSubtasks().add("Complete Task abc");
         task2.getSubtasks().add("Schedule meeting with manager");
         tasks.add(task2);
 
-        Task task3 = new Task(2,"Run report with this month's metrics", LocalDate.parse("2022-08-15"),
+        Task task3 = new Task("Run report with this month's metrics", LocalDate.parse("2022-08-15"),
                 LocalDate.parse("2022-06-30"),"Run report for Tom");
         task3.getSubtasks().add("Run report");
         task3.getSubtasks().add("Email Tom");
         tasks.add(task3);
 
-        Task task4 = new Task(3, "Create team dashboard", LocalDate.parse("2022-08-02"),
+        Task task4 = new Task("Create team dashboard", LocalDate.parse("2022-08-02"),
                 LocalDate.parse("2022-07-15"),"Create a team dashboard and share with Sam and Amy.");
         task4.getSubtasks().add("Create dashboard with xyz metrics");
         task4.getSubtasks().add("Share dashboard with Sam and Amy");
         task4.getSubtasks().add("Get feedback from Sam and Amy");
         tasks.add(task4);
-
-//        tasks.add(new Task(0,"Follow up with Jenny on project", LocalDate.parse("2022-08-22"),
-//                LocalDate.parse("2022-07-01"),"Follow up and discuss details of the project"));
-//        tasks.add(new Task(1,"Complete xyz", LocalDate.parse("2022-08-30"),
-//                LocalDate.parse("2022-06-21"),"Complete tasks from project and discuss with manager"));
-//        tasks.add(new Task(2,"Run report with this month's metrics", LocalDate.parse("2022-08-15"),
-//                LocalDate.parse("2022-06-30"),"Run report for Tom"));
-//        tasks.add(new Task(3, "Create team dashboard", LocalDate.parse("2022-08-02"),
-//                LocalDate.parse("2022-07-15"),"Create a team dashboard and share with Sam and Amy."));
         return tasks;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static ArrayList<Task> addTask(Task task) {
+        ArrayList<Task> updatedTasks = getTasks();
+        updatedTasks.add(task);
+        return updatedTasks;
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
