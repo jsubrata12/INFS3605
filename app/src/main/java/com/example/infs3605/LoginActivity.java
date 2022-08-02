@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
 
         // Initialize the text view and buttons from the xml file
         username = findViewById(R.id.registerUsername);

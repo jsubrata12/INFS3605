@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +28,9 @@ public class AccountFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private LinearLayout l1,l2,l3,l4;
+    private ImageView iv1;
+    private TextView tv1,tv2;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -58,7 +66,24 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_account, container, false);
+        l1 = v.findViewById(R.id.layout1);
+        l2 = v.findViewById(R.id.layout2);
+        l3 = v.findViewById(R.id.layout3);
+        l4 = v.findViewById(R.id.layout4);
+        iv1= v.findViewById(R.id.profilePic);
+        tv1 = v.findViewById(R.id.tvFullName);
+        tv2 = v.findViewById(R.id.tvPos);
+        Animation animation= AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
+        iv1.startAnimation(animation);
+        tv1.startAnimation(animation);
+        tv2.startAnimation(animation);
+        l1.startAnimation(animation);
+        l2.startAnimation(animation);
+        l3.startAnimation(animation);
+        l4.startAnimation(animation);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        return v;
     }
 }

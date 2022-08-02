@@ -3,6 +3,7 @@ package com.example.infs3605;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,6 +11,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 /**
@@ -23,6 +26,7 @@ public class HomeFragment extends Fragment  {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private ConstraintLayout header, trending;
     private LinearLayout button, button1;
 
     // TODO: Rename and change types of parameters
@@ -67,6 +71,16 @@ public class HomeFragment extends Fragment  {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         button =  v.findViewById(R.id.layoutTest);
         button1 = v.findViewById(R.id.layoutTest2);
+        header = v.findViewById(R.id.layoutHeader);
+        trending = v.findViewById(R.id.constraintLayout);
+
+        Animation animation= AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
+        Animation animation2= AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
+
+        header.startAnimation(animation2);
+        button.startAnimation(animation);
+        button1.startAnimation(animation);
+        trending.startAnimation(animation);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

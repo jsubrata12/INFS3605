@@ -14,9 +14,10 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
-        android:text="Sign in"
-        android:textColor="@color/white"
+        android:text="Log in"
+        android:textColor="@color/button"
         android:textSize="35dp"
         android:textStyle="bold" />
 
@@ -25,11 +26,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/signin"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="9dp"
         android:layout_marginBottom="10dp"
-        android:background="#30656565"
+        android:background="@drawable/custom_input"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="20dp"
         android:hint="Username"
         android:padding="20dp"
@@ -45,7 +49,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:background="#305E5E5E"
+        android:background="@drawable/custom_input"
+        android:drawableLeft="@drawable/ic_baseline_password_24"
         android:drawablePadding="20dp"
         android:hint="Password"
         android:inputType="textPassword"
@@ -53,49 +58,48 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/loginbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_below="@id/password"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/design_default_color_secondary"
-        android:text="LOGIN" />
+        android:layout_marginTop="18dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="sans-serif-black"
+        android:text="LOGIN"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/button"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/registerbtn"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="298dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginbtn"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="23dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/design_default_color_secondary"
-        android:text="Sign Up" />
+        android:fontFamily="sans-serif-black"
+        android:text="Sign Up"
+        app:strokeColor="#00ACC1" />
 
     <TextView
         android:id="@+id/forgotpass"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_below="@id/loginbtn"
+        android:layout_below="@+id/registerbtn"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="109dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="169dp"
+        android:layout_marginBottom="215dp"
         android:text="Forgot password?"
-        android:textColor="@color/white" />
-
-
-
-
+        android:textColor="@color/button" />
 
 
 </RelativeLayout>

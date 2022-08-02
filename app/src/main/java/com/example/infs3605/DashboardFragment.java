@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -37,8 +39,9 @@ public class DashboardFragment extends Fragment {
     private PieChart pieChart;
     ArrayList barArrayList;
     private BarChart barChart;
-    private ImageView iv1, iv2;
-    private TextView tv1, tv2, tv3, tv4;
+    private LinearLayout l1,l2,l3,l4;
+    private ImageView iv1, iv2, selection;
+    private TextView tv1, tv2, tv3, tv4, title, chartTitle;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -99,6 +102,27 @@ public class DashboardFragment extends Fragment {
         tv4 = v.findViewById(R.id.tvFunding);
         iv1 = v.findViewById(R.id.shareButton);
         iv2 = v.findViewById(R.id.filterMenu);
+        title = v.findViewById(R.id.dbTitle);
+        selection = v.findViewById(R.id.dbSelect);
+        chartTitle = v.findViewById(R.id.chartTitle);
+        l1 = v.findViewById(R.id.eoiLayout);
+        l2 = v.findViewById(R.id.submitLayout);
+        l3 = v.findViewById(R.id.projectLayout);
+        l4 = v.findViewById(R.id.fundingLayout);
+
+        Animation animation= AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
+
+        title.startAnimation(animation);
+        selection.startAnimation(animation);
+        iv1.startAnimation(animation);
+        iv2.startAnimation(animation);
+        l1.startAnimation(animation);
+        l2.startAnimation(animation);
+        l3.startAnimation(animation);
+        l4.startAnimation(animation);
+        chartTitle.startAnimation(animation);
+        barChart.startAnimation(animation);
+
         selectedFilter = new boolean[filterArray.length];
         //BarDataSet barDataSet = new BarDataSet(barArrayList, "Test");
 
