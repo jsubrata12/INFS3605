@@ -2,6 +2,7 @@ package com.example.infs3605;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +23,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
+        LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
+
 
         // Initialize the text view and buttons from the xml file
         username = findViewById(R.id.registerUsername);
@@ -64,6 +67,14 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(task -> {
                 // Move onto the Homepage activity if the login credentials exist in the system
                 if (task.isSuccessful()) {
+                    loadingDialog.startLoadingAnimation();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingDialog.dismissDialog();
+                        }
+                    }, 1000);
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 // Notify user if the credentials are wrong/unmatched.
                 } else {

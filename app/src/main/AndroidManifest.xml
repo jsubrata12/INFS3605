@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.INFS3605">
         <activity
-            android:name=".SliderView"
+            android:name=".CommentActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

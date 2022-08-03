@@ -1,5 +1,6 @@
 package com.example.infs3605;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -67,7 +68,7 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_account, container, false);
-        l1 = v.findViewById(R.id.layout1);
+        l1 = v.findViewById(R.id.logout_button);
         l2 = v.findViewById(R.id.layout2);
         l3 = v.findViewById(R.id.layout3);
         l4 = v.findViewById(R.id.layout4);
@@ -82,6 +83,12 @@ public class AccountFragment extends Fragment {
         l2.startAnimation(animation);
         l3.startAnimation(animation);
         l4.startAnimation(animation);
+        l1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+            }
+        });
 
         // Inflate the layout for this fragment
         return v;

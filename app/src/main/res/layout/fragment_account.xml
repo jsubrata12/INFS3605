@@ -61,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPos"
-        app:layout_constraintVertical_bias="0.587">
+        app:layout_constraintVertical_bias="0.769">
 
         <TextView
             android:layout_width="match_parent"
@@ -75,60 +75,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout1"
-        android:layout_width="330dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="88dp"
-        android:background="@drawable/white_rectangle_background"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-            android:fontFamily="sans-serif"
-            android:gravity="left"
-            android:text="Log Out"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout2"
-        android:layout_width="330dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/white_rectangle_background"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/layout1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-            android:fontFamily="sans-serif"
-            android:gravity="left"
-            android:text="Notification preferences"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/layout3"
         android:layout_width="330dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/white_rectangle_background"
         android:gravity="center"
         android:orientation="vertical"
@@ -146,6 +96,56 @@
             android:gravity="left"
             android:text="Change password"
             android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/white_rectangle_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/logout_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:fontFamily="sans-serif"
+            android:gravity="left"
+            android:text="Notification preferences"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/logout_button"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="96dp"
+        android:background="@drawable/white_rectangle_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:fontFamily="sans-serif"
+            android:gravity="left"
+            android:text="Log Out"
+            android:textColor="#FF0000"
             android:textSize="16sp" />
     </LinearLayout>
 

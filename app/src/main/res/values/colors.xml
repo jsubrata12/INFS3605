@@ -27,5 +27,11 @@
     <color name="button">#009d9b</color>
     <color name="progressBar">#5b1d68</color>
     <color name="headings">#22252A</color>
+    <color name="bgContent">#ffffff</color>
+    <color name="contentDividerLine">#e0e0e0</color>
+    <color name="contentBadgeTitle">#a9a9a9</color>
+    <color name="titleBadgeTitle">#adafb1</color>
+    <color name="titleBadgeText">#adafb1</color>
+    <color name="mainTextColor">#343d43</color>
 
 </resources>

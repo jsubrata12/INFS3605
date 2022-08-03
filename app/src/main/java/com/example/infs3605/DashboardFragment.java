@@ -1,5 +1,8 @@
 package com.example.infs3605;
 
+import static android.animation.ValueAnimator.ofInt;
+
+import android.animation.ValueAnimator;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -103,7 +106,6 @@ public class DashboardFragment extends Fragment {
         iv1 = v.findViewById(R.id.shareButton);
         iv2 = v.findViewById(R.id.filterMenu);
         title = v.findViewById(R.id.dbTitle);
-        selection = v.findViewById(R.id.dbSelect);
         chartTitle = v.findViewById(R.id.chartTitle);
         l1 = v.findViewById(R.id.eoiLayout);
         l2 = v.findViewById(R.id.submitLayout);
@@ -113,7 +115,6 @@ public class DashboardFragment extends Fragment {
         Animation animation= AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
 
         title.startAnimation(animation);
-        selection.startAnimation(animation);
         iv1.startAnimation(animation);
         iv2.startAnimation(animation);
         l1.startAnimation(animation);
@@ -335,5 +336,6 @@ public class DashboardFragment extends Fragment {
         dataSets.add(barDataSet);
         return dataSets;
     }
+
 
 }

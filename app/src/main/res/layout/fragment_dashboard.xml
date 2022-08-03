@@ -4,91 +4,197 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#EFEFEF"
     tools:context=".DashboardFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/dbTitle"
-        android:layout_width="170dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="My Dashboard"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dbHeaderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/header_background"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-9dp">
 
-    <ImageView
-        android:id="@+id/dbSelect"
-        android:layout_width="39dp"
-        android:layout_height="39dp"
-        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/dbTitle"
-        app:layout_constraintTop_toTopOf="@+id/dbTitle" />
+        <TextView
+            android:id="@+id/dbTitle"
+            android:layout_width="170dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="16dp"
+            android:text="My Dashboard"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.619" />
 
-    <ImageView
-        android:id="@+id/shareButton"
-        android:layout_width="30dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="80dp"
-        android:src="@drawable/ic_baseline_share_24"
-        app:layout_constraintBottom_toBottomOf="@+id/dbSelect"
-        app:layout_constraintStart_toEndOf="@+id/dbSelect"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.94" />
+        <ImageView
+            android:id="@+id/shareButton"
+            android:layout_width="30dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="108dp"
+            android:src="@drawable/ic_baseline_share_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dbTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.61" />
 
-    <ImageView
-        android:id="@+id/filterMenu"
-        android:layout_width="35dp"
-        android:layout_height="37dp"
-        android:src="@drawable/ic_baseline_commit_24"
-        app:layout_constraintBottom_toBottomOf="@+id/dbSelect"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
-        app:layout_constraintStart_toEndOf="@+id/shareButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.94" />
+        <ImageView
+            android:id="@+id/filterMenu"
+            android:layout_width="35dp"
+            android:layout_height="37dp"
+            android:src="@drawable/ic_baseline_commit_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.61"
+            app:layout_constraintStart_toEndOf="@+id/shareButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.581" />
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/dashboard_barchart"
-        android:layout_width="363dp"
-        android:layout_height="155dp"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dbTitle"
-        app:layout_constraintVertical_bias="0.887" />
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/white_rectangle_background"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="25dp" />
 
-    <TextView
-        android:id="@+id/chartTitle"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/submitLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Challenge Progress"
-        app:layout_constraintBottom_toTopOf="@+id/dashboard_barchart"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/white_rectangle_background"
+        android:orientation="vertical"
+        android:paddingRight="21dp"
+        app:layout_constraintBottom_toTopOf="@+id/fundingLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/projectLayout"
-        app:layout_constraintVertical_bias="0.454" />
+        app:layout_constraintTop_toBottomOf="@+id/dbHeaderLayout"
+        app:layout_constraintVertical_bias="0.48000002">
+
+        <TextView
+            android:id="@+id/tvSP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="3213"
+            android:textColor="#009688"
+            android:textSize="48sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:text="Submitted projects " />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:padding="10dp"
+            android:text="this quarter"
+            android:textColor="#009688" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/eoiLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="200dp"
+        android:background="@drawable/white_rectangle_background"
+        android:orientation="vertical"
+        android:paddingRight="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dbHeaderLayout"
+        app:layout_constraintVertical_bias="0.07">
+
+        <TextView
+            android:id="@+id/tvEOI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="1450"
+            android:textColor="#009688"
+            android:textSize="48sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:text="EOI's submitted" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:padding="10dp"
+            android:text="this month"
+            android:textColor="#009688" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/projectLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_rectangle_background"
+        android:orientation="vertical"
+        android:paddingRight="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/fundingLayout"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eoiLayout"
+        app:layout_constraintVertical_bias="0.433">
+
+        <TextView
+            android:id="@+id/tvIP"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:padding="10dp"
+            android:text="1275"
+            android:textColor="#009688"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/tv5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Challenges in progress" />
+
+        <TextView
+            android:id="@+id/tv6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="this month"
+            android:textColor="#009688" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/fundingLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/gray_rectangle_background"
+        android:background="@drawable/white_rectangle_background"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/dashboard_barchart"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eoiLayout"
-        app:layout_constraintVertical_bias="0.274">
+        app:layout_constraintVertical_bias="0.433">
 
         <TextView
             android:id="@+id/tvFunding"
@@ -116,117 +222,34 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/submitLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/gray_rectangle_background"
+        android:id="@+id/linearLayout2"
+        android:layout_width="373dp"
+        android:layout_height="190dp"
+        android:background="@drawable/white_rectangle_background"
         android:orientation="vertical"
-        android:paddingBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/projectLayout"
+        android:paddingTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dbTitle"
-        app:layout_constraintVertical_bias="0.53">
+        app:layout_constraintTop_toBottomOf="@+id/dbHeaderLayout"
+        app:layout_constraintVertical_bias="0.854">
 
         <TextView
-            android:id="@+id/tvSP"
-            android:layout_width="match_parent"
-            android:layout_height="78dp"
-            android:padding="10dp"
-            android:text="3,213"
-            android:textColor="#009688"
-            android:textSize="48sp" />
-
-        <TextView
+            android:id="@+id/chartTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Submitted projects " />
+            android:gravity="center"
+            android:text="Challenge Progress"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="this quarter"
-            android:textColor="#009688" />
-    </LinearLayout>
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/dashboard_barchart"
+            android:layout_width="363dp"
+            android:layout_height="155dp"
+            android:layout_gravity="center">
 
-    <LinearLayout
-        android:id="@+id/eoiLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="200dp"
-        android:background="@drawable/gray_rectangle_background"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/dashboard_barchart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.369"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dbTitle"
-        app:layout_constraintVertical_bias="0.091">
+        </com.github.mikephil.charting.charts.BarChart>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:text="EOI's Submitted" />
-
-        <TextView
-            android:id="@+id/tvEOI"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="1,450"
-            android:textColor="#009688"
-            android:textSize="48sp" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:padding="10dp"
-            android:text="EOI for this month" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/projectLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gray_rectangle_background"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/dashboard_barchart"
-        app:layout_constraintEnd_toStartOf="@+id/fundingLayout"
-        app:layout_constraintHorizontal_bias="0.337"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eoiLayout"
-        app:layout_constraintVertical_bias="0.274">
-
-        <TextView
-            android:id="@+id/tvIP"
-            android:layout_width="match_parent"
-            android:layout_height="78dp"
-            android:padding="10dp"
-            android:text="1,275"
-            android:textColor="#009688"
-            android:textSize="48sp" />
-
-        <TextView
-            android:id="@+id/tv5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Projects in progress" />
-
-        <TextView
-            android:id="@+id/tv6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="this month"
-            android:textColor="#009688" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

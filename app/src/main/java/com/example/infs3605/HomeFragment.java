@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment  {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private ConstraintLayout header, trending;
+    private ConstraintLayout header, sentiment;
     private LinearLayout button, button1;
 
     // TODO: Rename and change types of parameters
@@ -71,8 +71,8 @@ public class HomeFragment extends Fragment  {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         button =  v.findViewById(R.id.layoutTest);
         button1 = v.findViewById(R.id.layoutTest2);
-        header = v.findViewById(R.id.layoutHeader);
-        trending = v.findViewById(R.id.constraintLayout);
+        header = v.findViewById(R.id.dbHeaderLayout);
+        sentiment = v.findViewById(R.id.sentimentButton);
 
         Animation animation= AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
         Animation animation2= AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
@@ -80,7 +80,7 @@ public class HomeFragment extends Fragment  {
         header.startAnimation(animation2);
         button.startAnimation(animation);
         button1.startAnimation(animation);
-        trending.startAnimation(animation);
+        sentiment.startAnimation(animation);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +94,14 @@ public class HomeFragment extends Fragment  {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SDGActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sentiment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CommentActivity.class);
                 startActivity(intent);
             }
         });
