@@ -35,8 +35,7 @@ public class CuratorMatchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.activity_curator_match);
+
 
         Intent intent = getIntent();
         solName = intent.getStringExtra(SOLUTION_NAME);

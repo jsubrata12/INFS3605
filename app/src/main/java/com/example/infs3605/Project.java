@@ -348,7 +348,8 @@ public class Project {
                 "\n" +
                 "\t• Advance the circular economy\n" +
                 "\t• Speed transition to net zero\n" +
-                "\t• Benefit nature", false, false, true, false, false, false, false, false, true, true, true, true, true, false, true, false, true,
+                "\t• Benefit nature",
+                true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true,
                 LocalDate.parse("2020-07-20"),
                 LocalDate.parse("2020-08-12"),  LocalDate.parse("2020-09-10"),
                 LocalDate.parse("2020-10-01"), LocalDate.parse("2020-10-21"), LocalDate.parse("2020-10-22"), "drawable/impactio5"));
@@ -356,8 +357,8 @@ public class Project {
                 "\n" +
                 " The challenge: How can benefits for local people be increased, strengthened, diversified, and have longer term economic viability to incentivise and reward wildlife conservation?\n" +
                 "\n" +
-                " The experiment involved fifty-five highly skilled subject matter experts from around the world working together virtually to co-curate the portfolio and ensuring the projects were the best they could be before being presented for funding.", true, true, false,false, true,
-                  false, false, false, false, true, false, false, false, true, true, false, true, LocalDate.parse("2020-10-26"),
+                " The experiment involved fifty-five highly skilled subject matter experts from around the world working together virtually to co-curate the portfolio and ensuring the projects were the best they could be before being presented for funding.",
+                true, true, false,false, true,  false, false, false, false, true, false, false, false, true, true, false, true, LocalDate.parse("2020-10-26"),
                 LocalDate.parse("2020-11-22"),  LocalDate.parse("2020-12-06"),
                 LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2021-02-21"), "drawable/impactio6"));
 
