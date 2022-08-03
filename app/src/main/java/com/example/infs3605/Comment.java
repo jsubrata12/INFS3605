@@ -7,7 +7,9 @@ import java.util.ArrayList;
 /**
  * Simple POJO model for example
  */
-@SuppressWarnings({"unused", "WeakerAccess"})
+
+// This class contains constructors, getters, and setters for the comments
+
 public class Comment {
 
   private String title;

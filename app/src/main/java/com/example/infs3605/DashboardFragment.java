@@ -1,15 +1,17 @@
 package com.example.infs3605;
 
-import static android.animation.ValueAnimator.ofInt;
-
-import android.animation.ValueAnimator;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -28,6 +31,8 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.opencsv.CSVReader;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
@@ -92,12 +97,17 @@ public class DashboardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // This view helps instantiate our elements onto the screen
         View v = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View rootView = getActivity().getWindow().getDecorView().findViewById(android.R.id.content);
+
+        // This allows a spinner to be initialized to the AlertDialog later on
         final ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_item, filterArray);
         final Spinner sp = new Spinner(getActivity());
-
         sp.setAdapter(adp);
+
+        // Initialize the variables and layout elements
         barChart = v.findViewById(R.id.dashboard_barchart);
         tv1 = v.findViewById(R.id.tvEOI);
         tv2 = v.findViewById(R.id.tvSP);
@@ -112,6 +122,7 @@ public class DashboardFragment extends Fragment {
         l3 = v.findViewById(R.id.projectLayout);
         l4 = v.findViewById(R.id.fundingLayout);
 
+        // This animates each element of the view.
         Animation animation= AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
 
         title.startAnimation(animation);
@@ -124,6 +135,7 @@ public class DashboardFragment extends Fragment {
         chartTitle.startAnimation(animation);
         barChart.startAnimation(animation);
 
+        // This instantiates the bar chart
         selectedFilter = new boolean[filterArray.length];
         //BarDataSet barDataSet = new BarDataSet(barArrayList, "Test");
 
@@ -140,6 +152,8 @@ public class DashboardFragment extends Fragment {
         //barDataSet.setValueTextColor(Color.BLACK);
        // barDataSet.setValueTextSize(16f);
         // barChart.getDescription().setEnabled(true);
+
+        // This will move on data from the sample csv file onto the screen
         try {
             CSVReader reader = new CSVReader(new InputStreamReader(getResources().openRawResource(R.raw.qualitative)));
             String[] nextLine;
@@ -152,25 +166,20 @@ public class DashboardFragment extends Fragment {
             e.printStackTrace();
         }
 
-
+        // This will share the screen to social media platforms
         iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                String body = "Download this App";
-                String sub = "http://play.google.com";
-                intent.putExtra(Intent.EXTRA_TEXT, body);
-                intent.putExtra(Intent.EXTRA_TEXT, sub);
-                startActivity(Intent.createChooser(intent, "ShareVia"));
+                Bitmap bm = getScreenShot(rootView);
+                shareImage(store(bm,"screenshot"));
+
 
             }
 
         });
-        iv2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+        // This instantiates the alert dialog for filtering quarters (adapted from: https://www.youtube.com/watch?v=Bb8SgfI4Cm4)
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Filter List");
                 builder.setMessage("Specify quarter");
@@ -245,9 +254,17 @@ public class DashboardFragment extends Fragment {
                         dialogInterface.dismiss();
                     }
                 });
-                builder.create().show();
-            }
-        });
+
+                // To make sure there is only one instance of Alert Dialog place it outside the onClick class
+                // adapted from: https://stackoverflow.com/questions/41347744/android-dialog-error-the-specified-child-already-has-a-parent-you-must-call-rem
+                AlertDialog alertDialog = builder.create();
+
+                iv2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertDialog.show();
+                    }
+                });
         // Inflate the layout for this fragment
         return v;
     }
@@ -265,6 +282,7 @@ public class DashboardFragment extends Fragment {
         return xAxis;
     }
 
+    // This instantiates bar chart data for each quarter
     private ArrayList<BarDataSet> getData() throws ParseException {
         ArrayList<BarDataSet> dataSets = null;
         ArrayList<BarEntry> barArrayList = new ArrayList<>();
@@ -337,5 +355,44 @@ public class DashboardFragment extends Fragment {
         return dataSets;
     }
 
+    public static Bitmap getScreenShot(View view) {
+        View screenView = view.getRootView();
+        screenView.setDrawingCacheEnabled(true);
+        Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
+        screenView.setDrawingCacheEnabled(false);
+        return bitmap;
+    }
+
+    public static File store(Bitmap bm, String fileName){
+        final String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Screenshots";
+        File dir = new File(dirPath);
+        if(!dir.exists())
+            dir.mkdirs();
+        File file = new File(dirPath, fileName);
+        try {
+            FileOutputStream fOut = new FileOutputStream(file);
+            bm.compress(Bitmap.CompressFormat.PNG, 85, fOut);
+            fOut.flush();
+            fOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dir;
+    }
+    private void shareImage(File file){
+        Uri uri = FileProvider.getUriForFile(getContext(), getContext().getApplicationContext().getPackageName() + ".provider", file);;
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("image/*");
+
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        try {
+            startActivity(Intent.createChooser(intent, "Share Screenshot"));
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(getContext(), "No App Available", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }

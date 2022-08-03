@@ -68,6 +68,8 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_account, container, false);
+
+        // This instantiates the layout elements into their respective varaibles
         l1 = v.findViewById(R.id.logout_button);
         l2 = v.findViewById(R.id.layout2);
         l3 = v.findViewById(R.id.layout3);
@@ -75,6 +77,8 @@ public class AccountFragment extends Fragment {
         iv1= v.findViewById(R.id.profilePic);
         tv1 = v.findViewById(R.id.tvFullName);
         tv2 = v.findViewById(R.id.tvPos);
+
+        // This animates the elements of the layout
         Animation animation= AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
         iv1.startAnimation(animation);
         tv1.startAnimation(animation);

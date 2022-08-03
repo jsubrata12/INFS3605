@@ -32,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        // By default set the fragment to Home
         replaceFragment(new HomeFragment());
 
+        // As each item is selected from the bottom navigation bar switch fragments
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menuHome:
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Method to replace fragment (adapted from:https://www.youtube.com/watch?v=Bb8SgfI4Cm4)
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

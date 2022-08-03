@@ -28,6 +28,7 @@ public class CommentActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
 
+        // Instantiate the RecyclerView and LayoutManager
         mRecyclerView = findViewById(R.id.rvComment);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -37,6 +38,7 @@ public class CommentActivity extends AppCompatActivity{
         adapter = new CommentAdapter(this);
         mRecyclerView.setAdapter(adapter);
 
+        // Add in data samples onto the list
         ArrayList<Comment> list = new ArrayList<>();
         list.add(new Comment("Jim Sample (Project:Fashion...", "Very good, but needs quite a bit of work", R.drawable.curator1,"7.5/10"));
         list.add(new Comment("Jane Test (Project: Innovate..)", "I think this might need to be reconsidered", R.drawable.curator2,"7.3/10"));

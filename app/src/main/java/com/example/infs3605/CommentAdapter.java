@@ -1,6 +1,7 @@
 package com.example.infs3605;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ItemView
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
     Comment comments = commentArrayList.get(position);
-
+    // Instantiate the elements of the listview on CommentActivity and put them on their respective layout element
     holder.tvTitle.setText(comments.getTitle());
     holder.tvContent.setText(comments.getContent());
     holder.imageView.setImageResource(comments.getImageView());
@@ -54,6 +55,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ItemView
     holder.foldingCell.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            // Folding cell by default is closed unless clicked on
             holder.foldingCell.toggle(false);
         }
     });
@@ -72,6 +74,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ItemView
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            // Instantiate the elements from the comment_list_row onto the adapter.
             foldingCell = itemView.findViewById(R.id.folding_cell);
             tvTitle= itemView.findViewById(R.id.tv_title);
             tvContent = itemView.findViewById(R.id.tv_content);
@@ -81,4 +84,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ItemView
         }
     }
 
-}
+
+    }
+

@@ -69,11 +69,14 @@ public class HomeFragment extends Fragment  {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+        // Instantiate the elements of the layout
         button =  v.findViewById(R.id.layoutTest);
         button1 = v.findViewById(R.id.layoutTest2);
         header = v.findViewById(R.id.dbHeaderLayout);
         sentiment = v.findViewById(R.id.sentimentButton);
 
+        // This animates each of the elements in the layout
         Animation animation= AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
         Animation animation2= AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
 
@@ -82,6 +85,7 @@ public class HomeFragment extends Fragment  {
         button1.startAnimation(animation);
         sentiment.startAnimation(animation);
 
+        // This moves the user to the project activity when the layout tile is touched
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,6 +94,7 @@ public class HomeFragment extends Fragment  {
             }
         });
 
+        // This moves the user to the SDG activity when the layout tile is touched
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,6 +103,7 @@ public class HomeFragment extends Fragment  {
             }
         });
 
+        // This moves the user to the COMMENTS activity when the layout tile is touched
         sentiment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,14 +113,5 @@ public class HomeFragment extends Fragment  {
         });
 
         return v;
-    }
-    private void replaceFragment(){
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        AccountFragment fragment2 = new AccountFragment();
-        fragmentTransaction.addToBackStack("xyz");
-        fragmentTransaction.hide(HomeFragment.this);
-        fragmentTransaction.add(android.R.id.content, fragment2);
-        fragmentTransaction.commit();
     }
 }
