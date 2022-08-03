@@ -42,7 +42,7 @@ public class ProjectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_project);
         // Link the RecyclerView to its xml item and set LayoutManager
         projRV = findViewById(R.id.projectRV);
         projRV.setHasFixedSize(true);

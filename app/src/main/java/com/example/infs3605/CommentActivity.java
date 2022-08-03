@@ -38,11 +38,11 @@ public class CommentActivity extends AppCompatActivity{
         mRecyclerView.setAdapter(adapter);
 
         ArrayList<Comment> list = new ArrayList<>();
-        list.add(new Comment("Jim Sample", "Very good, but needs quite a bit of work", R.drawable.curator1,"7.5/10"));
-        list.add(new Comment("Jane Test", "I think this might need to be reconsidered", R.drawable.curator2,"7.3/10"));
-        list.add(new Comment("Jepp Dhonny", "I think that this is good, but it can still be better", R.drawable.curator3,"7.1/10"));
-        list.add(new Comment("Bustin Jiever", " Very good keep up the good work", R.drawable.curator4,"8.5/10"));
-        list.add(new Comment("Bruno Earth", "Excellent, I think you did very well", R.drawable.curator5,"9/10"));
+        list.add(new Comment("Jim Sample (Project:Fashion...", "Very good, but needs quite a bit of work", R.drawable.curator1,"7.5/10"));
+        list.add(new Comment("Jane Test (Project: Innovate..)", "I think this might need to be reconsidered", R.drawable.curator2,"7.3/10"));
+        list.add(new Comment("Jepp Dhonny (Project: Innovate..)", "I think that this is good, but it can still be better", R.drawable.curator3,"7.1/10"));
+        list.add(new Comment("Bustin Jiever (Project: Bushfire..)", " Very good keep up the good work", R.drawable.curator4,"8.5/10"));
+        list.add(new Comment("Bruno Earth (Project: Bushfire..)", "Excellent, I think you did very well", R.drawable.curator5,"9/10"));
 
         adapter.setData(list);
     }

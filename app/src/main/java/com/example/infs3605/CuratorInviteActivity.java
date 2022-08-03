@@ -36,6 +36,7 @@ public class CuratorInviteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_invite_curator);
 
         Intent intent = getIntent();
         String curatorID = intent.getStringExtra(INTENT_MESSAGE);

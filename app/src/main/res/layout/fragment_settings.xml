@@ -38,14 +38,15 @@
         android:id="@+id/layout2"
         android:layout_width="330dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="436dp"
         android:background="@drawable/white_rectangle_background"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="236dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:layout_width="match_parent"
@@ -62,7 +63,7 @@
         android:id="@+id/layout3"
         android:layout_width="330dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="43dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/white_rectangle_background"
         android:gravity="center"
         android:orientation="vertical"

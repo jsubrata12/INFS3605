@@ -30,6 +30,7 @@ public class SolutionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_solutions);
 
         Intent intent = getIntent();
         projName = intent.getStringExtra(PROJ_NAME);

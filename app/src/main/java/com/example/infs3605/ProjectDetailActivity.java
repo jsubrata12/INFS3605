@@ -41,7 +41,6 @@ public class ProjectDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_project_detail);
 
         group = findViewById(R.id.group);
