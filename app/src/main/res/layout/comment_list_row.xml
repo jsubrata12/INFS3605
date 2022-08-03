@@ -16,7 +16,7 @@
             android:id="@+id/cell_content_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/contentBadgeTitle"
+            android:background="#EFEFEF"
             android:visibility="gone">
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
                     android:layout_height="250dp"
                     android:gravity="center"
                     android:text="Content View"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <TextView
@@ -38,7 +38,7 @@
                     android:layout_below="@id/tv_content"
                     android:gravity="center"
                     android:text="Sentiment Score:"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <TextView
@@ -51,7 +51,7 @@
                     android:layout_marginTop="0dp"
                     android:gravity="center"
                     android:text="8/10"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
             </RelativeLayout>
         </FrameLayout>

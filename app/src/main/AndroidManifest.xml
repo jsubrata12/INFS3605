@@ -13,7 +13,7 @@
             android:name=".AddSubtaskActivity"
             android:exported="false" />
         <activity
-            android:name=".SliderView"
+            android:name=".CommentActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
