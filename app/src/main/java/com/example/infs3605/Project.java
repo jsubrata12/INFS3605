@@ -327,7 +327,6 @@ public class Project {
                  false, false, false, false, true, false, false, false, false, false, true, false, true,
                  false, false, LocalDate.parse("2022-03-31"), LocalDate.parse("2022-04-28"), LocalDate.parse("2022-04-29"),
                  LocalDate.parse("2022-06-07"), LocalDate.parse("2022-05-22"), LocalDate.parse("2022-06-08"), "drawable/impactio2"));
-    //    projects.add(new Project("Cities of Tomorrow"));
         projects.add(new Project("Bushfire Regeneration Challenge", "In 2019-20 " +
                 "Australia experienced the most catastrophic bushfire season in the country’s history, " +
                 "and the impacts will be felt for years to come. " +
@@ -344,15 +343,24 @@ public class Project {
                 true, true, true, true, true, true, true, false, true,
                 LocalDate.parse("2020-10-26"),
                 LocalDate.parse("2020-11-22"),  LocalDate.parse("2020-12-06"),
-                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2021-02-21"), "drawable/impactio2"));
-        projects.add(new Project("Sustainability Advantage Impact Challenge", "Placeholder", true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true,
-                LocalDate.parse("2020-10-26"),
+                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2021-02-21"), "drawable/impactio4"));
+        projects.add(new Project("Sustainability Advantage Impact Challenge", "We are seeking projects that offer smarter, faster ways to make real progress on the United Nations Sustainable Development Goals and transform the way we do business in NSW. Our mission is to solve wicked sustainability problems to: \n" +
+                "\n" +
+                "\t• Advance the circular economy\n" +
+                "\t• Speed transition to net zero\n" +
+                "\t• Benefit nature",
+                true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true,
+                LocalDate.parse("2020-07-20"),
+                LocalDate.parse("2020-08-12"),  LocalDate.parse("2020-09-10"),
+                LocalDate.parse("2020-10-01"), LocalDate.parse("2020-10-21"), LocalDate.parse("2020-10-22"), "drawable/impactio5"));
+        projects.add(new Project("Innovate for Wildlife & People Challenge", "There is an increasing realization that wildlife conservation needs to be inclusive. For communities to choose wildlife management on their land, they need to be actively involved, and directly or indirectly obtain social, economic and/or cultural benefits from that wildlife. A need exists for innovative, integrated yet practical approaches and solutions with potential to go to scale.\n" +
+                "\n" +
+                " The challenge: How can benefits for local people be increased, strengthened, diversified, and have longer term economic viability to incentivise and reward wildlife conservation?\n" +
+                "\n" +
+                " The experiment involved fifty-five highly skilled subject matter experts from around the world working together virtually to co-curate the portfolio and ensuring the projects were the best they could be before being presented for funding.",
+                true, true, false,false, true,  false, false, false, false, true, false, false, false, true, true, false, true, LocalDate.parse("2020-10-26"),
                 LocalDate.parse("2020-11-22"),  LocalDate.parse("2020-12-06"),
-                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2021-02-21"), "drawable/impactio2"));
-        projects.add(new Project("Innovate for Wildlife & People Challenge", "Placeholder", true, true, false,false, true,
-                  false, false, false, false, true, false, false, false, true, true, false, true, LocalDate.parse("2020-10-26"),
-                LocalDate.parse("2020-11-22"),  LocalDate.parse("2020-12-06"),
-                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2021-02-21"), "drawable/impactio2"));
+                LocalDate.parse("2020-12-07"), LocalDate.parse("2020-12-20"), LocalDate.parse("2021-02-21"), "drawable/impactio6"));
 
         return projects;
     }

@@ -448,7 +448,7 @@ public class CuratorProfile {
         ArrayList<CuratorProfile> curatorProfiles = new ArrayList<>();
 
         curatorProfiles.add(new CuratorProfile("Anorah Test", "sample@sample.com",
-                "Sydney", "Not Available", "Not Available", false, false,
+                "Sydney", "Anorah Test opens the line of communication between clients, customers, and businesses to get projects done.", "Not Available", false, false,
                 false, false, false, false, false, false, true,
                 true, true, false, true, true, true, true, false, true, true, true, true, true,
                 false, false, false, false, false, false, "drawable/curator1"));
@@ -456,39 +456,33 @@ public class CuratorProfile {
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, true, false, false, true,
                 false, true, true, true, true, true, true, false, true, false, true, true, true, true, true,
-                true, true, true, true, "drawable/curator1"));
-        curatorProfiles.add(new CuratorProfile("Zara Wild", "zara@sample.com", "Sydney", "Josephine Sample opens the line of " +
-                "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
+                true, true, true, true, "drawable/curator2"));
+        curatorProfiles.add(new CuratorProfile("Zara Wild", "zara@sample.com", "Sydney", "Zara Wild opens the line of " +
+                "communication between clients, customers, and businesses to get projects done.", "HSBC",
                 false, false, false, false, false, true, false, false, false,
                 false, true, false, false, false, false, false, false, false, false, true, true, true, false,
-                false, false, false, false, false, "drawable/curator1"));
-        curatorProfiles.add(new CuratorProfile("Phone Sample", "phone@sample.com", "Sydney", "Josephine Sample opens the line of " +
+                false, false, false, false, false, "drawable/curator3"));
+        curatorProfiles.add(new CuratorProfile("Phone Sample", "phone@sample.com", "Sydney", "Phone Sample opens the line of " +
                 "communication between clients, customers, and businesses to get projects done.", "Free Lance Consultant",
                 false, false, false, false, false, false, false, false, true,
                 false, false, false, true, true, false, true, false, true, false, false, false, false, true, true,
-                false, false, false, false, "drawable/curator1"));
-        curatorProfiles.add(new CuratorProfile("Viann Landry", "sample3@sample.com", "Perth", " ", " ",  false, false, false, false, false, true,
-                false, false, false, false, false, false, true, false, false, false, true, true, false, false, false, false, true, true,
-                false, false, false, false, "drawable/curator1"));
+                false, false, false, false, "drawable/curator4"));
         curatorProfiles.add(new CuratorProfile("Danniella Compton", "sample4@sample.com", "Wollongong", "Danniella Compton opens the line of" +
                 " communication between clients, customers, and businesses to get projects done.", "HSBC", false, false, false,
                 false, false, false, false, false, false, false, false, false, true, true, true, false, true, true, false, false, false, false, true, true,
-                false, false, false, false, "drawable/curator1"));
-        curatorProfiles.add(new CuratorProfile("Elize Traynor", "sample5@sample.com", "Melbourne", " ", " ", false, true, false, true, true, false,
+                false, false, false, false, "drawable/curator5"));
+        curatorProfiles.add(new CuratorProfile("Elize Traynor", "sample5@sample.com", "Melbourne", "Elize Traynor opens the line of communication between clients, customers, and businesses to get projects done ", "HSBC", false, true, false, true, true, false,
                 false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
-        false, false, true, true, true, true, true, "drawable/curator1"));
-        curatorProfiles.add(new CuratorProfile("Lilianna Steadman", "sample6@sample.com", "Brisbane", " ", " ", false,
+        false, false, true, true, true, true, true, "drawable/curator6"));
+        curatorProfiles.add(new CuratorProfile("Lilianna Steadman", "sample6@sample.com", "Brisbane", "Lilianna Steadman opens the line of communication between clients, customers, and businesses to get projects done", "Free Lance Consultant", false,
                 false, false, false, false, false, false, true, true, true, false, false, false, false,
                 false, false, false, true, false, false, false, false, true, false, false, false, false, true, "drawable/curator1"));
-        curatorProfiles.add(new CuratorProfile("Karson Vaughn", "sample7@sample.com", "Adelaide", " ", " ", false, false, false, false, true, false,
-                false, false, false, false, false, true, true, false, false, false, false, false, false, false, false, true,
-        true, false, true, true, true, false, "drawable/curator1"));
-        curatorProfiles.add(new CuratorProfile("Marcus Dowling", "sample8@sample.com", "Canberra", " ", " ", false, false, false,
+        curatorProfiles.add(new CuratorProfile("Marcus Dowling", "sample8@sample.com", "Canberra", "Marcus Dowling opens the line of communication between clients, customers, and businesses to get projects done", "HSBC", false, false, false,
                 false, false, false, false, false, false, false, false, false, true, true, true, false, false, true, false,
-        true, false, true, true, false, false, false, true, true, "drawable/curator1"));
-        curatorProfiles.add(new CuratorProfile("Gail Gallagher", "sample9@sample.com", "Darwin", " ", " ", false, false,
+        true, false, true, true, false, false, false, true, true, "drawable/curator7"));
+        curatorProfiles.add(new CuratorProfile("Gail Gallagher", "sample9@sample.com", "Darwin", "Gail Gallagher opens the line of communication between clients, customers, and businesses to get projects done", "Free Lance Consultant", false, false,
                 false, false, false, false, false, false, false, false, false, true, false, false, false, true,
-                true, false, true, false, true, false, true, true, false, true, false, false, "drawable/curator1"));
+                true, false, true, false, true, false, true, true, false, true, false, false, "drawable/curator8"));
         return curatorProfiles;
     }
 

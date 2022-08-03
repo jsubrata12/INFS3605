@@ -1,8 +1,10 @@
 package com.example.infs3605;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.RequiresApi;
@@ -28,8 +30,6 @@ public class SolutionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.activity_solutions);
 
         Intent intent = getIntent();
         projName = intent.getStringExtra(PROJ_NAME);
@@ -37,7 +37,7 @@ public class SolutionsActivity extends AppCompatActivity {
         curName = intent.getStringExtra(CURATOR_NAME);
         CuratorProfile cp = CuratorProfile.getCuratorProfile(curName);
 
-        System.out.println(cp.getCuratorName());
+//        System.out.println(cp.getCuratorName());
 
         // Link the RecyclerView to its xml item and set LayoutManager
         solutionsRV = findViewById(R.id.solutionsRV);
@@ -70,7 +70,7 @@ public class SolutionsActivity extends AppCompatActivity {
 
             sAdapter = new SolutionsAdapter((ArrayList<Solutions>) solutionsArrayList, SolutionsActivity.this, clickListener);
             solutionsRV.setAdapter(sAdapter);
-            }
+        }
 
         Collections.sort(solutionsArrayList, new Comparator<Solutions>() {
             @Override
@@ -79,11 +79,11 @@ public class SolutionsActivity extends AppCompatActivity {
             }
         });
         sAdapter.notifyDataSetChanged();
-        }
+    }
 
-        public void launchDetailActivity (String name){
-            Intent intent = new Intent(SolutionsActivity.this, CuratorMatchActivity.class);
-            intent.putExtra(CuratorMatchActivity.SOLUTION_NAME, name);
-            startActivity(intent);
-        }
+    public void launchDetailActivity(String name) {
+        Intent intent = new Intent(SolutionsActivity.this, CuratorMatchActivity.class);
+        intent.putExtra(CuratorMatchActivity.SOLUTION_NAME, name);
+        startActivity(intent);
+    }
 }

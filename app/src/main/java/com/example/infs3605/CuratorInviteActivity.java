@@ -36,8 +36,6 @@ public class CuratorInviteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.activity_invite_curator);
 
         Intent intent = getIntent();
         String curatorID = intent.getStringExtra(INTENT_MESSAGE);
@@ -130,19 +128,20 @@ public class CuratorInviteActivity extends AppCompatActivity {
             @Override
             public void run() {
                 cpsDB = CuratorProjectStatusDatabase.getInstance(CuratorInviteActivity.this);
-                    if (cpsDB.curatorProjectStatusDao().isRowIsExist(cp.getCuratorName(), sol.getSolutionName(), "Invited")) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                invitedBtn.setVisibility(View.VISIBLE);
-                                invitedBtn.setClickable(false);
-                                inviteBtn.setVisibility(View.GONE);
-                            }
+                if (cpsDB.curatorProjectStatusDao().isRowIsExist(cp.getCuratorName(), sol.getSolutionName(), "Invited")) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            invitedBtn.setVisibility(View.VISIBLE);
+                            invitedBtn.setClickable(false);
+                            inviteBtn.setVisibility(View.GONE);
+                        }
                     });
                 }
             }
         });
     }
+
     private void curatorInviteStatus() {
         CuratorProjectStatusDatabase cpsDatabase = CuratorProjectStatusDatabase.getInstance(CuratorInviteActivity.this);
         List<CuratorProjectStatus> curatorProjectStatusList = cpsDatabase.curatorProjectStatusDao().getUser(curatorID);
@@ -150,19 +149,6 @@ public class CuratorInviteActivity extends AppCompatActivity {
             result.setText(String.valueOf(cps.getProjectStatus()));
         }
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(CuratorInviteActivity.this, CuratorMatchActivity.class);
-            intent.putExtra(CuratorMatchActivity.SOLUTION_NAME, solutionsID);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
-
-
-
 
 

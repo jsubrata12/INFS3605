@@ -24,7 +24,6 @@ public class SDG {
 
     public static ArrayList<SDG> getSDG(){
         ArrayList<SDG> sdgs = new ArrayList<>();
-        sdgs.add(new SDG(""));
         sdgs.add(new SDG("No Poverty"));
         sdgs.add(new SDG("Zero Hunger"));
         sdgs.add(new SDG("Good Health and Well-being"));
