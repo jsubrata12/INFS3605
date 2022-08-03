@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +27,8 @@ public class SettingsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private TextView title;
+    private LinearLayout l1,l2,l3;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -59,6 +65,19 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        View v = inflater.inflate(R.layout.fragment_settings, container, false);
+        title = v.findViewById(R.id.settingTitle);
+        l1 = v.findViewById(R.id.prSet);
+        l2 = v.findViewById(R.id.peSet);
+        l3 = v.findViewById(R.id.paSet);
+
+        // This starts the animation
+        Animation animation= AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
+        title.startAnimation(animation);
+        l1.startAnimation(animation);
+        l2.startAnimation(animation);
+        l3.startAnimation(animation);
+
+        return v;
     }
 }

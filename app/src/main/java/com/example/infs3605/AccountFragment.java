@@ -71,9 +71,9 @@ public class AccountFragment extends Fragment {
 
         // This instantiates the layout elements into their respective varaibles
         l1 = v.findViewById(R.id.logout_button);
-        l2 = v.findViewById(R.id.layout2);
-        l3 = v.findViewById(R.id.layout3);
-        l4 = v.findViewById(R.id.layout4);
+        l2 = v.findViewById(R.id.paSet);
+        l3 = v.findViewById(R.id.peSet);
+        l4 = v.findViewById(R.id.prSet);
         iv1= v.findViewById(R.id.profilePic);
         tv1 = v.findViewById(R.id.tvFullName);
         tv2 = v.findViewById(R.id.tvPos);

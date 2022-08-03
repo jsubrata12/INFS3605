@@ -18,13 +18,17 @@ public class PreLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Hide the action bar when not needed
         getSupportActionBar().hide();
         setContentView(R.layout.activity_pre_login);
         btn = findViewById(R.id.startBtn);
         logo = findViewById(R.id.logo);
+
+        // These start the animations (source:https://www.youtube.com/watch?v=fqU4zc_XeX0)
         Animation animation=AnimationUtils.loadAnimation(this, R.anim.fadein);
         Animation animation2 =AnimationUtils.loadAnimation(this, R.anim.fadein);
         logo.startAnimation(animation);
+        // Slight delay for second animation
         try {
             Thread.sleep(10000);
             btn.startAnimation((animation2));

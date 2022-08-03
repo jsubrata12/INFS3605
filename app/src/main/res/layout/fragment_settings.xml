@@ -8,20 +8,20 @@
     tools:context=".AccountFragment">
 
     <LinearLayout
-        android:id="@+id/layout4"
+        android:id="@+id/prSet"
         android:layout_width="330dp"
         android:layout_height="60dp"
         android:background="@drawable/white_rectangle_background"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/layout3"
+        app:layout_constraintBottom_toTopOf="@+id/peSet"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
 
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.459">
+        app:layout_constraintVertical_bias="0.825">
 
         <TextView
             android:layout_width="match_parent"
@@ -35,10 +35,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout2"
+        android:id="@+id/paSet"
         android:layout_width="330dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="436dp"
+        android:layout_marginBottom="368dp"
         android:background="@drawable/white_rectangle_background"
         android:gravity="center"
         android:orientation="vertical"
@@ -60,15 +60,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout3"
+        android:id="@+id/peSet"
         android:layout_width="330dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/white_rectangle_background"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/layout2"
+        app:layout_constraintBottom_toTopOf="@+id/paSet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent">
@@ -83,5 +83,20 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/settingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="Settings"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/prSet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.781" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
