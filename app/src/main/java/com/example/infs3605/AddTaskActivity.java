@@ -1,7 +1,10 @@
 package com.example.infs3605;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Build;
@@ -9,6 +12,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,6 +28,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private String taskName;
     private LocalDate dueDate;
     private String description;
+    private long taskIdCount;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -71,11 +81,26 @@ public class AddTaskActivity extends AppCompatActivity {
             description = mDesc.getText().toString();
         }
 
-        if (taskName != null && dueDate != null && mDesc != null) {
-            ArrayList<Task> newTaskList = Task.addTask(new Task(taskName, LocalDate.now(), dueDate, description));
+        if (taskName != null && dueDate != null && description != null) {
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Task");
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    taskIdCount = snapshot.getChildrenCount() + 1;
+                }
 
-            Intent intent = new Intent(this, FavoriteFragment.class);
-            startActivity(intent);
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            Task newTask = new Task((int) taskIdCount, taskName, dueDate.toString(), LocalDate.now().toString(), description);
+            reference.child("task" + taskIdCount).setValue(newTask);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_layout, new FavoriteFragment());
+            fragmentTransaction.commit();
         }
     }
 }

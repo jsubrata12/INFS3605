@@ -2,10 +2,12 @@ package com.example.infs3605;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +19,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FavoriteFragment#newInstance} factory method to
@@ -26,6 +36,7 @@ public class FavoriteFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private FavoriteAdapter mFavoriteAdapter;
     public static final String EXTRA_MESSAGE = "favorite fragment";
+    private ArrayList<Task> tasks;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,6 +69,7 @@ public class FavoriteFragment extends Fragment {
         return fragment;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +105,33 @@ public class FavoriteFragment extends Fragment {
             }
         });
 
-        mFavoriteAdapter = new FavoriteAdapter(Task.getTasks(), listener);
+        DatabaseReference referenceTask = FirebaseDatabase.getInstance().getReference("Task");
+        tasks = new ArrayList<>();
+        mFavoriteAdapter = new FavoriteAdapter(tasks, listener);
+        referenceTask.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tasks.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+
+                    Task task = dataSnapshot.getValue(Task.class);
+                    if (!task.isCompleted()) {
+                        tasks.add(task);
+                    }
+
+                }
+
+                mFavoriteAdapter.notifyDataSetChanged();
+                System.out.println(tasks);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
         mRecyclerView.setAdapter(mFavoriteAdapter);
         return v;
     }

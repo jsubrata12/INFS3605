@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.INFS3605">
         <activity
-            android:name=".CommentActivity"
+            android:name=".AddSubtaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SliderView"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

@@ -12,42 +12,51 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
+import com.google.firebase.database.Exclude;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 @Entity(tableName = "Tasks")
 public class Task {
-    private static ArrayList<Task> tasks;
-    @PrimaryKey(autoGenerate = true)
-    @NonNull
+    static ArrayList<Task> tasks = new ArrayList<>();
+
+    @SerializedName("taskId")
+    @Expose
     private int taskId;
 
-    @ColumnInfo(name = "TaskName")
+    @SerializedName("name")
+    @Expose
     private String name;
 
-    @ColumnInfo(name = "DueDate")
-    private LocalDate dueDate;
+    @SerializedName("dueDate")
+    @Expose
+    private String dueDate;
 
-    @ColumnInfo(name = "DateCreated")
-    private LocalDate dateCreated;
+    @SerializedName("dateCreated")
+    @Expose
+    private String dateCreated;
 
-    @ColumnInfo(name = "TaskDescription")
+    @SerializedName("description")
+    @Expose
     private String description;
 
-    @ColumnInfo(name = "Completed")
+    @SerializedName("completed")
+    @Expose
     private boolean completed;
 
-    @ColumnInfo(name = "SubTasks")
-    private ArrayList<String> subtasks;
-
-    private int idCount = 0;
-
-    public Task(String name, LocalDate dueDate, LocalDate dateCreated, String description) {
-        this.taskId = idCount++;
+    public Task(int id, String name, String dueDate, String dateCreated, String description) {
+        this.taskId = id;
         this.name = name;
         this.dueDate = dueDate;
         this.dateCreated = dateCreated;
         this.description = description;
         this.completed = false;
-        this.subtasks = new ArrayList<>();
     }
+
+    public Task() {
+
+    }
+
 
     public int getTaskId() {
         return taskId;
@@ -65,19 +74,19 @@ public class Task {
         this.name = name;
     }
 
-    public LocalDate getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public LocalDate getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(LocalDate dateCreated) {
+    public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 
@@ -96,70 +105,85 @@ public class Task {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
-
-    public ArrayList<String> getSubtasks() {
-        return subtasks;
-    }
-
-    public void setSubtasks(ArrayList<String> subtasks) {
-        this.subtasks = subtasks;
-    }
-
+//
+//    @Exclude
+//    public ArrayList<String> getSubtasks() {
+//        return subtasks;
+//    }
+//
+//    @Exclude
+//    public void setSubtasks(ArrayList<String> subtasks) {
+//        this.subtasks = subtasks;
+//    }
+//
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String getDueFromNow() {
-        Long days = ChronoUnit.DAYS.between(LocalDate.now(),dueDate);
+        Long days = ChronoUnit.DAYS.between(LocalDate.now(),LocalDate.parse(dueDate));
         return "Due in " + days + " day(s)";
     }
+//
+//    @Exclude
+//    @RequiresApi(api = Build.VERSION_CODES.O)
+//    public static void initialiseTaskList() {
+////        ArrayList<Task> tasks = new ArrayList<>();
+//        Task task1 = new Task(0,"Follow up with Jenny on project", LocalDate.parse("2022-08-22"),
+//                LocalDate.parse("2022-07-01"),"Follow up and discuss details of the project");
+//        task1.getSubtasks().add("Email Jenny");
+//        task1.getSubtasks().add("Book meeting with Jenny");
+//        tasks.add(task1);
+//
+//        Task task2 = new Task(1,"Complete xyz", LocalDate.parse("2022-08-30"),
+//                LocalDate.parse("2022-06-21"),"Complete tasks from project and discuss with manager");
+//        task2.getSubtasks().add("Complete Task xyz");
+//        task2.getSubtasks().add("Complete Task abc");
+//        task2.getSubtasks().add("Schedule meeting with manager");
+//        tasks.add(task2);
+//
+//        Task task3 = new Task(2,"Run report with this month's metrics", LocalDate.parse("2022-08-15"),
+//                LocalDate.parse("2022-06-30"),"Run report for Tom");
+//        task3.getSubtasks().add("Run report");
+//        task3.getSubtasks().add("Email Tom");
+//        tasks.add(task3);
+//
+//        Task task4 = new Task(3,"Create team dashboard", LocalDate.parse("2022-08-02"),
+//                LocalDate.parse("2022-07-15"),"Create a team dashboard and share with Sam and Amy.");
+//        task4.getSubtasks().add("Create dashboard with xyz metrics");
+//        task4.getSubtasks().add("Share dashboard with Sam and Amy");
+//        task4.getSubtasks().add("Get feedback from Sam and Amy");
+//        tasks.add(task4);
+//    }
+//
+//    @Exclude
+//    @RequiresApi(api = Build.VERSION_CODES.O)
+//    public static void addTask(Task task) {
+//        tasks.add(task);
+//    }
+//
+//    @Exclude
+//    public static ArrayList<Task> getTasks() {
+//        return tasks;
+//    }
+//
+//    @Exclude
+//    @RequiresApi(api = Build.VERSION_CODES.O)
+//    public static Task findTask(String taskId) {
+//        System.out.println(Integer.parseInt(taskId));
+//        for (Task task : getTasks()) {
+//            if (task.getTaskId() == Integer.parseInt(taskId)) {
+//                return task;
+//            }
+//        }
+//
+//        return null;
+//    }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public static ArrayList<Task> getTasks() {
-//        ArrayList<Task> tasks = new ArrayList<>();
-        tasks = new ArrayList<>();
-        Task task1 = new Task("Follow up with Jenny on project", LocalDate.parse("2022-08-22"),
-                LocalDate.parse("2022-07-01"),"Follow up and discuss details of the project");
-        task1.getSubtasks().add("Email Jenny");
-        task1.getSubtasks().add("Book meeting with Jenny");
-        tasks.add(task1);
-
-        Task task2 = new Task("Complete xyz", LocalDate.parse("2022-08-30"),
-                LocalDate.parse("2022-06-21"),"Complete tasks from project and discuss with manager");
-        task2.getSubtasks().add("Complete Task xyz");
-        task2.getSubtasks().add("Complete Task abc");
-        task2.getSubtasks().add("Schedule meeting with manager");
-        tasks.add(task2);
-
-        Task task3 = new Task("Run report with this month's metrics", LocalDate.parse("2022-08-15"),
-                LocalDate.parse("2022-06-30"),"Run report for Tom");
-        task3.getSubtasks().add("Run report");
-        task3.getSubtasks().add("Email Tom");
-        tasks.add(task3);
-
-        Task task4 = new Task("Create team dashboard", LocalDate.parse("2022-08-02"),
-                LocalDate.parse("2022-07-15"),"Create a team dashboard and share with Sam and Amy.");
-        task4.getSubtasks().add("Create dashboard with xyz metrics");
-        task4.getSubtasks().add("Share dashboard with Sam and Amy");
-        task4.getSubtasks().add("Get feedback from Sam and Amy");
-        tasks.add(task4);
-        return tasks;
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public static ArrayList<Task> addTask(Task task) {
-        ArrayList<Task> updatedTasks = getTasks();
-        updatedTasks.add(task);
-        return updatedTasks;
-
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public static Task findTask(String taskId) {
-        System.out.println(Integer.parseInt(taskId));
-        for (Task task : getTasks()) {
-            if (task.getTaskId() == Integer.parseInt(taskId)) {
-                return task;
-            }
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Task)) {
+            return false;
         }
+        Task task = (Task) obj;
 
-        return null;
+        return task.getTaskId() == this.getTaskId();
     }
 }
