@@ -1,8 +1,10 @@
 package com.example.infs3605;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.RequiresApi;
@@ -37,7 +39,7 @@ public class SolutionsActivity extends AppCompatActivity {
         curName = intent.getStringExtra(CURATOR_NAME);
         CuratorProfile cp = CuratorProfile.getCuratorProfile(curName);
 
-        System.out.println(cp.getCuratorName());
+//        System.out.println(cp.getCuratorName());
 
         // Link the RecyclerView to its xml item and set LayoutManager
         solutionsRV = findViewById(R.id.solutionsRV);
@@ -86,4 +88,19 @@ public class SolutionsActivity extends AppCompatActivity {
             intent.putExtra(CuratorMatchActivity.SOLUTION_NAME, name);
             startActivity(intent);
         }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(SolutionsActivity.this, ProjectDetailActivity.class);
+            intent.putExtra("project", projName);
+            intent.putExtra("curName", curName);
+            setResult(Activity.RESULT_OK, intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
+
+
+

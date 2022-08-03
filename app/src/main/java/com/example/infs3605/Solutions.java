@@ -197,9 +197,9 @@ public class Solutions {
         solution.add(new Solutions("The Great Fashion Decarbonisation Opportunity",
                 "Fashion Reduction", "Fashion Reduction is a local business that sources sustainable fibres",
                 false, true, false, false, false, false, false,
-                false, false, false, true, "Technology, Design, Research, Strategy, Knowledge Management, Innovation"));
+                false, false, false, true, "Technology, Innovation"));
         solution.add(new Solutions("The Great Fashion Decarbonisation Opportunity",
-                "Fashion ", "Fashion Reduction is a local business that sources sustainable fibres",
+                "Sustainable Rodeo", "Sustainable Rodeo is a start-up that aims to work alongside clothing manufacturers to reduce their energy consumption by up to 40%",
                 false, true, false, false, true, true, false,
                 true, false, true, true, "Technology, Design, Research, Strategy, Knowledge Management, Innovation"));
 

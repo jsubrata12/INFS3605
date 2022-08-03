@@ -1,5 +1,6 @@
 package com.example.infs3605;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
@@ -26,6 +27,8 @@ import java.util.List;
 
 public class ProjectDetailActivity extends AppCompatActivity {
     public static final String INTENT_MESSAGE = "hello";
+    public static final String PROJECT_NAME = "test";
+    public static final String CUR_NAME = "hello";
     TextView name, desc, completeDate;
     ChipGroup group;
     Button btn;
@@ -218,6 +221,10 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
             }
 
+            if(compareValue5 > 0){
+                btn.setVisibility(View.GONE);
+            }
+
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -231,4 +238,20 @@ public class ProjectDetailActivity extends AppCompatActivity {
             });
         }
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                String result = data.getStringExtra("project");
+                String result1 = data.getStringExtra("curName");
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }
 }
+
