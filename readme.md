@@ -3,7 +3,7 @@ Note: Some features are still not implemented, such as account, settings, and se
 
 Make sure to sync gradle in order for the app to work
 
-#Login
+## Login
 Username: test@email.com
 Password: 123456
 
