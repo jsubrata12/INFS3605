@@ -7,7 +7,7 @@ Make sure to sync gradle in order for the app to work
 Username: test@email.com
 Password: 123456
 
-#How to Access and Run Application
+## How to Access and Run Application
 Please extract the Zip file and save into your chosen directory. Then open Android Studio, click File -> New -> Import Project and choose the extracted application.
 
 ## Minimum Requirements
@@ -15,3 +15,4 @@ use Android **API 21** or higher and **Google Pixel 3** for the best layout expe
 
 ## Bugs
 Back button will be attached to the action bar in some screen due to a bug, make sure to use the back button on the android phone rather than the one provided on the action bar
+
